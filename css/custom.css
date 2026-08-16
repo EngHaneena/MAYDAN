@@ -164,19 +164,38 @@ html.dark input, html.dark select, html.dark textarea {
   border-radius: 9999px;
   transition: all 0.2s ease-in-out;
   white-space: nowrap;
+  color: #0f172a !important;
+  font-weight: 700 !important;
 }
 .nav-link-pill:hover {
-  background-color: rgba(20, 184, 166, 0.1);
-  color: #0d9488;
+  background-color: rgba(20, 184, 166, 0.12);
+  color: #0d9488 !important;
+}
+html.dark .nav-link-pill {
+  color: #f1f5f9 !important;
 }
 html.dark .nav-link-pill:hover {
-  background-color: rgba(20, 184, 166, 0.2);
-  color: #2dd4bf;
+  background-color: rgba(20, 184, 166, 0.25);
+  color: #2dd4bf !important;
 }
 .nav-link-active {
   background-color: #0d9488 !important;
   color: #ffffff !important;
   font-weight: 700 !important;
   box-shadow: 0 2px 8px rgba(13, 148, 136, 0.3);
+}
+
+/* Light Mode High Contrast Utilities */
+body:not(.dark) .text-slate-900 {
+  color: #0f172a !important;
+}
+body:not(.dark) .text-slate-800 {
+  color: #1e293b !important;
+}
+body:not(.dark) .text-slate-700 {
+  color: #334155 !important;
+}
+body:not(.dark) .text-slate-600 {
+  color: #475569 !important;
 }
 
