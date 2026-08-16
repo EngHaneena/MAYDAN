@@ -319,10 +319,14 @@ window.MAYDAN_APP = (function() {
 
           const targetView = getDefaultViewForRole();
           window.location.hash = targetView;
+          navigateTo(targetView);
         } catch (err) {
           if (errorMsg) {
             errorMsg.classList.remove("hidden");
-            errorMsg.textContent = err.message || "البريد الإلكتروني أو كلمة المرور غير صحيحة، يرجى المحاولة ثانية.";
+            const formatted = window.MAYDAN_AUTH && window.MAYDAN_AUTH.parseAuthErrorMessage 
+              ? window.MAYDAN_AUTH.parseAuthErrorMessage(err) 
+              : (err.message || "البريد الإلكتروني أو كلمة المرور غير صحيحة، يرجى المحاولة ثانية.");
+            errorMsg.textContent = formatted;
           }
         }
       };

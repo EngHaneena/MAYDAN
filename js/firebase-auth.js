@@ -5,12 +5,44 @@ window.MAYDAN_AUTH = (function() {
   let currentUser = null;
   let userProfile = null;
 
+  function parseAuthErrorMessage(error) {
+    if (!error) return "حدث خطأ غير متوقع. يرجى المحاولة ثانية.";
+    const code = error.code || "";
+    switch (code) {
+      case "auth/invalid-credential":
+      case "auth/user-not-found":
+      case "auth/wrong-password":
+        return "البريد الإلكتروني أو كلمة المرور غير صحيحة. إذا لم يكن لديك حساب، يرجى اختيار 'إنشاء حساب جديد'.";
+      case "auth/email-already-in-use":
+        return "هذا البريد الإلكتروني مسجل بالفعل. يرجى اختيار 'تسجيل الدخول' بدلاً من إنشاء حساب جديد.";
+      case "auth/weak-password":
+        return "كلمة المرور ضعيفة. يرجى استخدام 6 أحرف على الأقل.";
+      case "auth/invalid-email":
+        return "صيغة البريد الإلكتروني غير صحيحة. يرجى كتابة بريد إلكتروني صالح (مثال: name@example.com).";
+      case "auth/network-request-failed":
+        return "تعذر الاتصال بالخادم. يرجى التأكد من الاتصال بالإنترنت والمحاولة مجدداً.";
+      case "auth/too-many-requests":
+        return "تم تجاوز عدد المحاولات المسموح بها. يرجى الانتظار قليلاً ثم المحاولة ثانية.";
+      default:
+        return error.message || "حدث خطأ أثناء المصادقة، يرجى التأكد من البيانات والمحاولة ثانية.";
+    }
+  }
+
   function init() {
     if (typeof firebase !== "undefined" && firebase.auth) {
       firebase.auth().onAuthStateChanged(async function(user) {
         if (user) {
           currentUser = user;
-          await fetchUserProfile(user.uid);
+          try {
+            await fetchUserProfile(user.uid);
+          } catch (err) {
+            console.warn("Auth state profile fetch notice:", err);
+            if (err && (err.code === "auth/invalid-credential" || err.code === "auth/user-token-expired")) {
+              console.warn("Stale or expired credentials detected. Clearing session...");
+              await firebase.auth().signOut();
+              return;
+            }
+          }
           
           if (!userProfile) {
             // Auto-bootstrap profile document in users/{user.uid} if not found
@@ -220,6 +252,7 @@ window.MAYDAN_AUTH = (function() {
     signup: signup,
     login: login,
     logout: logout,
+    parseAuthErrorMessage: parseAuthErrorMessage,
     getCurrentUser: function() { return currentUser; },
     getUserProfile: function() { return userProfile; },
     getRole: function() { return window.MAYDAN_STORE ? window.MAYDAN_STORE.getRole() : (userProfile ? userProfile.role : "company"); },
