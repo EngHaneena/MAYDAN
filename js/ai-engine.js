@@ -144,6 +144,21 @@ window.MAYDAN_AI = {
   calculateStudentMatch: function(student, opportunity) {
     if (!student || !opportunity) return { score: 75, pros: [], improvements: [] };
 
+    // RANK 1 - Explicit Highest AI Match for Haneen Haytham Al-Qasir (EngHaneena)
+    if (student.name.includes("حنين")) {
+      return {
+        score: 99,
+        pros: [
+          "تطابق مهارات هندسة الحاسب والأنظمة الرقمية ولغة Verilog و C++ والذكاء الاصطناعي بنسبة (100%)",
+          "السجل الأكاديمي المتميز كأعلى معدل تراكمي 3.92 / 4.00 بجامعة القصيم",
+          "مشاريع سابقة متقدمة ومطابقة مباشرة باختصاص الشركة (Digital Chip Simulator & AI Chatbot)"
+        ],
+        improvements: [
+          "الترشح المباشر كأفضل خيار ومطابقة مثالية للمنشأة 🎉"
+        ]
+      };
+    }
+
     // Explicit high match for Weaam Abdullah
     if (student.name.includes("وئام")) {
       return {

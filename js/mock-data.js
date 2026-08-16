@@ -84,19 +84,6 @@ window.MAYDAN_MOCK = {
       fields: ["نظم المعلومات اللوجستية", "تحليل البيانات", "الهندسة الميكانيكية/الكهربائية"],
       website: "https://al-watania.com",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
-    },
-    {
-      id: "comp-thiqah",
-      name: "شركة ثقة لخدمات الأعمال (Thiqah)",
-      industry: "الحلول الذكية والأنظمة القانونية والتجارية",
-      city: "الرياض",
-      area: "طريق الملك فهد",
-      workType: "عن بعد",
-      description: "شركة شريكة للجهات الحكومية تبتكر منصات ذكية لتمكين بيئة الأعمال والتجارة بالمملكة.",
-      activity: "تصميم واجهات المستخدم، تطوير المنصات الحكومية التفاعلية، وتحليل قواعد البيانات التجاريّة.",
-      fields: ["هندسة البرمجيات", "تصميم تجربة المستخدم UI/UX", "علوم الحاسب"],
-      website: "https://thiqah.sa",
-      logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     }
   ],
 
@@ -104,6 +91,27 @@ window.MAYDAN_MOCK = {
     {
       id: "prop-101",
       studentId: "student-1",
+      studentName: "حنين هيثم القصير",
+      studentMajor: "هندسة الحاسب",
+      studentUniversity: "جامعة القصيم",
+      studentAvatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
+      studentLinkedin: "https://linkedin.com/in/haneen-alqasir",
+      studentGithub: "https://github.com/EngHaneena",
+      companyId: "comp-smart-methods",
+      companyName: "شركة الأساليب الذكية (Smart Methods)",
+      title: "تصميم الرقائق الرقمية وبناء لوحة تحليلات الذكاء الاصطناعي",
+      description: "بناء وتطوير محاكي منطقي متقدم للرقائق والمعالجات المعالجة بلغة Verilog و C++ بالإضافة للوحة مؤشرات تفاعلية بالذكاء الاصطناعي.",
+      value: "توفير وقت إعداد التقارير بنسبة 60% وتسهيل تطوير واختبار الدوائر الإلكترونية بالشركة بالقصيم.",
+      skills: ["Python", "C++", "Verilog/VHDL", "Digital Logic", "AI"],
+      duration: "12 أسبوع",
+      message: "السلام عليكم ورحمة الله، أود تقديم هذا المقترح العملي للاستفادة من شغفي وهندستي في الحاسب لتطوير بيئة محاكاة الرقائق والأنظمة بالقصيم.",
+      matchScore: 99,
+      status: "قيد المراجعة",
+      createdAt: "2026-08-16"
+    },
+    {
+      id: "prop-102",
+      studentId: "student-2",
       studentName: "وئام عبدالله",
       studentMajor: "هندسة الحاسب",
       studentUniversity: "جامعة القصيم",
@@ -122,8 +130,8 @@ window.MAYDAN_MOCK = {
       createdAt: "2026-08-16"
     },
     {
-      id: "prop-102",
-      studentId: "student-2",
+      id: "prop-103",
+      studentId: "student-3",
       studentName: "رُلى العثيم",
       studentMajor: "علوم الحاسب",
       studentUniversity: "جامعة القصيم",
@@ -140,32 +148,35 @@ window.MAYDAN_MOCK = {
       matchScore: 95,
       status: "مهتم",
       createdAt: "2026-08-16"
-    },
-    {
-      id: "prop-103",
-      studentId: "student-3",
-      studentName: "كيان الغفاري",
-      studentMajor: "هندسة البرمجيات",
-      studentUniversity: "جامعة القصيم",
-      studentAvatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
-      studentLinkedin: "https://www.linkedin.com/in/kayan-algeffari-7b2b63263/",
-      companyId: "comp-smart-methods",
-      companyName: "شركة الأساليب الذكية (Smart Methods)",
-      title: "تصميم وتطوير واجهات المستخدم التفاعلية والمنصات الرقمية",
-      description: "تطوير واجهات مستخدم متجاوبة عالية الكفاءة وتسهيل استخدام الخدمات الرقمية والتكامل مع برمجيات APIs بالشركة.",
-      value: "تحسين تجربة تجربة المستخدم ورضا العملاء بنسبة 40% ورفع السرعة التشغيلية للتطبيقات.",
-      skills: ["React", "UI/UX", "JavaScript", "REST APIs"],
-      duration: "12 أسبوع",
-      message: "السلام عليكم ورحمة الله، أقدم هذا المقترح البرمجي لتطوير واجهات متقدمة تخدم منصات الشركة الرقمية.",
-      matchScore: 93,
-      status: "قيد المراجعة",
-      createdAt: "2026-08-16"
     }
   ],
 
   students: [
     {
       id: "student-1",
+      name: "حنين هيثم القصير",
+      title: "طالبة هندسة حاسب - جامعة القصيم",
+      university: "جامعة القصيم (Qassim University)",
+      major: "هندسة الحاسب",
+      level: "سنة تخرج (Senior)",
+      gpa: "3.92 / 4.00",
+      city: "القصيم (بريدة)",
+      bio: "طالبة هندسة حاسب بجامعة القصيم شغوفة بتصميم الرقائق الرقمية والأنظمة المدمجة والذكاء الاصطناعي وتطوير البرمجيات.",
+      linkedin: "https://linkedin.com/in/haneen-alqasir",
+      github: "https://github.com/EngHaneena",
+      avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
+      skills: ["Python", "C++", "Verilog/VHDL", "Digital Logic", "SQL", "Data Analysis", "AI", "React"],
+      projects: [
+        { name: "Digital Chip Logic Simulator", desc: "محاكي منطقي للرقائق الرقمية المعالجة والمعالجات الصغيرة بلغة Verilog و C++" },
+        { name: "AI Chatbot", desc: "مساعد ذكي للإجابة على الاستفسارات الأكاديمية بجامعة القصيم باستخدام برمجيات NLP" },
+        { name: "Data Analysis Dashboard", desc: "لوحة تحكم تفاعلية لتحليل سلوك مستخدمي التطبيقات" }
+      ],
+      certifications: ["AWS Certified Cloud Practitioner", "Digital Systems & Embedded Architecture"],
+      cvUploaded: true,
+      cvName: "Haneen_Haytham_AlKaseer_CV.pdf"
+    },
+    {
+      id: "student-2",
       name: "وئام عبدالله",
       title: "طالبة هندسة حاسب - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
@@ -187,7 +198,7 @@ window.MAYDAN_MOCK = {
       cvName: "Weaam_Abdullah_Qassim_University_CV.pdf"
     },
     {
-      id: "student-2",
+      id: "student-3",
       name: "رُلى العثيم",
       title: "طالبة علوم حاسب - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
@@ -208,7 +219,7 @@ window.MAYDAN_MOCK = {
       cvName: "Rola_AlOthaim_CV.pdf"
     },
     {
-      id: "student-3",
+      id: "student-4",
       name: "كيان الغفاري",
       title: "طالبة هندسة برمجيات - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
@@ -229,7 +240,7 @@ window.MAYDAN_MOCK = {
       cvName: "Kayan_AlGeffari_CV.pdf"
     },
     {
-      id: "student-4",
+      id: "student-5",
       name: "سناء الإدلبـي",
       title: "طالبة هندسة حاسب - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
@@ -250,7 +261,7 @@ window.MAYDAN_MOCK = {
       cvName: "Sana_AlEdilbi_CV.pdf"
     },
     {
-      id: "student-5",
+      id: "student-6",
       name: "سناء البتار",
       title: "طالبة علوم حاسب - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
@@ -271,7 +282,7 @@ window.MAYDAN_MOCK = {
       cvName: "Sana_AlBettar_CV.pdf"
     },
     {
-      id: "student-6",
+      id: "student-7",
       name: "فهد إبراهيم التويجري",
       title: "طالب هندسة حاسب - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
