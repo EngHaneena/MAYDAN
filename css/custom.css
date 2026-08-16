@@ -111,7 +111,7 @@ html.dark body {
 }
 
 html.dark .glass-nav {
-  background: rgba(15, 23, 42, 0.90);
+  background: rgba(15, 23, 42, 0.94);
   border-color: rgba(51, 65, 85, 0.8);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
@@ -132,12 +132,9 @@ html.dark .bg-slate-100 {
   color: #f1f5f9 !important;
 }
 
-html.dark .text-slate-900 {
-  color: #f8fafc !important;
-}
-
+html.dark .text-slate-900,
 html.dark .text-slate-800 {
-  color: #f1f5f9 !important;
+  color: #f8fafc !important;
 }
 
 html.dark .text-slate-700 {
@@ -148,54 +145,20 @@ html.dark .text-slate-600 {
   color: #cbd5e1 !important;
 }
 
-html.dark .border-slate-200, html.dark .border-slate-100 {
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .border-slate-200, 
+html.dark .border-slate-100 {
   border-color: #334155 !important;
 }
 
-html.dark input, html.dark select, html.dark textarea {
+html.dark input, 
+html.dark select, 
+html.dark textarea {
   background-color: #0f172a !important;
   color: #f8fafc !important;
   border-color: #334155 !important;
-}
-
-/* Navbar Link Pill Style */
-.nav-link-pill {
-  padding: 0.375rem 0.875rem;
-  border-radius: 9999px;
-  transition: all 0.2s ease-in-out;
-  white-space: nowrap;
-  color: #0f172a !important;
-  font-weight: 700 !important;
-}
-.nav-link-pill:hover {
-  background-color: rgba(20, 184, 166, 0.12);
-  color: #0d9488 !important;
-}
-html.dark .nav-link-pill {
-  color: #f1f5f9 !important;
-}
-html.dark .nav-link-pill:hover {
-  background-color: rgba(20, 184, 166, 0.25);
-  color: #2dd4bf !important;
-}
-.nav-link-active {
-  background-color: #0d9488 !important;
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.3);
-}
-
-/* Light Mode High Contrast Utilities */
-body:not(.dark) .text-slate-900 {
-  color: #0f172a !important;
-}
-body:not(.dark) .text-slate-800 {
-  color: #1e293b !important;
-}
-body:not(.dark) .text-slate-700 {
-  color: #334155 !important;
-}
-body:not(.dark) .text-slate-600 {
-  color: #475569 !important;
 }
 

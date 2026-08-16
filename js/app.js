@@ -208,6 +208,9 @@ window.MAYDAN_APP = (function() {
         userBadge.innerHTML = `
           <img src="stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png" class="w-8 h-8 rounded-full border border-teal-500/30 object-cover shrink-0" alt="Company Logo"/>
           <span class="font-semibold text-xs text-slate-800 dark:text-slate-200 hidden lg:inline">${isEn ? 'Smart Methods' : 'شركة الأساليب الذكية'}</span>
+          <button onclick="if(window.MAYDAN_AUTH){window.MAYDAN_AUTH.logout();}" title="تسجيل الخروج" class="p-1 text-slate-400 hover:text-rose-600 transition-colors">
+            <span class="material-symbols-outlined text-base">logout</span>
+          </button>
         `;
       }
     } else {
@@ -226,7 +229,10 @@ window.MAYDAN_APP = (function() {
       if (userBadge) {
         userBadge.innerHTML = `
           <img src="stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png" class="w-8 h-8 rounded-full border border-teal-500/30 object-cover shrink-0" alt="Student Avatar"/>
-          <span class="font-semibold text-xs text-slate-800 dark:text-slate-200 hidden lg:inline">${isEn ? 'Haneen Haytham (95%)' : 'حنين هيثم القصير (95% Match)'}</span>
+          <span class="font-semibold text-xs text-slate-800 dark:text-slate-200 hidden lg:inline">${isEn ? 'Haneen Haytham' : 'حنين هيثم القصير'}</span>
+          <button onclick="if(window.MAYDAN_AUTH){window.MAYDAN_AUTH.logout();}" title="تسجيل الخروج" class="p-1 text-slate-400 hover:text-rose-600 transition-colors">
+            <span class="material-symbols-outlined text-base">logout</span>
+          </button>
         `;
       }
     }
