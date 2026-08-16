@@ -43,7 +43,7 @@ window.MAYDAN_APP = (function() {
     const savedLang = localStorage.getItem("MAYDAN_LANG") || "ar";
     window.MAYDAN_LANG = savedLang;
 
-    function applyLanguage(lang) {
+    function applyLanguage(lang, rerender = false) {
       window.MAYDAN_LANG = lang;
       localStorage.setItem("MAYDAN_LANG", lang);
       document.documentElement.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
@@ -51,17 +51,17 @@ window.MAYDAN_APP = (function() {
       if (langLabel) langLabel.textContent = lang === "en" ? "AR" : "EN";
       translatePageElements(lang);
       updateNavbarRoleUI();
-      renderView(currentView);
+      if (rerender) renderView(currentView);
     }
 
     if (langToggleBtn) {
       langToggleBtn.onclick = function() {
         const nextLang = window.MAYDAN_LANG === "en" ? "ar" : "en";
-        applyLanguage(nextLang);
+        applyLanguage(nextLang, true);
       };
     }
 
-    applyLanguage(savedLang);
+    applyLanguage(savedLang, false);
   }
 
   function translatePageElements(lang) {
