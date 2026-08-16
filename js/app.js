@@ -191,6 +191,10 @@ window.MAYDAN_APP = (function() {
       if (navContainer) {
         navContainer.innerHTML = `
           <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Home' : 'الرئيسية'}</a>
+          <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
+            <span class="material-symbols-outlined text-amber-500 text-sm">touch_app</span>
+            ${isEn ? 'Leave Your Mark' : 'ضع بصمتك'}
+          </a>
           <a href="#company-create" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors flex items-center gap-1">
             <span class="material-symbols-outlined text-teal-500 text-base">auto_awesome</span>
             ${isEn ? 'Create Opportunity' : 'إنشاء فرصة'}
@@ -210,7 +214,11 @@ window.MAYDAN_APP = (function() {
         navContainer.innerHTML = `
           <a href="#student-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Home' : 'الرئيسية'}</a>
           <a href="#student-marketplace" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Explore Opportunities' : 'استكشاف الفرص'}</a>
-          <a href="#student-applications" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Applications' : 'طلباتي'}</a>
+          <a href="#company-discovery" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
+            <span class="material-symbols-outlined text-amber-500 text-sm">lightbulb</span>
+            ${isEn ? 'Give Me A Chance' : 'أعطني فرصة'}
+          </a>
+          <a href="#student-applications" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Applications & Proposals' : 'طلباتي ومقترحاتي'}</a>
           <a href="#student-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Profile' : 'الملف الشخصي'}</a>
         `;
       }

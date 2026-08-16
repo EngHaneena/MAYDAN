@@ -186,13 +186,17 @@ window.MAYDAN_AUTH = (function() {
     if (role === "company") {
       if (navContainer) {
         navContainer.innerHTML = `
-          <a href="#company-dashboard" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">الرئيسية</a>
-          <a href="#company-create" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1 flex items-center gap-1">
+          <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">الرئيسية</a>
+          <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
+            <span class="material-symbols-outlined text-amber-500 text-sm">touch_app</span>
+            ضع بصمتك
+          </a>
+          <a href="#company-create" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors flex items-center gap-1">
             <span class="material-symbols-outlined text-teal-500 text-base">auto_awesome</span>
             إنشاء فرصة
           </a>
-          <a href="#company-candidates" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">المرشحون المطابقون</a>
-          <a href="#company-profile" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">ملف الشركة</a>
+          <a href="#company-candidates" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">المرشحون المطابقون</a>
+          <a href="#company-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">ملف الشركة</a>
         `;
       }
       if (userBadge) {
@@ -207,10 +211,14 @@ window.MAYDAN_AUTH = (function() {
     } else {
       if (navContainer) {
         navContainer.innerHTML = `
-          <a href="#student-dashboard" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">الرئيسية</a>
-          <a href="#student-marketplace" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">استكشاف الفرص</a>
-          <a href="#student-applications" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">طلباتي</a>
-          <a href="#student-profile" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">الملف الشخصي</a>
+          <a href="#student-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">الرئيسية</a>
+          <a href="#student-marketplace" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">استكشاف الفرص</a>
+          <a href="#company-discovery" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
+            <span class="material-symbols-outlined text-amber-500 text-sm">lightbulb</span>
+            أعطني فرصة
+          </a>
+          <a href="#student-applications" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">طلباتي ومقترحاتي</a>
+          <a href="#student-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">الملف الشخصي</a>
         `;
       }
       if (userBadge) {
