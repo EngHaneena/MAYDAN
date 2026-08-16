@@ -1,7 +1,7 @@
 // LocalStorage Persistent Store with Firebase Integration for MAYDAN (ميدان)
 
 window.MAYDAN_STORE = (function() {
-  const STORAGE_KEY = "MAYDAN_APP_STATE_V10"; // Updated to V10 for Landing Page, Auth & Editable Profile persistence
+  const STORAGE_KEY = "MAYDAN_APP_STATE_V12"; // Updated to V12 for Real Qassim Students Sync
 
   let state = {
     role: "company", // "company" or "student"
@@ -17,6 +17,10 @@ window.MAYDAN_STORE = (function() {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         state = JSON.parse(saved);
+        // Ensure student count and names match latest mock data
+        if (window.MAYDAN_MOCK && (!state.students || state.students.length < window.MAYDAN_MOCK.students.length || !state.students.some(s => s.name.includes("وئام")))) {
+          resetToDefaultSeed();
+        }
         return;
       }
     } catch (e) {
@@ -77,11 +81,15 @@ window.MAYDAN_STORE = (function() {
     },
 
     getStudents: function() {
+      if (window.MAYDAN_MOCK && window.MAYDAN_MOCK.students) {
+        state.students = JSON.parse(JSON.stringify(window.MAYDAN_MOCK.students));
+      }
       return state.students || [];
     },
 
     getStudentById: function(studentId) {
-      return (state.students || []).find(s => s.id === studentId) || state.students[0];
+      const students = this.getStudents();
+      return students.find(s => s.id === studentId) || students[0];
     },
 
     updateStudentCv: function(studentId, fileName, extractedData) {
