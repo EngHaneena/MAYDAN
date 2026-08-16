@@ -27,7 +27,7 @@ window.MAYDAN_MOCK = {
       activity: "تطوير الحلول الرقمية، البرمجة المدمجة، محاكاة الرقائق المعالجة، وأتمتة النظم التجارية.",
       fields: ["هندسة الحاسب", "علوم الحاسب", "الذكاء الاصطناعي", "تحليل البيانات"],
       website: "https://smartmethods.sa",
-      linkedin: "https://www.linkedin.com/company/smartmethods",
+      linkedin: "https://www.linkedin.com/company/%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D9%84%D9%8A%D8%A8-%D8%A7%D9%84%D8%B0%D9%83%D9%8A%D8%A9-smart-methods/",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     },
     {
@@ -41,7 +41,7 @@ window.MAYDAN_MOCK = {
       activity: "تصميم الرقائق الرقمية بلغات Verilog/VHDL، اختبار البرمجيات التعليمية، وتطوير الأنظمة المدمجة.",
       fields: ["هندسة الحاسب", "تصميم الرقائق RTL", "الأنظمة المدمجة", "هندسة البرمجيات"],
       website: "https://techandteach.sa",
-      linkedin: "https://www.linkedin.com/company/tech-and-teach",
+      linkedin: "https://www.linkedin.com/company/techandteachsa",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     },
     {
