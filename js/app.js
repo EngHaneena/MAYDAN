@@ -1391,25 +1391,25 @@ window.MAYDAN_APP = (function() {
 
       container.innerHTML = filtered.map(c => {
         return `
-          <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border-2 border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-teal-500/50 hover-lift flex flex-col justify-between space-y-4 transition-all">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover-lift flex flex-col justify-between space-y-4">
             <div class="space-y-3">
               <div class="flex items-center gap-3">
-                <img src="${c.logo || 'stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png'}" class="w-12 h-12 rounded-xl object-cover border border-teal-500/40 shrink-0 bg-slate-100 dark:bg-slate-800" alt="${c.name}"/>
+                <img src="${c.logo || 'stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png'}" class="w-12 h-12 rounded-xl object-cover border border-teal-500/30 shrink-0" alt="${c.name}"/>
                 <div>
-                  <h3 class="text-base font-extrabold text-slate-950 dark:text-white font-headline leading-snug">${c.name}</h3>
-                  <span class="text-xs font-bold text-teal-700 dark:text-teal-400 block mt-0.5">${c.industry}</span>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 font-headline">${c.name}</h3>
+                  <span class="text-xs font-semibold text-teal-700 dark:text-teal-400 block">${c.industry}</span>
                 </div>
               </div>
 
-              <p class="text-slate-700 dark:text-slate-300 text-xs line-clamp-2 leading-relaxed font-medium">${c.description || c.activity}</p>
+              <p class="text-slate-600 dark:text-slate-300 text-xs line-clamp-2 leading-relaxed">${c.description || c.activity}</p>
 
               <div class="flex flex-wrap gap-1 text-xs">
-                <span class="px-2.5 py-0.5 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 text-xs rounded-lg font-bold border border-emerald-200 dark:border-emerald-800/60">${c.area || c.city}</span>
-                <span class="px-2.5 py-0.5 bg-blue-50 dark:bg-blue-950/40 text-blue-800 dark:text-blue-300 text-xs rounded-lg font-bold border border-blue-200 dark:border-blue-800/60">${c.workType || 'حضوري'}</span>
+                <span class="px-2 py-0.5 bg-emerald-50 dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 text-xs rounded font-medium border border-emerald-200 dark:border-slate-700">${c.area || c.city}</span>
+                <span class="px-2 py-0.5 bg-blue-50 dark:bg-slate-800 text-blue-800 dark:text-blue-300 text-xs rounded font-medium border border-blue-200 dark:border-slate-700">${c.workType || 'حضوري'}</span>
               </div>
             </div>
 
-            <div class="pt-4 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between flex-wrap gap-2">
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-1.5">
                 ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" rel="noopener" title="صفحة لينكد إن الرسمية" class="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200 dark:border-blue-800"><span class="material-symbols-outlined text-sm">link</span> LinkedIn</a>` : `<span title="حساب LinkedIn موثق" class="px-2.5 py-1 bg-blue-50/70 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-bold flex items-center gap-1 border border-blue-200/50 dark:border-blue-800/50 opacity-90 cursor-default"><span class="material-symbols-outlined text-sm">link</span> LinkedIn</span>`}
                 ${c.website ? `<a href="${c.website}" target="_blank" rel="noopener" title="الموقع الرسمي" class="p-1 text-slate-500 hover:text-teal-600 transition-colors"><span class="material-symbols-outlined text-base">language</span></a>` : ''}

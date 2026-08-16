@@ -160,7 +160,7 @@ window.MAYDAN_AI = {
     }
 
     // Rank 2 - Explicit high match for Rola Al-Othaim (رولا العثيم)
-    if (student.name.includes("رُلى") || student.name.includes("رلى")) {
+    if (student.name.includes("رولا") || student.name.includes("رُلى") || student.name.includes("رلى")) {
       return {
         score: 96,
         pros: [
@@ -207,9 +207,9 @@ window.MAYDAN_AI = {
     // Explicit high match for Sana Edilbi
     if (student.name.includes("ادلبي") || student.name.includes("الإدلب") || student.name.includes("الادلب")) {
       return {
-        score: 93,
+        score: 91,
         pros: [
-          "تطابق مهارات الأمن السيبراني ولغة Verilog والأنظمة المدمجة (93%)",
+          "تطابق مهارات الأمن السيبراني ولغة Verilog والأنظمة المدمجة (91%)",
           "تخصص هندسة الحاسب بجامعة القصيم ممتاز ومطابق",
           "شهادات مهنية معتمدة CompTIA Security+"
         ],
@@ -222,9 +222,9 @@ window.MAYDAN_AI = {
     // Explicit high match for Sana Al-Bitar
     if (student.name.includes("البيطار") || student.name.includes("البتار")) {
       return {
-        score: 92,
+        score: 93,
         pros: [
-          "تطابق مهارات الذكاء الاصطناعي ومعالجة اللغة الطبيعية NLP (92%)",
+          "تطابق مهارات الذكاء الاصطناعي ومعالجة اللغة الطبيعية NLP (93%)",
           "تخصص علوم الحاسب بجامعة القصيم مطابق لاحتياج المنشأة",
           "مشروع بناء مساعد ذكي باللغة العربية"
         ],
@@ -237,9 +237,9 @@ window.MAYDAN_AI = {
     // Explicit high match for Fahad Al-Tuwaijri
     if (student.name.includes("فهد")) {
       return {
-        score: 91,
+        score: 92,
         pros: [
-          "تطابق مهارات الأنظمة المدمجة ولغة C++ ومحاكاة الرقائق (91%)",
+          "تطابق مهارات الأنظمة المدمجة ولغة C++ ومحاكاة الرقائق (92%)",
           "تخصص هندسة الحاسب بجامعة القصيم ممتاز ومطابق",
           "سجل مشروع في أتمتة الحساسات الرقمية بالقصيم"
         ],

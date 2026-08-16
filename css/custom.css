@@ -340,3 +340,63 @@ html:not(.dark) #company-proposals-container select option {
   color: #0f172a !important;
 }
 
+/* Light Mode Only: Company Discovery Cards High Contrast */
+html:not(.dark) #view-company-discovery .bg-white,
+html:not(.dark) #company-discovery-grid .bg-white {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+html:not(.dark) #view-company-discovery h3,
+html:not(.dark) #company-discovery-grid h3 {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html:not(.dark) #view-company-discovery p,
+html:not(.dark) #company-discovery-grid p {
+  color: #334155 !important;
+}
+
+html:not(.dark) #view-company-discovery .bg-slate-50,
+html:not(.dark) #company-discovery-grid .bg-slate-50,
+html:not(.dark) #view-company-discovery .bg-slate-100,
+html:not(.dark) #company-discovery-grid .bg-slate-100 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+/* Light Mode Only: Company Candidates (Matching Candidates Tab) High Contrast */
+html:not(.dark) #view-company-candidates .bg-white,
+html:not(.dark) #candidates-list-container .bg-white {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+html:not(.dark) #view-company-candidates h3,
+html:not(.dark) #candidates-list-container h3 {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html:not(.dark) #view-company-candidates p,
+html:not(.dark) #candidates-list-container p {
+  color: #334155 !important;
+}
+
+html:not(.dark) #view-company-candidates .bg-slate-50\/80,
+html:not(.dark) #candidates-list-container .bg-slate-50\/80,
+html:not(.dark) #view-company-candidates .bg-slate-50,
+html:not(.dark) #candidates-list-container .bg-slate-50,
+html:not(.dark) #view-company-candidates .bg-slate-100,
+html:not(.dark) #candidates-list-container .bg-slate-100 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+
+

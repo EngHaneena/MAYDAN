@@ -13,9 +13,14 @@
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
   
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/custom.css?v=16">
 </head>
 <body class="bg-[#f7f9fb] text-[#191c1e] antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
 
@@ -938,7 +943,7 @@
             ضع بصمتك — سوق الاحتياجات الميدانية
           </div>
           <h2 class="text-3xl font-bold font-headline text-white">اعرض تحدياتك، واكتشف مواهب قادرة على تحويلها إلى حلول.</h2>
-          <p class="text-slate-300 text-sm leading-relaxed">اعرض تحديًا أو احتياجًا حقيقيًا في منشأتك، ودع الطلاب يشاركونك أفكارهم ومهاراتهم وحلولهم المبتكرة.</p>
+          <p class="text-slate-300 text-sm leading-relaxed">اعرض تحديًا أو احتياجًا حقيقيًا في منشأتك، ودع شباب بلدك يشاركونك أفكارهم ومهاراتهم وحلولهم المبتكرة.</p>
           
           <div class="pt-2 flex flex-wrap gap-3 items-center">
             <button id="open-challenge-modal-btn" class="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-2xl text-xs shadow-lg transition-all flex items-center gap-2 cursor-pointer shrink-0">
@@ -1514,9 +1519,9 @@
   <script src="js/firebase-auth.js"></script>
 
   <!-- App JavaScript Modules -->
-  <script src="js/mock-data.js"></script>
-  <script src="js/ai-engine.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/mock-data.js?v=16"></script>
+  <script src="js/ai-engine.js?v=16"></script>
+  <script src="js/store.js?v=16"></script>
+  <script src="js/app.js?v=16"></script>
 </body>
 </html>
