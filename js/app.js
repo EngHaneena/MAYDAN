@@ -1407,7 +1407,7 @@ window.MAYDAN_APP = (function() {
 
             <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-1.5">
-                ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" rel="noopener" title="صفحة لينكد إن الرسمية" class="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200 dark:border-blue-800"><span class="material-symbols-outlined text-sm">link</span> LinkedIn</a>` : ''}
+                ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" rel="noopener" title="صفحة لينكد إن الرسمية" class="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200 dark:border-blue-800"><span class="material-symbols-outlined text-sm">link</span> LinkedIn</a>` : `<span title="حساب LinkedIn موثق" class="px-2.5 py-1 bg-blue-50/70 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-bold flex items-center gap-1 border border-blue-200/50 dark:border-blue-800/50 opacity-90 cursor-default"><span class="material-symbols-outlined text-sm">link</span> LinkedIn</span>`}
                 ${c.website ? `<a href="${c.website}" target="_blank" rel="noopener" title="الموقع الرسمي" class="p-1 text-slate-500 hover:text-teal-600 transition-colors"><span class="material-symbols-outlined text-base">language</span></a>` : ''}
               </div>
               <button onclick="MAYDAN_APP.viewCompanyStudentDetail('${c.id}')" class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-1">
@@ -1441,7 +1441,14 @@ window.MAYDAN_APP = (function() {
 
     const linkedinElem = document.getElementById("comp-detail-linkedin");
     if (linkedinElem) {
-      linkedinElem.href = company.linkedin || `https://www.linkedin.com/company/${company.id}`;
+      if (company.linkedin) {
+        linkedinElem.setAttribute("href", company.linkedin);
+        linkedinElem.target = "_blank";
+        linkedinElem.classList.remove("cursor-default", "opacity-80");
+      } else {
+        linkedinElem.removeAttribute("href");
+        linkedinElem.classList.add("cursor-default", "opacity-80");
+      }
     }
 
     const websiteElem = document.getElementById("comp-detail-website");
