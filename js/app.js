@@ -57,6 +57,7 @@ window.MAYDAN_APP = (function() {
       updateNavbarRoleUI();
       const defaultView = getDefaultViewForRole();
       window.location.hash = defaultView;
+      navigateTo(defaultView);
     });
 
     const resetBtn = document.getElementById("demo-reset-btn");
