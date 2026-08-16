@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Insights Dashboard - MAYDAN AI Preview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#005048",
+                        "on-tertiary-container": "#a07d5f",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed": "#00201c",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d8dadc",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed": "#2c1603",
+                        "on-tertiary-fixed-variant": "#5d4127",
+                        "tertiary": "#000000",
+                        "primary-container": "#131a33",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-container": "#7b83a0",
+                        "secondary-fixed": "#71f8e4",
+                        "inverse-surface": "#2d3133",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-container": "#2c1603",
+                        "text-muted": "#64748B",
+                        "border-subtle": "#E2E8F0",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#bec5e5",
+                        "on-primary-fixed-variant": "#3e4660",
+                        "secondary-container": "#6df5e1",
+                        "on-error-container": "#93000a",
+                        "surface": "#f7f9fb",
+                        "on-secondary-container": "#006f64",
+                        "primary-fixed": "#dbe1ff",
+                        "primary-fixed-dim": "#bec5e5",
+                        "surface-tint": "#565d79",
+                        "outline-variant": "#c6c6ce",
+                        "secondary": "#006b5f",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-fixed": "#131a33",
+                        "primary": "#000000",
+                        "tertiary-fixed": "#ffdcc1",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container": "#eceef0",
+                        "ai-tint": "rgba(20, 184, 166, 0.1)",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "surface-white": "#FFFFFF",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "outline": "#76767e",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#e8bf9d",
+                        "surface-container-highest": "#e0e3e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "section-gap": "64px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-lg": ["Manrope"],
+                        "headline-lg": ["IBM Plex Sans Arabic"],
+                        "headline-md": ["IBM Plex Sans Arabic"],
+                        "headline-xl": ["IBM Plex Sans Arabic"],
+                        "headline-lg-mobile": ["IBM Plex Sans Arabic"],
+                        "label-sm": ["Manrope"],
+                        "body-sm": ["Manrope"],
+                        "headline-sm": ["IBM Plex Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F8FAFC; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .ai-border-right {
+            position: relative;
+        }
+        .ai-border-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #006b5f;
+            border-top-right-radius: 0.75rem;
+            border-bottom-right-radius: 0.75rem;
+        }
+        .hover-lift {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 10px 30px rgba(11, 19, 43, 0.04);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface antialiased text-body-md">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-3 bg-surface-white/80 dark:bg-inverse-surface/80 backdrop-blur-md border border-surface-variant/20 dark:border-outline-variant/10 shadow-lg rounded-full mt-4 mx-auto w-[90%] max-w-container-max">
+<div class="text-headline-md font-headline-md font-bold text-on-primary-container dark:text-primary-fixed">
+            MAYDAN | ميدان
+        </div>
+<nav class="hidden md:flex space-x-6 space-x-reverse font-label-lg text-label-lg">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200" href="#">الرئيسية</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 hover:text-secondary transition-colors duration-200" href="#">الفرص</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200" href="#">طلباتي</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200" href="#">الملف الشخصي</a>
+</nav>
+<div class="flex items-center space-x-4 space-x-reverse">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle bg-surface-variant">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A small, professional user avatar portrait of an individual in business casual attire against a clean, light background. The lighting is soft and flattering, suitable for a corporate or professional networking profile. The style is a high-quality headshot photograph." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFMElCLTWS9F1iq8iVy3I9xz8_vrm8NCSINhkZOcDzocDirM1HByMdty3BbGy7efggmve4ggdC9BYRH3fSw7Mjwt6es-_fNOERovYYP25EOINBwJ2DDeod8kfqJof_WoAmmFkWvRj0-Q32EIKWYJjgVvlk_NM7T_GHlvKMl5IiI0_90a0szpUFTD1ky-ukMcYW_AKpY-eDgv__DDJz0PNKw4ubacuP_9Ntr1qvqg417AewQqZ-Tu1p"/>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-32 pb-24 space-y-section-gap">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-border-subtle pb-8">
+<div class="space-y-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ai-tint border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm text-label-sm text-secondary">✨ Generated by MAYDAN AI</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary-container">Customer Insights Dashboard</h1>
+<div class="flex flex-wrap gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-white border border-border-subtle rounded-md font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="analytics">analytics</span>
+                        Data Analytics
+                    </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-white border border-border-subtle rounded-md font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_month">calendar_month</span>
+                        12 Weeks
+                    </span>
+</div>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2 bg-surface-white text-primary-container border border-border-subtle rounded-lg font-label-lg text-label-lg hover:bg-surface-container-low transition-colors hover-lift flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+                    تعديل
+                </button>
+<button class="flex-1 md:flex-none px-6 py-2 bg-secondary text-on-secondary rounded-lg font-label-lg text-label-lg hover:bg-on-secondary-container transition-colors hover-lift flex items-center justify-center gap-2 shadow-sm shadow-secondary/20">
+<span class="material-symbols-outlined text-sm" data-icon="publish">publish</span>
+                    نشر الفرصة
+                </button>
+</div>
+</section>
+<!-- Main Content Bento Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Left Column (Main Details) -->
+<div class="lg:col-span-2 space-y-gutter">
+<!-- Description -->
+<div class="bg-surface-white rounded-xl border border-border-subtle p-6 hover-lift ai-border-right">
+<h2 class="font-headline-md text-headline-md text-primary-container mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+                        عن الفرصة
+                    </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        مشروع متكامل يهدف إلى بناء لوحة قياس (Dashboard) تفاعلية لتحليل بيانات العملاء وسلوكياتهم الشرائية. سيتم استخدام تقنيات تحليل البيانات الحديثة لاستخراج رؤى قابلة للتنفيذ تساعد في توجيه استراتيجيات التسويق والمبيعات. يعتبر هذا المشروع فرصة ممتازة لتطبيق المهارات التحليلية في بيئة عمل حقيقية وتطوير حلول تعتمد على البيانات لدعم اتخاذ القرار.
+                    </p>
+</div>
+<!-- Responsibilities -->
+<div class="bg-surface-white rounded-xl border border-border-subtle p-6 hover-lift">
+<h2 class="font-headline-md text-headline-md text-primary-container mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="task_alt">task_alt</span>
+                        وش راح تسوي؟
+                    </h2>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5 text-sm" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">تنظيف ومعالجة مجموعات كبيرة من بيانات العملاء لضمان الدقة والموثوقية.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5 text-sm" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">تطوير نماذج تحليلية لتحديد الأنماط والاتجاهات في سلوك المستخدمين.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5 text-sm" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">تصميم وبناء لوحات قياس تفاعلية باستخدام أدوات مثل Tableau أو Power BI.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5 text-sm" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">تقديم تقارير دورية للجهات المعنية توضح الرؤى المستخلصة وتوصيات الأعمال.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Right Column (Sidebar) -->
+<div class="space-y-gutter">
+<!-- Skills Required -->
+<div class="glass-card rounded-xl p-6 hover-lift">
+<h3 class="font-headline-sm text-headline-sm text-primary-container mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="build">build</span>
+                        المهارات المطلوبة
+                    </h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-surface-container-low border border-border-subtle rounded text-on-surface font-label-sm text-label-sm">Python</span>
+<span class="px-3 py-1.5 bg-surface-container-low border border-border-subtle rounded text-on-surface font-label-sm text-label-sm">SQL</span>
+<span class="px-3 py-1.5 bg-surface-container-low border border-border-subtle rounded text-on-surface font-label-sm text-label-sm">Data Visualization</span>
+<span class="px-3 py-1.5 bg-surface-container-low border border-border-subtle rounded text-on-surface font-label-sm text-label-sm">Tableau / Power BI</span>
+<span class="px-3 py-1.5 bg-surface-container-low border border-border-subtle rounded text-on-surface font-label-sm text-label-sm">Statistical Analysis</span>
+</div>
+</div>
+<!-- Suggested Majors -->
+<div class="bg-surface-white rounded-xl border border-border-subtle p-6 hover-lift">
+<h3 class="font-headline-sm text-headline-sm text-primary-container mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="school">school</span>
+                        التخصصات المقترحة
+                    </h3>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 p-2 rounded hover:bg-surface-container-low transition-colors">
+<div class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="computer">computer</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface">علوم الحاسب</span>
+</div>
+<div class="flex items-center gap-3 p-2 rounded hover:bg-surface-container-low transition-colors">
+<div class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="data_usage">data_usage</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface">تحليل البيانات</span>
+</div>
+<div class="flex items-center gap-3 p-2 rounded hover:bg-surface-container-low transition-colors">
+<div class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="functions">functions</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface">الرياضيات والإحصاء</span>
+</div>
+</div>
+</div>
+<!-- Expected Deliverables -->
+<div class="bg-surface-white rounded-xl border border-border-subtle p-6 hover-lift ai-border-right">
+<h3 class="font-headline-sm text-headline-sm text-primary-container mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="inventory_2">inventory_2</span>
+                        المخرجات المتوقعة
+                    </h3>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0"></div>
+<div>
+<h4 class="font-label-sm text-label-sm text-on-surface mb-1">لوحة تحكم (Dashboard)</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-sm">لوحة تفاعلية جاهزة للاستخدام من قبل فريق التسويق.</p>
+</div>
+</li>
+<li class="flex gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0"></div>
+<div>
+<h4 class="font-label-sm text-label-sm text-on-surface mb-1">تقرير تحليلي</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-sm">وثيقة مفصلة تحتوي على أهم الرؤى والتوصيات المبنية على البيانات.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center bg-surface dark:bg-on-background border-t border-border-subtle dark:border-outline-variant">
+<div class="text-headline-sm font-headline-sm font-bold text-on-primary-container mb-4 md:mb-0">
+            MAYDAN | ميدان
+        </div>
+<nav class="flex flex-wrap justify-center gap-6 mb-4 md:mb-0 font-label-sm text-label-sm">
+<a class="text-text-muted hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">عن ميدان</a>
+<a class="text-text-muted hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">الشروط والأحكام</a>
+<a class="text-text-muted hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">سياسة الخصوصية</a>
+<a class="text-text-muted hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">اتصل بنا</a>
+</nav>
+<div class="font-body-sm text-body-sm text-text-muted opacity-80 hover:opacity-100">
+            © 2024 ميدان. جميع الحقوق محفوظة.
+        </div>
+</footer>
+</body></html>

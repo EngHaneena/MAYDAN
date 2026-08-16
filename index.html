@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar" class="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MAYDAN | ميدان — من الجامعة إلى الميدان</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-[#f7f9fb] text-[#191c1e] antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+  <!-- ==================== TOP FLOATING GLASS NAVBAR ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 mt-4 mx-auto w-[92%] max-w-[1440px] px-6 py-3.5 glass-nav rounded-full flex items-center justify-between transition-all">
+    
+    <!-- Logo & Slogan -->
+    <div class="flex items-center gap-4 cursor-pointer" onclick="window.location.hash=''">
+      <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-slate-900 via-teal-900 to-teal-600 text-white font-bold flex items-center justify-center text-xl shadow-sm">
+        م
+      </div>
+      <div>
+        <h1 class="text-xl font-bold text-slate-900 tracking-tight font-headline flex items-center gap-2 flex-wrap">
+          MAYDAN | ميدان
+          <span class="text-[10px] font-semibold px-2 py-0.5 bg-teal-100 text-teal-800 rounded-full border border-teal-200">AI Co-op</span>
+          <span class="text-[10px] font-semibold px-2.5 py-0.5 bg-amber-50 text-amber-900 rounded-full border border-amber-300 flex items-center gap-1 shadow-sm" title="Connected to Firebase Cloud Firestore: maydan-b04ca">
+            <span class="text-xs">🔥</span> maydan-b04ca
+          </span>
+        </h1>
+        <p class="text-[11px] text-slate-500 font-medium hidden sm:block">من الجامعة إلى الميدان</p>
+      </div>
+    </div>
+
+    <!-- Single Role-Aware Navigation Container (Dynamically rendered in app.js) -->
+    <nav id="main-nav-links" class="hidden md:flex items-center gap-6 text-sm font-semibold">
+      <!-- Injected Dynamically by MAYDAN_APP -->
+    </nav>
+
+    <!-- Right Controls: Demo Role Toggle & Reset -->
+    <div class="flex items-center gap-3">
+      
+      <!-- Role Selector Dropdown -->
+      <div class="relative flex items-center bg-slate-100/90 rounded-full p-1 border border-slate-200 text-xs font-semibold">
+        <span class="px-2 text-slate-500 hidden sm:inline">تبديل الحساب:</span>
+        <select id="demo-role-select" class="bg-white border-0 text-slate-800 text-xs font-bold rounded-full py-1.5 px-3 focus:ring-2 focus:ring-teal-500 cursor-pointer shadow-sm">
+          <option value="company">🏢 شركة تقنية (TechCorp)</option>
+          <option value="student">🎓 الطالبة: حنين هيثم (92%)</option>
+        </select>
+      </div>
+
+      <!-- Quick Reset Button -->
+      <button id="demo-reset-btn" title="إعادة ضبط البيانات التجريبية" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full border border-slate-200 transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-base">restart_alt</span>
+      </button>
+
+      <!-- Active User Badge -->
+      <div id="nav-user-badge" class="hidden lg:flex items-center gap-2 pr-2 border-r border-slate-200">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+
+  </header>
+
+  <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
+  <main class="pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto w-full flex-grow">
+
+    <!-- ==================== VIEW 0: MAYDAN LANDING PAGE ==================== -->
+    <section id="view-landing-page" class="view-panel space-y-16 py-4">
+      
+      <!-- Hero Section -->
+      <div class="relative bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 text-white rounded-3xl p-8 sm:p-14 shadow-2xl overflow-hidden text-center space-y-8">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 space-y-6 max-w-4xl mx-auto">
+          
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-teal-500/20 text-teal-300 border border-teal-500/30 rounded-full text-xs font-semibold backdrop-blur-md">
+            <span class="material-symbols-outlined text-sm text-teal-400">auto_awesome</span>
+            المنصة الذكية الأولى لمطابقة الفرص التدريبية والتعاونية بالمملكة
+          </div>
+
+          <div class="space-y-3">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight font-headline text-white">
+              MAYDAN | <span class="text-teal-400">ميدان</span>
+            </h1>
+            <h2 class="text-2xl sm:text-4xl font-bold text-teal-200 font-headline">
+              من الجامعة إلى الميدان.
+            </h2>
+          </div>
+
+          <p class="text-base sm:text-xl text-slate-300 font-medium leading-relaxed max-w-3xl mx-auto">
+            ميدان يحوّل احتياجات الشركات إلى فرص تعاونية حقيقية، ويربطها بالطلاب الأنسب باستخدام الذكاء الاصطناعي.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <a href="#auth" class="w-full sm:w-auto px-8 py-4 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-2xl text-base shadow-lg shadow-teal-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-lg">rocket_launch</span>
+              ابدأ الآن
+            </a>
+            <a href="#student-marketplace" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl text-base backdrop-blur-md border border-white/20 transition-all flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-lg">search</span>
+              اكتشف الفرص
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Marketplace Core Value Proposition Flow -->
+      <div class="space-y-8">
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+          <span class="text-xs font-bold text-teal-600 uppercase tracking-widest">كيف يعمل ميدان</span>
+          <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 font-headline">رحلة ربط الاحتياج بالطالب المناسب</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-3 relative">
+            <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 font-bold flex items-center justify-center text-xl">1</div>
+            <h4 class="font-bold text-slate-900 text-lg">🏢 احتياج الشركة</h4>
+            <p class="text-slate-600 text-xs leading-relaxed">تدخل الشركة احتياجها الميداني بلغة طبيعية بسيطة دون الحاجة لإعداد نماذج معقدة.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-3 relative">
+            <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 font-bold flex items-center justify-center text-xl">2</div>
+            <h4 class="font-bold text-slate-900 text-lg">⚡ الفرصة الذكية</h4>
+            <p class="text-slate-600 text-xs leading-relaxed">يبني الذكاء الاصطناعي هيكل الفرصة التدريبية والمخرجات المتوقعة والمهارات التخصصية.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-3 relative">
+            <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 font-bold flex items-center justify-center text-xl">3</div>
+            <h4 class="font-bold text-slate-900 text-lg">🧠 المطابقة التفسيرية</h4>
+            <p class="text-slate-600 text-xs leading-relaxed">يحلل النظام السيرة الذاتية وملف الطالب ليحسب نسبة التطابق وتوضيح أسباب الاختيار.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-3 relative">
+            <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 font-bold flex items-center justify-center text-xl">4</div>
+            <h4 class="font-bold text-slate-900 text-lg">🎓 التقديم والاختيار</h4>
+            <p class="text-slate-600 text-xs leading-relaxed">يقدم الطالب مباشرة وتحدد الشركة الكفاءة الأنسب بنقرة واحدة مع التوثيق الميداني.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW AUTH: AUTHENTICATION & ROLE SIGNUP ==================== -->
+    <section id="view-auth" class="view-panel hidden max-w-xl mx-auto space-y-8 py-6">
+      <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-xl space-y-6">
+        
+        <!-- Auth View Header & Tabs -->
+        <div class="text-center space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-slate-900 text-teal-400 font-bold flex items-center justify-center text-2xl mx-auto shadow-sm">م</div>
+          <h2 id="auth-title" class="text-2xl font-bold text-slate-900 font-headline">أهلاً بك في ميدان</h2>
+          <p id="auth-subtitle" class="text-slate-600 text-xs">سجل دخولك أو أنشئ حسابًا جديدًا للبدء في المنصة</p>
+
+          <div class="flex bg-slate-100 p-1 rounded-2xl text-xs font-bold gap-1 mt-4">
+            <button id="tab-login-btn" type="button" class="flex-1 py-2.5 rounded-xl bg-white text-slate-900 shadow-sm transition-all">تسجيل الدخول</button>
+            <button id="tab-signup-btn" type="button" class="flex-1 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition-all">حساب جديد</button>
+          </div>
+        </div>
+
+        <!-- Role Selection Step (Signup Mode) -->
+        <div id="role-selection-box" class="hidden space-y-4 pt-2">
+          <label class="block text-center text-sm font-bold text-slate-900">وش نوع حسابك؟</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button type="button" id="role-choice-student" class="role-choice-card p-5 rounded-2xl border-2 border-teal-500 bg-teal-50/50 text-right space-y-2 transition-all">
+              <span class="text-2xl">🎓</span>
+              <h4 class="font-bold text-slate-900 text-sm">طالب</h4>
+              <p class="text-slate-600 text-xs">أبحث عن فرص تعاونية وصيفية تناسب مهاراتي.</p>
+            </button>
+            <button type="button" id="role-choice-company" class="role-choice-card p-5 rounded-2xl border-2 border-slate-200 hover:border-slate-300 text-right space-y-2 transition-all">
+              <span class="text-2xl">🏢</span>
+              <h4 class="font-bold text-slate-900 text-sm">شركة</h4>
+              <p class="text-slate-600 text-xs">لدي احتياج وأبحث عن الطالب المناسب.</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Auth Form Inputs -->
+        <form id="auth-form" class="space-y-4">
+          <input type="hidden" id="auth-selected-role" value="student">
+
+          <div id="field-name-group" class="hidden space-y-1">
+            <label class="block text-xs font-bold text-slate-700">الاسم / اسم الجهة</label>
+            <input type="text" id="auth-input-name" placeholder="أدخل اسمك الكامل أو اسم الشركة" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-teal-500 outline-none">
+          </div>
+
+          <div class="space-y-1">
+            <label class="block text-xs font-bold text-slate-700">البريد الإلكتروني</label>
+            <input type="email" id="auth-input-email" required placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-teal-500 outline-none">
+          </div>
+
+          <div class="space-y-1">
+            <label class="block text-xs font-bold text-slate-700">كلمة المرور</label>
+            <input type="password" id="auth-input-password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-teal-500 outline-none">
+          </div>
+
+          <div id="auth-error-msg" class="hidden p-3 bg-rose-50 text-rose-800 text-xs font-semibold rounded-xl border border-rose-200">
+            البريد الإلكتروني أو كلمة المرور غير صحيحة.
+          </div>
+
+          <button type="submit" id="auth-submit-btn" class="w-full py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl text-xs shadow-md transition-all">
+            تسجيل الدخول
+          </button>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 1: COMPANY DASHBOARD ==================== -->
+    <section id="view-company-dashboard" class="view-panel space-y-8">
+      
+      <!-- Banner -->
+      <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-teal-950 text-white rounded-3xl p-8 shadow-lg relative overflow-hidden">
+        <div class="absolute -left-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 space-y-3 max-w-2xl">
+          <span class="px-3 py-1 bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-semibold rounded-full inline-flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">auto_awesome</span>
+            منصة المطابقة الذكية للتدريب التعاوني
+          </span>
+          <h2 class="text-3xl font-bold font-headline">أهلًا بك في لوحة تحكم شركة التكنولوجيا السعودية 👋</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">حوّل احتياجك التجاري إلى فرصة تدريبية مؤهلة بالذكاء الاصطناعي، واستقطب أفضل الكفاءات الأكاديمية من الجامعات السعودية.</p>
+          <div class="pt-2">
+            <a href="#company-create" class="inline-flex items-center gap-2 px-5 py-3 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-sm transition-all shadow-md">
+              <span class="material-symbols-outlined text-base">add_circle</span>
+              أنشئ فرصة جديدة بالذكاء الاصطناعي
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Metrics -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-1">
+          <p class="text-xs text-slate-500 font-medium">الفرص المنشورة</p>
+          <p id="stat-opps" class="text-3xl font-bold text-slate-900 font-headline">3</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-1">
+          <p class="text-xs text-slate-500 font-medium">طلبات التقديم</p>
+          <p id="stat-apps" class="text-3xl font-bold text-slate-900 font-headline">24</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-1">
+          <p class="text-xs text-slate-500 font-medium">المرشحون في المختصرة</p>
+          <p id="stat-candidates" class="text-3xl font-bold text-slate-900 font-headline">8</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-1 border-r-4 border-r-teal-500">
+          <p class="text-xs text-slate-500 font-medium flex items-center gap-1">
+            <span class="material-symbols-outlined text-teal-600 text-sm">auto_awesome</span>
+            المطابقات المقترحة
+          </p>
+          <p id="stat-matches" class="text-3xl font-bold text-teal-700 font-headline">12</p>
+        </div>
+      </div>
+
+      <!-- Published Opportunities Grid -->
+      <div class="space-y-4">
+        <div class="flex justify-between items-center">
+          <h3 class="text-xl font-bold text-slate-900 font-headline">الفرص التدريبية النشطة</h3>
+          <a href="#company-create" class="text-xs font-bold text-teal-700 hover:text-teal-800 flex items-center gap-1">
+            + إضافة فرصة بالذكاء الاصطناعي
+          </a>
+        </div>
+        
+        <div id="company-opps-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Injected Dynamically -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 2: CREATE OPPORTUNITY WITH AI ==================== -->
+    <section id="view-company-create" class="view-panel hidden max-w-3xl mx-auto space-y-8">
+      
+      <div class="text-center space-y-2">
+        <span class="px-3.5 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold border border-teal-200 inline-flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">auto_awesome</span>
+          توليد الفرص بالذكاء الاصطناعي
+        </span>
+        <h2 class="text-3xl font-bold text-slate-900 font-headline">حوّل احتياجك التجاري إلى فرصة تدريبية</h2>
+        <p class="text-slate-600 text-sm">ادخل احتياج شركتك بلغة طبيعية، وسيتكفل الذكاء الاصطناعي ببناء هيكل الفرصة وتحديد المهارات والتخصصات المطلوبة.</p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-md space-y-6">
+        
+        <div class="space-y-2">
+          <label class="block text-sm font-bold text-slate-800">وصف الاحتياج الميداني أو المهام المطلوبة:</label>
+          <textarea id="ai-prompt-input" rows="4" class="w-full rounded-2xl border-slate-300 focus:border-teal-500 focus:ring-teal-500 text-sm p-4 leading-relaxed" placeholder="مثال: نحتاج شخص يساعدنا في تحليل بيانات العملاء وبناء Dashboard توضح المبيعات وسلوك العملاء."></textarea>
+        </div>
+
+        <!-- Presets -->
+        <div class="space-y-2">
+          <p class="text-xs font-semibold text-slate-500">أو جرب أحد النماذج الجاهزة:</p>
+          <div class="flex flex-wrap gap-2">
+            <button data-prompt="نحتاج شخص يساعدنا في تحليل بيانات العملاء وبناء Dashboard توضح المبيعات وسلوك العملاء." class="prompt-preset-chip px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-medium transition-colors">
+              📊 تحليل البيانات و Dashboards
+            </button>
+            <button data-prompt="نحتاج طالب يساعدنا في تطوير مساعد خدمة العملاء بالذكاء الاصطناعي باللغة العربية مع NLP." class="prompt-preset-chip px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-medium transition-colors">
+              🤖 مساعد الذكاء الاصطناعي و NLP
+            </button>
+            <button data-prompt="نحتاج تطوير واجهة منصة سحابية تفاعلية ومتجاوبة باستخدام React وتكامل واجهات APIs." class="prompt-preset-chip px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-medium transition-colors">
+              💻 تطوير منصات الويب (React)
+            </button>
+          </div>
+        </div>
+
+        <!-- Stepped Loading State (Hidden by default) -->
+        <div id="ai-loading-state" class="hidden p-6 bg-teal-50/80 rounded-2xl border border-teal-200/80 space-y-3">
+          <div class="flex items-center gap-2 text-teal-900 font-bold text-sm">
+            <span class="material-symbols-outlined text-teal-600 animate-spin">sync</span>
+            جاري معالجة طلبك بواسطة محرك الذكاء الاصطناعي...
+          </div>
+          <div class="space-y-2 text-xs">
+            <div id="ai-step-1" class="flex items-center gap-3 text-slate-400">
+              <span class="material-symbols-outlined text-base">analytics</span> 1. جاري تحليل احتياجك التجاري ونطاق العمل...
+            </div>
+            <div id="ai-step-2" class="flex items-center gap-3 text-slate-400">
+              <span class="material-symbols-outlined text-base">psychology</span> 2. جاري تحديد المهارات والتخصصات ومخرجات التدريب...
+            </div>
+            <div id="ai-step-3" class="flex items-center gap-3 text-slate-400">
+              <span class="material-symbols-outlined text-base">verified</span> 3. جاري إعداد الفرصة المعمارية للعرض...
+            </div>
+          </div>
+        </div>
+
+        <button id="ai-generate-btn" class="w-full py-4 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-2xl text-sm shadow-md transition-all flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-lg">auto_awesome</span>
+          أنشئ الفرصة بالذكاء الاصطناعي
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 3: AI OPPORTUNITY PREVIEW ==================== -->
+    <section id="view-company-preview" class="view-panel hidden max-w-4xl mx-auto space-y-8">
+      
+      <div class="flex justify-between items-center">
+        <div>
+          <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold">معاينة مسودة الذكاء الاصطناعي</span>
+          <h2 class="text-2xl font-bold text-slate-900 font-headline mt-1">مراجعة الفرصة المولدة تلقائيًا</h2>
+        </div>
+        <a href="#company-create" class="text-xs text-slate-600 hover:text-slate-900 underline font-medium">← تعديل المدخلات</a>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-md space-y-6">
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="md:col-span-2 space-y-1">
+            <label class="text-xs font-bold text-slate-500">عنوان الفرصة:</label>
+            <input id="preview-title" type="text" class="w-full rounded-xl border-slate-300 font-bold text-slate-900 text-base" value="Customer Insights Dashboard"/>
+          </div>
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-500">المجال / المجال الفرعي:</label>
+            <input id="preview-category" type="text" class="w-full rounded-xl border-slate-300 text-slate-800 text-sm" value="تحليل البيانات (Data Analytics)"/>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-500">مدة التدريب التعاوني:</label>
+            <input id="preview-duration" type="text" class="w-full rounded-xl border-slate-300 text-slate-800 text-sm" value="12 أسبوعًا"/>
+          </div>
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-500">المكافأة الموصى بها:</label>
+            <input type="text" class="w-full rounded-xl border-slate-300 text-slate-800 text-sm" value="4,500 ريال / شهريًا"/>
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-xs font-bold text-slate-500">وصف الفرصة والأهداف:</label>
+          <textarea id="preview-description" rows="3" class="w-full rounded-xl border-slate-300 text-slate-800 text-sm"></textarea>
+        </div>
+
+        <div class="space-y-2">
+          <label class="text-xs font-bold text-slate-500">المهارات المطلوبة (المستخرجة):</label>
+          <div id="preview-skills" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="space-y-2">
+          <label class="text-xs font-bold text-slate-500">مسؤوليات ومهام الطالب:</label>
+          <ul id="preview-responsibilities" class="space-y-1.5"></ul>
+        </div>
+
+        <div class="space-y-2">
+          <label class="text-xs font-bold text-slate-500">المخرجات النهائية المتوقعة:</label>
+          <ul id="preview-deliverables" class="space-y-1.5"></ul>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <span class="text-xs text-slate-500">بمجرد النقر على نشر، سيتم عرض أفضل المطابقات الذكية فورًا</span>
+          <button id="publish-opportunity-btn" class="px-8 py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl text-sm shadow-md transition-all flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">rocket_launch</span>
+            نشر الفرصة واستكشاف المرشحين
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 4: AI MATCH CANDIDATES ==================== -->
+    <section id="view-company-candidates" class="view-panel hidden space-y-6">
+      
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+        <div>
+          <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold inline-flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">auto_awesome</span>
+            المطابقات الذكية الفورية
+          </span>
+          <h2 class="text-2xl font-bold text-slate-900 font-headline mt-1">المرشحون الموصى بهم لفرصة: <span id="candidates-opp-title" class="text-teal-700">Customer Insights Dashboard</span></h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="#company-dashboard" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all">
+            العودة للوحة التحكم
+          </a>
+        </div>
+      </div>
+
+      <!-- Ranked Candidate List Container -->
+      <div id="candidates-list-container" class="space-y-4">
+        <!-- Injected Dynamically -->
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 5: STUDENT DASHBOARD ==================== -->
+    <section id="view-student-dashboard" class="view-panel hidden space-y-8">
+      
+      <!-- Greeting Banner -->
+      <div class="bg-gradient-to-r from-teal-950 via-slate-900 to-slate-950 text-white rounded-3xl p-8 shadow-lg relative overflow-hidden">
+        <div class="relative z-10 space-y-2">
+          <h2 class="text-3xl font-bold font-headline">أهلًا حنين 👋</h2>
+          <p class="text-slate-300 text-sm">هذي الفرص التدريبية الأكثر ملاءمة لمهاراتك وتخصصك في هندسة الحاسب.</p>
+        </div>
+      </div>
+
+      <!-- AI Recommended Opportunities Grid -->
+      <div class="space-y-4">
+        <div class="flex justify-between items-center">
+          <h3 class="text-xl font-bold text-slate-900 font-headline flex items-center gap-2">
+            <span class="material-symbols-outlined text-teal-600">auto_awesome</span>
+            الفرص الأعلى تطابقًا معك
+          </h3>
+          <a href="#student-marketplace" class="text-xs font-bold text-teal-700 hover:text-teal-800">عرض جميع الفرص ←</a>
+        </div>
+
+        <div id="student-recommended-opps" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Injected Dynamically -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 6: STUDENT MARKETPLACE & DISCOVERY ==================== -->
+    <section id="view-student-marketplace" class="view-panel hidden space-y-6">
+      
+      <div class="space-y-2">
+        <h2 class="text-2xl font-bold text-slate-900 font-headline">استكشاف الفرص التدريبية</h2>
+        <p class="text-slate-600 text-sm">تصفح الفرص المتاحة في كبرى الشركات السعودية والمطابقة لمهاراتك.</p>
+      </div>
+
+      <!-- Search & Filters Bar -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="md:col-span-2 relative flex items-center">
+            <span class="material-symbols-outlined absolute right-3 text-slate-400 text-xl pointer-events-none">search</span>
+            <input id="marketplace-search-input" type="text" class="w-full rounded-xl border-slate-300 pr-10 pl-4 text-sm p-3 focus:ring-teal-500 focus:border-teal-500" placeholder="ابحث باسم الفرصة، اسم الشركة، أو المهارة (مثال: Python)..."/>
+          </div>
+          <div>
+            <select id="filter-category" class="w-full rounded-xl border-slate-300 text-xs font-medium p-3">
+              <option value="">جميع المجالات</option>
+              <option value="Data Analytics">تحليل البيانات (Data Analytics)</option>
+              <option value="Artificial Intelligence">الذكاء الاصطناعي (AI)</option>
+              <option value="Web Development">تطوير الويب (Web Dev)</option>
+            </select>
+          </div>
+          <div>
+            <select id="filter-duration" class="w-full rounded-xl border-slate-300 text-xs font-medium p-3">
+              <option value="">جميع المدد</option>
+              <option value="8">8 أسابيع</option>
+              <option value="10">10 أسابيع</option>
+              <option value="12">12 أسبوعًا</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards Grid -->
+      <div id="marketplace-cards-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Injected Dynamically -->
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 7: STUDENT OPPORTUNITY DETAILS ==================== -->
+    <section id="view-student-opportunity-details" class="view-panel hidden max-w-4xl mx-auto space-y-8">
+      
+      <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-md space-y-8">
+        
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row justify-between items-start gap-4 pb-6 border-b border-slate-100">
+          <div class="space-y-1">
+            <span id="opp-detail-category" class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold">Data Analytics</span>
+            <h2 id="opp-detail-title" class="text-2xl font-bold text-slate-900 font-headline">Customer Insights Dashboard</h2>
+            <p class="text-sm text-slate-600 font-medium flex items-center gap-1">
+              <span class="material-symbols-outlined text-base">corporate_fare</span>
+              <span id="opp-detail-company">TechCorp Saudi</span>
+            </p>
+          </div>
+
+          <!-- AI Match Ring / Score -->
+          <div class="p-4 bg-teal-50 rounded-2xl border border-teal-200/70 text-center min-w-[140px]">
+            <div class="flex items-center justify-center gap-1 text-teal-700 font-bold text-2xl font-headline">
+              <span class="material-symbols-outlined text-teal-600 text-2xl animate-ai-pulse">auto_awesome</span>
+              <span id="opp-detail-match-score">92%</span>
+            </div>
+            <p class="text-[11px] text-teal-800 font-medium">نسبة تطابق ملفك</p>
+          </div>
+        </div>
+
+        <!-- AI Match Explanation Box -->
+        <div class="p-5 bg-gradient-to-r from-teal-50/80 via-emerald-50/50 to-slate-50 rounded-2xl border border-teal-200/70 space-y-2">
+          <h4 class="font-bold text-sm text-slate-900 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-teal-600">psychology</span>
+            لماذا هذه الفرصة مناسبة لك؟ (تحليل AI)
+          </h4>
+          <div id="opp-detail-match-reasons"></div>
+        </div>
+
+        <!-- Meta Details -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 bg-slate-50 rounded-2xl text-xs">
+          <div>
+            <span class="text-slate-500 block">مدة التدريب:</span>
+            <span id="opp-detail-duration" class="font-bold text-slate-800 text-sm">12 أسبوعًا</span>
+          </div>
+          <div>
+            <span class="text-slate-500 block">المكافأة الشهريّة:</span>
+            <span id="opp-detail-stipend" class="font-bold text-slate-800 text-sm">4,500 ريال</span>
+          </div>
+          <div>
+            <span class="text-slate-500 block">نوع العمل:</span>
+            <span class="font-bold text-slate-800 text-sm">الرياض / هجين</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="space-y-2">
+          <h3 class="font-bold text-slate-900 text-base">وصف الفرصة:</h3>
+          <p id="opp-detail-description" class="text-slate-700 text-sm leading-relaxed"></p>
+        </div>
+
+        <!-- Required Skills -->
+        <div class="space-y-2">
+          <h3 class="font-bold text-slate-900 text-base">المهارات المطلوبة:</h3>
+          <div id="opp-detail-skills" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Responsibilities -->
+        <div class="space-y-2">
+          <h3 class="font-bold text-slate-900 text-base">المسؤوليات والمهام:</h3>
+          <ul id="opp-detail-responsibilities" class="space-y-1.5"></ul>
+        </div>
+
+        <!-- Deliverables -->
+        <div class="space-y-2">
+          <h3 class="font-bold text-slate-900 text-base">المخرجات المتوقعة:</h3>
+          <ul id="opp-detail-deliverables" class="space-y-1.5"></ul>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="pt-6 border-t border-slate-100">
+          <button id="trigger-apply-modal-btn" class="w-full py-4 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-2xl text-sm shadow-md transition-all flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-lg">send</span>
+            تقديم على هذه الفرصة
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 8: STUDENT APPLICATIONS (طلباتي) ==================== -->
+    <section id="view-student-applications" class="view-panel hidden space-y-6">
+      
+      <div class="space-y-2">
+        <h2 class="text-2xl font-bold text-slate-900 font-headline">طلباتي والفرص المتقدم عليها</h2>
+        <p class="text-slate-600 text-sm">متابعة حالة طلبات التقديم والتحديثات المباشرة من الشركات.</p>
+      </div>
+
+      <div id="student-apps-list" class="space-y-4">
+        <!-- Injected Dynamically -->
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 10: COMPANY PROFILE ==================== -->
+    <section id="view-company-profile" class="view-panel hidden max-w-3xl mx-auto space-y-8">
+      
+      <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-md space-y-8">
+        
+        <!-- Profile Header -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+          <div class="flex items-center gap-4">
+            <img src="stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png" class="w-20 h-20 rounded-2xl object-cover border-2 border-teal-500/30 shadow-sm shrink-0" alt="Company Avatar"/>
+            <div class="space-y-1">
+              <h2 id="company-profile-name" class="text-2xl font-bold text-slate-900 font-headline">شركة الأساليب الذكية (Smart Methods Co.)</h2>
+              <p id="company-profile-industry" class="text-sm text-teal-700 font-semibold">الحلول التقنية المتقدمة وتصميم الأنظمة</p>
+              <p id="company-profile-email" class="text-xs text-slate-500 font-medium">contact@smartmethods.sa</p>
+            </div>
+          </div>
+
+          <button id="open-company-edit-modal-btn" type="button" class="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+            <span class="material-symbols-outlined text-base">edit</span>
+            تعديل ملف الشركة
+          </button>
+        </div>
+
+        <!-- Company Metrics & Settings Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 bg-slate-50 rounded-2xl text-xs text-center">
+          <div>
+            <span class="text-slate-500 block">مقر العمل الأساسي:</span>
+            <span id="company-profile-location" class="font-bold text-slate-800 text-xs">القصيم، السعودية</span>
+          </div>
+          <div>
+            <span class="text-slate-500 block">نمط التدريب المعتمد:</span>
+            <span id="company-profile-worktype" class="font-bold text-teal-700 text-xs">حضوري</span>
+          </div>
+          <div class="col-span-2 sm:col-span-1">
+            <span class="text-slate-500 block">الفرص النشطة:</span>
+            <span id="company-profile-opps-count" class="font-bold text-slate-800 text-xs">5 فرص</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="space-y-2">
+          <h3 class="font-bold text-slate-900 text-base">عن الشركة والبيئة الميدانية:</h3>
+          <p id="company-profile-desc" class="text-slate-600 text-sm leading-relaxed">
+            شركة الأساليب الذكية هي شركة تقنية سريعة النمو متخصصة في الحلول الذكية، تصميم الرقائق الرقمية وتطبيقات المعالجة في منطقة القصيم بالمملكة العربية السعودية.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 9: STUDENT PROFILE ==================== -->
+    <section id="view-student-profile" class="view-panel hidden max-w-3xl mx-auto space-y-8">
+      
+      <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-md space-y-8">
+        
+        <!-- Profile Header -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+          <div class="flex items-center gap-6">
+            <img src="stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png" class="w-20 h-20 rounded-2xl object-cover border-2 border-teal-500/30 shadow-sm shrink-0" alt="Student Profile"/>
+            <div class="space-y-1">
+              <h2 id="profile-name" class="text-2xl font-bold text-slate-900 font-headline">حنين هيثم القصير</h2>
+              <p id="profile-title" class="text-sm text-slate-600 font-medium"></p>
+              <p id="profile-bio" class="text-xs text-slate-500 pt-1 leading-relaxed"></p>
+            </div>
+          </div>
+
+          <button id="open-student-edit-modal-btn" type="button" class="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+            <span class="material-symbols-outlined text-base">edit</span>
+            تعديل الملف الشخصي
+          </button>
+        </div>
+
+        <!-- Academic Information -->
+        <div class="grid grid-cols-3 gap-4 p-4 bg-slate-50 rounded-2xl text-xs text-center">
+          <div>
+            <span class="text-slate-500 block">الجامعة:</span>
+            <span id="profile-university" class="font-bold text-slate-800 text-xs"></span>
+          </div>
+          <div>
+            <span class="text-slate-500 block">التخصص:</span>
+            <span id="profile-major" class="font-bold text-slate-800 text-xs"></span>
+          </div>
+          <div>
+            <span class="text-slate-500 block">المعدل التراكمي:</span>
+            <span id="profile-gpa" class="font-bold text-slate-800 text-xs"></span>
+          </div>
+        </div>
+
+        <!-- CV Upload & Simulated AI Extraction -->
+        <div class="p-6 bg-gradient-to-r from-slate-900 to-teal-950 text-white rounded-2xl space-y-4 shadow-sm">
+          <div class="flex justify-between items-center flex-wrap gap-4">
+            <div>
+              <h3 class="font-bold text-base font-headline flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-teal-400">upload_file</span>
+                السيرة الذاتية وتحليل AI
+              </h3>
+              <p class="text-xs text-slate-300">قم برفع سيرتك الذاتية (PDF/Docx) لاستخراج المهارات وتحديث نسبة التطابق تلقائيًا.</p>
+            </div>
+            
+            <!-- Hidden File Input & Trigger Button -->
+            <input type="file" id="cv-file-input" accept=".pdf,.doc,.docx,.txt" class="hidden"/>
+            <button id="upload-cv-btn" class="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-xs transition-all shadow-sm flex items-center gap-1.5 cursor-pointer">
+              <span class="material-symbols-outlined text-base">file_upload</span>
+              رفع السيرة الذاتية
+            </button>
+          </div>
+
+          <div id="cv-analysis-status" class="hidden">
+            <!-- Injected Dynamically -->
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="space-y-2">
+          <h3 class="font-bold text-slate-900 text-base">المهارات التقنية:</h3>
+          <div id="profile-skills" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Academic Projects -->
+        <div class="space-y-2">
+          <h3 class="font-bold text-slate-900 text-base">المشاريع الأكاديمية والشخصية:</h3>
+          <div id="profile-projects" class="space-y-2"></div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- APPLICATION CONFIRMATION MODAL -->
+  <div id="apply-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl p-8 max-w-lg w-full space-y-6 shadow-2xl border border-slate-200">
+      <div class="space-y-2 text-center">
+        <span class="w-12 h-12 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center mx-auto text-xl font-bold">
+          <span class="material-symbols-outlined">send</span>
+        </span>
+        <h3 class="text-xl font-bold text-slate-900 font-headline">تأكيد التقديم على الفرصة</h3>
+        <p class="text-xs text-slate-500">أنت على وشك إرسال ملفك الشخصي لشركة <span id="modal-opp-title" class="font-bold text-slate-800"></span>.</p>
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-xs font-bold text-slate-700">إضافة رسالة قصيرة للشركة (اختياري):</label>
+        <textarea id="apply-note-input" rows="3" class="w-full rounded-xl border-slate-300 text-xs p-3" placeholder="مرحبًا، يسعدني التقديم على هذه الفرصة التدريبية..."></textarea>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="submit-application-btn" class="flex-1 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl text-xs shadow-md transition-all">
+          إرسال الطلب الآن 🚀
+        </button>
+        <button id="close-apply-modal-btn" class="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition-colors">
+          إلغاء
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATION SUCCESS CELEBRATION MODAL -->
+  <div id="success-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center space-y-6 shadow-2xl border border-slate-200 animate-bounce-short">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-3xl">
+        🎉
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-2xl font-bold text-slate-900 font-headline">تم إرسال طلبك بنجاح!</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">تم استلام طلبك من قِبل الشركة وسوف يظهر في لوحة تحكمهم ضمن المتقدمين الأعلى تطابقًا.</p>
+      </div>
+      <button id="close-success-modal-btn" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl text-xs shadow-md transition-all">
+        الانتقال إلى طلباتي ➔
+      </button>
+    </div>
+  </div>
+
+  <!-- EDIT STUDENT PROFILE MODAL -->
+  <div id="edit-student-profile-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl p-8 max-w-xl w-full space-y-6 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+        <h3 class="text-xl font-bold text-slate-900 font-headline">تعديل الملف الشخصي (طالب)</h3>
+        <button id="close-student-edit-modal-btn" type="button" class="p-2 text-slate-400 hover:text-slate-600 rounded-full">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form id="edit-student-form" class="space-y-4 text-xs">
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-700">الاسم الكامل</label>
+          <input type="text" id="edit-student-name" class="w-full p-3 rounded-xl border-slate-200 border outline-none" required>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-700">الجامعة</label>
+            <input type="text" id="edit-student-university" class="w-full p-3 rounded-xl border-slate-200 border outline-none" required>
+          </div>
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-700">التخصص الأكاديمي</label>
+            <input type="text" id="edit-student-major" class="w-full p-3 rounded-xl border-slate-200 border outline-none" required>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-700">المستوى الدراسي</label>
+            <input type="text" id="edit-student-level" placeholder="سنة تخرج (Senior)" class="w-full p-3 rounded-xl border-slate-200 border outline-none">
+          </div>
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-700">المعدل التراكمي</label>
+            <input type="text" id="edit-student-gpa" placeholder="3.92 / 4.00" class="w-full p-3 rounded-xl border-slate-200 border outline-none">
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-700">النبذة التعريفية</label>
+          <textarea id="edit-student-bio" rows="3" class="w-full p-3 rounded-xl border-slate-200 border outline-none"></textarea>
+        </div>
+
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-700">المهارات التقنية (مفصولة بفواصل)</label>
+          <input type="text" id="edit-student-skills-input" placeholder="Python, SQL, Verilog, React..." class="w-full p-3 rounded-xl border-slate-200 border outline-none">
+        </div>
+
+        <div class="pt-4 flex gap-3">
+          <button type="submit" class="flex-1 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md transition-all">حفظ التغييرات</button>
+          <button type="button" id="cancel-student-edit-modal-btn" class="px-5 py-3 bg-slate-100 text-slate-700 font-bold rounded-xl">إلغاء</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- EDIT COMPANY PROFILE MODAL -->
+  <div id="edit-company-profile-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl p-8 max-w-xl w-full space-y-6 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+        <h3 class="text-xl font-bold text-slate-900 font-headline">تعديل ملف الشركة</h3>
+        <button id="close-company-edit-modal-btn" type="button" class="p-2 text-slate-400 hover:text-slate-600 rounded-full">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form id="edit-company-form" class="space-y-4 text-xs">
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-700">اسم الشركة</label>
+          <input type="text" id="edit-company-name" class="w-full p-3 rounded-xl border-slate-200 border outline-none" required>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-700">مقر العمل (المدينة)</label>
+            <input type="text" id="edit-company-location" placeholder="القصيم، السعودية" class="w-full p-3 rounded-xl border-slate-200 border outline-none" required>
+          </div>
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-700">نمط التدريب المعتمد</label>
+            <select id="edit-company-worktype" class="w-full p-3 rounded-xl border-slate-200 border outline-none font-bold">
+              <option value="حضوري">حضوري</option>
+              <option value="عن بعد">عن بعد</option>
+              <option value="هجين">هجين</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-700">مجال العمل والقطاع</label>
+          <input type="text" id="edit-company-industry" placeholder="الحلول التقنية والأنظمة الذكية" class="w-full p-3 rounded-xl border-slate-200 border outline-none">
+        </div>
+
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-700">عن الشركة والبيئة الميدانية</label>
+          <textarea id="edit-company-desc" rows="4" class="w-full p-3 rounded-xl border-slate-200 border outline-none"></textarea>
+        </div>
+
+        <div class="pt-4 flex gap-3">
+          <button type="submit" class="flex-1 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md transition-all">حفظ البيانات</button>
+          <button type="button" id="cancel-company-edit-modal-btn" class="px-5 py-3 bg-slate-100 text-slate-700 font-bold rounded-xl">إلغاء</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800">
+    <div class="max-w-[1440px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-white">MAYDAN | ميدان</span>
+        <span>•</span>
+        <span>من الجامعة إلى الميدان</span>
+      </div>
+      <p>© 2026 جميع الحقوق محفوظة — منصة المطابقة الذكية للتدريب التعاوني في المملكة العربية السعودية.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK & Project Integration (Project ID: maydan-b04ca) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/firebase-auth.js"></script>
+
+  <!-- App JavaScript Modules -->
+  <script src="js/mock-data.js"></script>
+  <script src="js/ai-engine.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

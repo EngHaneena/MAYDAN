@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MAYDAN | ميدان</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#005048",
+                        "on-tertiary-container": "#a07d5f",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed": "#00201c",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d8dadc",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed": "#2c1603",
+                        "on-tertiary-fixed-variant": "#5d4127",
+                        "tertiary": "#000000",
+                        "primary-container": "#131a33",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-container": "#7b83a0",
+                        "secondary-fixed": "#71f8e4",
+                        "inverse-surface": "#2d3133",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-container": "#2c1603",
+                        "text-muted": "#64748B",
+                        "border-subtle": "#E2E8F0",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#bec5e5",
+                        "on-primary-fixed-variant": "#3e4660",
+                        "secondary-container": "#6df5e1",
+                        "on-error-container": "#93000a",
+                        "surface": "#f7f9fb",
+                        "on-secondary-container": "#006f64",
+                        "primary-fixed": "#dbe1ff",
+                        "primary-fixed-dim": "#bec5e5",
+                        "surface-tint": "#565d79",
+                        "outline-variant": "#c6c6ce",
+                        "secondary": "#006b5f",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-fixed": "#131a33",
+                        "primary": "#000000",
+                        "tertiary-fixed": "#ffdcc1",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container": "#eceef0",
+                        "ai-tint": "rgba(20, 184, 166, 0.1)",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "surface-white": "#FFFFFF",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "outline": "#76767e",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#e8bf9d",
+                        "surface-container-highest": "#e0e3e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "card": "16px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "section-gap": "64px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-lg": ["Manrope"],
+                        "headline-lg": ["IBM Plex Sans Arabic"],
+                        "headline-md": ["IBM Plex Sans Arabic"],
+                        "headline-xl": ["IBM Plex Sans Arabic"],
+                        "headline-lg-mobile": ["IBM Plex Sans Arabic"],
+                        "label-sm": ["Manrope"],
+                        "body-sm": ["Manrope"],
+                        "headline-sm": ["IBM Plex Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            box-shadow: 0px 10px 30px rgba(11, 19, 43, 0.04);
+            transform: translateY(-4px);
+        }
+        .ai-accent {
+            border-right: 2px solid theme('colors.secondary');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col items-center">
+<!-- Floating Top Nav (from JSON) -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-3 bg-surface-white/80 dark:bg-inverse-surface/80 backdrop-blur-md rounded-full mt-4 mx-auto w-[90%] max-w-container-max border border-surface-variant/20 shadow-lg">
+<div class="flex items-center gap-4">
+<span class="text-headline-md font-headline-md font-bold text-on-primary-container">MAYDAN | ميدان</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 text-label-lg font-label-lg" href="#">الرئيسية</a>
+<a class="text-on-surface-variant text-label-lg font-label-lg hover:text-secondary transition-colors duration-200" href="#">الفرص</a>
+<a class="text-on-surface-variant text-label-lg font-label-lg hover:text-secondary transition-colors duration-200" href="#">طلباتي</a>
+<a class="text-on-surface-variant text-label-lg font-label-lg hover:text-secondary transition-colors duration-200" href="#">الملف الشخصي</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="scale-95 active:scale-90 transition-transform hover:text-secondary text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a Saudi user avatar, smiling softly, well-lit studio photography, clean white background, minimalist corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjvUP8ax6JmRdkKhm6CuNgMDSG8KwrgZS86obUEbrp4Wx9oyWuwrU_Oj0KwkYyvi4cgC6jJ99rVJiOa6Apr1oIOBf1iWrN7PaejjS9Xvko2ac8keL2qa5XUWIUOY4Hvt7TGekxKRfhIStnXPwXZ_TYptc4AywL2mo0qgyOQnNBPQ3Lf_dV74rf9u_ch5pyLJYsGsMhnlhDqRvuJDZ7FgbzWJR0OMzQ8vo2Tcjs7-r89mjcITJjLNGk"/>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<main class="w-full max-w-container-max mx-auto px-margin-desktop mt-[120px] mb-section-gap flex-grow flex flex-col items-center">
+<section class="w-full grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center min-h-[60vh] py-12">
+<div class="flex flex-col gap-6 text-right z-10">
+<h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary-container leading-tight">
+                    من الجامعة إلى الميدان.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    نحوّل احتياج الشركات إلى فرص تعاونية حقيقية، ونوصلها بالطلاب الأنسب باستخدام الذكاء الاصطناعي.
+                </p>
+<div class="flex flex-wrap gap-4 mt-4">
+<a class="bg-secondary text-on-secondary px-8 py-3 rounded-full font-label-lg text-label-lg hover:opacity-90 transition-opacity text-center min-w-[160px]" href="#">
+                        ابدأ كمؤسسة
+                    </a>
+<a class="bg-primary-container text-on-primary px-8 py-3 rounded-full font-label-lg text-label-lg hover:opacity-90 transition-opacity text-center min-w-[160px]" href="#">
+                        اكتشف الفرص
+                    </a>
+</div>
+</div>
+<div class="relative h-full min-h-[400px] rounded-card border border-border-subtle bg-surface-white overflow-hidden flex items-center justify-center card-hover p-8">
+<!-- AI Matching Flow Visualization -->
+<div class="flex flex-col gap-8 w-full max-w-md">
+<div class="flex items-center justify-between">
+<div class="bg-surface-container-low px-4 py-2 rounded-lg border border-border-subtle text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Company Need</span>
+<span class="material-symbols-outlined text-primary-container">business</span>
+</div>
+<div class="flex-1 h-px bg-border-subtle relative mx-2">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+</div>
+<div class="flex items-center justify-center">
+<div class="bg-ai-tint p-4 rounded-full border border-secondary/20 relative">
+<span class="material-symbols-outlined text-secondary text-4xl">neurology</span>
+<div class="absolute -right-12 top-1/2 -translate-y-1/2 bg-surface-white border border-border-subtle px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="text-secondary font-bold font-label-sm text-label-sm">92%</span>
+<span class="text-on-surface-variant font-label-sm text-[10px]">Match</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex-1 h-px bg-border-subtle relative mx-2">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+<div class="bg-surface-container-low px-4 py-2 rounded-lg border border-border-subtle text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Right Student</span>
+<span class="material-symbols-outlined text-primary-container">school</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How it Works -->
+<section class="w-full py-section-gap">
+<div class="text-center mb-12">
+<h2 class="font-headline-md text-headline-md text-primary-container mb-4">كيف يعمل ميدان؟</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">آلية ذكية ومبسطة لربط الاحتياج بالكفاءات</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Step 1 -->
+<div class="bg-surface-white rounded-card p-6 border border-border-subtle card-hover relative overflow-hidden">
+<div class="absolute -top-4 -right-4 text-[120px] font-bold text-surface-container opacity-50 select-none">01</div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined">edit_document</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary-container">صف احتياجك</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">تقوم الشركة بوصف التحدي أو المشروع الذي يحتاجون للمساعدة فيه بلغة بسيطة.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-white rounded-card p-6 border border-border-subtle card-hover relative overflow-hidden ai-accent">
+<div class="absolute -top-4 -right-4 text-[120px] font-bold text-surface-container opacity-50 select-none">02</div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="w-12 h-12 rounded-full bg-ai-tint text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary-container">توليد الفرصة</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">يقوم الذكاء الاصطناعي بصياغة الاحتياج كفرصة تدريبية أو مشروع تعاوني بمهام واضحة.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-white rounded-card p-6 border border-border-subtle card-hover relative overflow-hidden ai-accent">
+<div class="absolute -top-4 -right-4 text-[120px] font-bold text-surface-container opacity-50 select-none">03</div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined">handshake</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary-container">المطابقة الذكية</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">نقوم بترشيح أفضل الطلاب المتقدمين بناءً على مهاراتهم وتوافقهم مع متطلبات الفرصة.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Sections for Audiences -->
+<section class="w-full py-section-gap grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- For Companies -->
+<div class="bg-primary-container rounded-card p-8 flex flex-col justify-between overflow-hidden relative min-h-[400px]">
+<div class="relative z-10 max-w-md">
+<span class="inline-block px-3 py-1 bg-surface-white/10 text-on-primary rounded-full font-label-sm text-label-sm mb-4 backdrop-blur-sm border border-surface-white/20">للشركات والمؤسسات</span>
+<h2 class="font-headline-md text-headline-md text-on-primary mb-4">عندك احتياج؟ حوّله إلى فرصة</h2>
+<p class="font-body-md text-body-md text-on-primary/80 mb-8">استفد من طاقات الطلاب لحل تحدياتك الحالية، وساهم في بناء قدراتهم في نفس الوقت.</p>
+<a class="inline-flex items-center gap-2 text-on-primary hover:text-secondary-container transition-colors font-label-lg text-label-lg" href="#">
+<span>سجل كشركة</span>
+<span class="material-symbols-outlined text-sm">arrow_left_alt</span>
+</a>
+</div>
+<!-- Decorative element -->
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+</div>
+<!-- For Students -->
+<div class="bg-surface-white rounded-card p-8 flex flex-col justify-between border border-border-subtle card-hover relative min-h-[400px]">
+<div class="relative z-10 max-w-md">
+<span class="inline-block px-3 py-1 bg-surface-container text-primary-container rounded-full font-label-sm text-label-sm mb-4 border border-border-subtle">للطلاب وحديثي التخرج</span>
+<h2 class="font-headline-md text-headline-md text-primary-container mb-4">مو بس تدريب. تجربة حقيقية.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">ابنِ سيرتك الذاتية من خلال العمل على مشاريع وتحديات حقيقية مقدمة من شركات رائدة في السوق.</p>
+<a class="inline-flex items-center gap-2 text-secondary hover:text-primary-container transition-colors font-label-lg text-label-lg" href="#">
+<span>تصفح الفرص المتاحة</span>
+<span class="material-symbols-outlined text-sm">arrow_left_alt</span>
+</a>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-fixed border-2 border-surface-white overflow-hidden shadow-sm">
+<img alt="Student" class="w-full h-full object-cover" data-alt="Close up portrait of a young professional Saudi female student in modest modern attire, bright focused lighting, minimal background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjMojDbKNx6KRMsxIe5V5l_5XgAegul4ALxuoK_HSDNJP601Z2nmzlz4lfaXAbcGJbAEUwP08XQiPr8CTXw4Y0Rmj403jiZsUHADpNTVSGQOLzAhOPHcLT6Ie6vHz4taYLDA4IdsuA_AkOiWcd_Vzm0at3wocL4gJwPkzNqgEa65d5RLAUkfwM8asIkXH3I1YCrii8MpVCjrN0dJJqzc_DoygWOdMkThBXz74C8c7Zr-c80V5eZ6QA"/>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary-container border-2 border-surface-white overflow-hidden shadow-sm -mr-4">
+<img alt="Student" class="w-full h-full object-cover" data-alt="Portrait of a young male Saudi student wearing glasses, looking confident, soft natural lighting, corporate environment subtle background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8yIjFjbgbkYNisAby1SOvpxpUCr2cyqfLbyniaJ7XWsLWK1o65n3b44ZYQ229m3toMxNgtMg05FQ1ylRpKAhJ-wBsXW6dRTFDd-0OlT81HXLy2cJqaL6sLJFM9CMB5J0JGWcWhfr3X08e4Wo_PSLVN7nJQ87HU8cwnsOJCjaKwZIHyIo8pRZ8269X1FnHKXTSJa5GOvc0Hjua6ZcIQWnesTlTzk2fS1XqArtcTGXIu4jx5NqEhAht"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (from JSON) -->
+<footer class="bg-surface dark:bg-on-background w-full border-t border-border-subtle dark:border-outline-variant mt-auto">
+<div class="w-full py-12 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-headline-sm font-headline-sm font-bold text-on-primary-container">
+                MAYDAN | ميدان
+            </div>
+<div class="flex flex-wrap gap-6 justify-center">
+<a class="font-body-sm text-body-sm text-text-muted hover:text-primary hover:underline transition-all" href="#">عن ميدان</a>
+<a class="font-body-sm text-body-sm text-text-muted hover:text-primary hover:underline transition-all" href="#">الشروط والأحكام</a>
+<a class="font-body-sm text-body-sm text-text-muted hover:text-primary hover:underline transition-all" href="#">سياسة الخصوصية</a>
+<a class="font-body-sm text-body-sm text-text-muted hover:text-primary hover:underline transition-all" href="#">اتصل بنا</a>
+</div>
+<div class="font-body-sm text-body-sm text-text-muted">
+                © 2024 ميدان. جميع الحقوق محفوظة.
+            </div>
+</div>
+</footer>
+</body></html>

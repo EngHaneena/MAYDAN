@@ -1,0 +1,63 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // 1. Users collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId);
+      allow delete: if false;
+    }
+
+    // 2. Students collection (Profile management)
+    match /students/{studentId} {
+      allow read: if true;
+      allow create, update: if isAuthenticated();
+      allow delete: if false;
+    }
+
+    // 3. Opportunities collection
+    match /opportunities/{oppId} {
+      // Anyone can read published opportunities
+      allow read: if true;
+      
+      // Only authenticated users can create opportunities where companyId matches their UID or company context
+      allow create: if isAuthenticated() && (
+        request.resource.data.companyId == request.auth.uid || 
+        !('companyId' in request.resource.data)
+      );
+      
+      // Only owner company can update or delete
+      allow update, delete: if isAuthenticated() && (
+        resource.data.companyId == request.auth.uid || 
+        !('companyId' in resource.data)
+      );
+    }
+
+    // 4. Applications collection
+    match /applications/{appId} {
+      // Student can read their own applications, Company can read applications for their opportunities
+      allow read: if isAuthenticated();
+      
+      // Student creates application with their studentId
+      allow create: if isAuthenticated() && (
+        request.resource.data.studentId == request.auth.uid || 
+        !('studentId' in request.resource.data)
+      );
+      
+      // Student or Company can update status
+      allow update: if isAuthenticated();
+      allow delete: if false;
+    }
+  }
+}

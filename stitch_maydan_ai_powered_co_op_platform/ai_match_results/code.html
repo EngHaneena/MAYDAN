@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MAYDAN | ميدان - أفضل المطابقات</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#005048",
+                        "on-tertiary-container": "#a07d5f",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed": "#00201c",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d8dadc",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed": "#2c1603",
+                        "on-tertiary-fixed-variant": "#5d4127",
+                        "tertiary": "#000000",
+                        "primary-container": "#131a33",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-container": "#7b83a0",
+                        "secondary-fixed": "#71f8e4",
+                        "inverse-surface": "#2d3133",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-container": "#2c1603",
+                        "text-muted": "#64748B",
+                        "border-subtle": "#E2E8F0",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#bec5e5",
+                        "on-primary-fixed-variant": "#3e4660",
+                        "secondary-container": "#6df5e1",
+                        "on-error-container": "#93000a",
+                        "surface": "#f7f9fb",
+                        "on-secondary-container": "#006f64",
+                        "primary-fixed": "#dbe1ff",
+                        "primary-fixed-dim": "#bec5e5",
+                        "surface-tint": "#565d79",
+                        "outline-variant": "#c6c6ce",
+                        "secondary": "#006b5f",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-fixed": "#131a33",
+                        "primary": "#000000",
+                        "tertiary-fixed": "#ffdcc1",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container": "#eceef0",
+                        "ai-tint": "rgba(20, 184, 166, 0.1)",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "surface-white": "#FFFFFF",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "outline": "#76767e",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#e8bf9d",
+                        "surface-container-highest": "#e0e3e5"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        gutter: "24px",
+                        "section-gap": "64px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        base: "8px",
+                        "container-max": "1440px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-lg": ["Manrope"],
+                        "headline-lg": ["IBM Plex Sans Arabic"],
+                        "headline-md": ["IBM Plex Sans Arabic"],
+                        "headline-xl": ["IBM Plex Sans Arabic"],
+                        "headline-lg-mobile": ["IBM Plex Sans Arabic"],
+                        "label-sm": ["Manrope"],
+                        "body-sm": ["Manrope"],
+                        "headline-sm": ["IBM Plex Sans Arabic"]
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-lg": ["14px", { lineHeight: "1.2", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "headline-md": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "headline-xl": ["40px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-sm": ["20px", { lineHeight: "1.4", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .ai-match-card {
+            transition: all 0.3s ease;
+        }
+        .ai-match-card:hover {
+            box-shadow: 0px 10px 30px rgba(11, 19, 43, 0.04);
+            transform: translateY(-2px);
+        }
+        .ai-border-right {
+            border-right: 2px solid #006b5f; /* Teal accent for AI */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-3 bg-surface-white/80 dark:bg-inverse-surface/80 backdrop-blur-md border border-surface-variant/20 dark:border-outline-variant/10 shadow-lg rounded-full mt-4 mx-auto w-[90%] max-w-container-max glass-nav">
+<div class="flex items-center gap-4 text-headline-md font-headline-md font-bold text-on-primary-container dark:text-primary-fixed">
+<span>MAYDAN | ميدان</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-lg text-label-lg text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200" href="#">الرئيسية</a>
+<a class="font-label-lg text-label-lg text-secondary font-bold border-b-2 border-secondary pb-1 hover:text-secondary transition-colors duration-200" href="#">الفرص</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200" href="#">طلباتي</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200" href="#">الملف الشخصي</a>
+</nav>
+<div class="flex items-center gap-4 text-secondary dark:text-secondary-fixed-dim">
+<button class="scale-95 active:scale-90 transition-transform p-2 rounded-full hover:bg-surface-variant/20">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-border-subtle">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A professional portrait of a young Saudi man in modern business attire, bright clear lighting, clean light background, premium high-resolution photography suitable for a corporate profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIuqc0Or-rTkT4oxOhltNXmgn_94FGVH-4AuY-6AFssc7t1FRzTjeddKpP4kUheK98l2IDCmlqQZCDK88lm2CSJfIL-K7fioFZYAPUsZlsmOt_bWQ4r5LZqzmgs8RZht8GiPOMwkOtR91zihfrx8rGTJzlP2HewgS9NN1HYxZeQvBuAYzlxeitv6f1LH5ih1I9A1lW8neyEJNrLtrG34hAZ8w7pljxbV-K-MmixZm_oUtCltp14yOP"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[104px] pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Header Section -->
+<section class="mb-12 mt-8">
+<div class="max-w-3xl">
+<h1 class="font-headline-xl text-headline-xl text-primary-container mb-4">أفضل المطابقات</h1>
+<p class="font-body-lg text-body-lg text-text-muted">رشحنا لك الطلاب الأقرب لهذه الفرصة بناءً على مهاراتهم وتخصصهم ومشاريعهم. تعتمد هذه التوصيات على خوارزميات الذكاء الاصطناعي لمطابقة الاحتياجات الفعلية.</p>
+</div>
+</section>
+<!-- AI Match Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Candidate 1 -->
+<article class="bg-surface-white border border-border-subtle rounded-xl p-6 ai-match-card ai-border-right relative overflow-hidden flex flex-col h-full">
+<!-- AI Badge -->
+<div class="absolute top-6 left-6 bg-secondary/10 text-secondary font-label-lg text-label-lg px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+                    92% تطابق
+                </div>
+<!-- Header -->
+<div class="flex items-start gap-4 mb-6">
+<div class="w-16 h-16 rounded-full overflow-hidden border border-border-subtle shrink-0">
+<img alt="Haneen Haytham" class="w-full h-full object-cover" data-alt="A professional portrait of a young Saudi woman in a modern, elegant professional hijab, looking confident. Bright, minimalist office background. Premium quality corporate headshot photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgsztJcVnQEAElOTs5mRxUXvci8969ZiOt5QACcP8Hfyg2jKze4D3RxLZDL-00tweO0WTee_sq9Atnufrd9WKfHZdJyfVoQaltWrnrdLEsVAgoSkK9SqILjR5g6yvY9H5QUSjtwEH76d99y1wR5jIesf-GQg8mPuIVKRaxsig2-I1do0rTgC_7iEuoKp6qzDYSPga63ytnJyrevro3IBqbxwmwcgvvyzC2_xgvwpehkPkgWn6zly0G"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary-container">حنين هيثم</h2>
+<p class="font-body-md text-body-md text-text-muted">هندسة برمجيات - جامعة الملك سعود</p>
+</div>
+</div>
+<!-- Skills -->
+<div class="mb-6 flex-grow">
+<h3 class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-wider mb-3">المهارات المتطابقة</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-3 py-1.5 rounded-md border border-border-subtle">React.js</span>
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-3 py-1.5 rounded-md border border-border-subtle">Node.js</span>
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-3 py-1.5 rounded-md border border-border-subtle">UI/UX Design</span>
+</div>
+</div>
+<!-- AI Analysis -->
+<div class="bg-surface p-4 rounded-lg border border-border-subtle mb-6">
+<div class="mb-3">
+<h4 class="font-label-sm text-label-sm text-secondary flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                            لماذا هذا التطابق؟
+                        </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">خبرة ممتازة في تطوير الواجهات ومشاريع سابقة مشابهة لاحتياجكم.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-on-primary-container flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                            فجوة محتملة
+                        </h4>
+<p class="font-body-sm text-body-sm text-text-muted">تحتاج تدريب إضافي في قواعد البيانات السحابية (AWS).</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-secondary text-surface-white font-label-lg text-label-lg py-2.5 rounded-lg hover:bg-on-secondary-container transition-colors text-center">إضافة للمرشحين</button>
+<button class="flex-1 bg-surface-white text-primary-container font-label-lg text-label-lg py-2.5 rounded-lg border border-border-subtle hover:bg-surface-container-low transition-colors text-center">عرض الملف</button>
+</div>
+</article>
+<!-- Candidate 2 -->
+<article class="bg-surface-white border border-border-subtle rounded-xl p-6 ai-match-card ai-border-right relative overflow-hidden flex flex-col h-full">
+<!-- AI Badge -->
+<div class="absolute top-6 left-6 bg-secondary/10 text-secondary font-label-lg text-label-lg px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+                    87% تطابق
+                </div>
+<!-- Header -->
+<div class="flex items-start gap-4 mb-6">
+<div class="w-16 h-16 rounded-full overflow-hidden border border-border-subtle shrink-0">
+<img alt="Sara Ahmed" class="w-full h-full object-cover" data-alt="A professional portrait of a young Saudi man with a neat beard, wearing a crisp white thobe. Bright, well-lit modern corporate environment. Clean background, high-end commercial portrait photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtYNfr5QCHh_dpzF4bKl-d4e5oyGvKRLUTRrRRWihWvGCgr9aahA8jYnazKkklsscQkwZGdRdKdinIBhyx0kqosHJFDkb9k9O-V1e1hP4V2RQkrA5UBMZzHpEg905AQLwFxv3X-al-MGk3Y8H084OxyvONIMCCKT-8iGJnPfNxlQOsNmcw9S9EC45Y7dHYe7wpZk9YcJKNKiUb9aULbhgSwgGLvG-ExQtujFo3O_CDDzsLYs3SpnD-"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary-container">سارة أحمد</h2>
+<p class="font-body-md text-body-md text-text-muted">علوم حاسب - جامعة الأمير سلطان</p>
+</div>
+</div>
+<!-- Skills -->
+<div class="mb-6 flex-grow">
+<h3 class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-wider mb-3">المهارات المتطابقة</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-3 py-1.5 rounded-md border border-border-subtle">Python</span>
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-3 py-1.5 rounded-md border border-border-subtle">Data Analysis</span>
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-3 py-1.5 rounded-md border border-border-subtle">Machine Learning</span>
+</div>
+</div>
+<!-- AI Analysis -->
+<div class="bg-surface p-4 rounded-lg border border-border-subtle mb-6">
+<div class="mb-3">
+<h4 class="font-label-sm text-label-sm text-secondary flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                            لماذا هذا التطابق؟
+                        </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">أساس قوي في تحليل البيانات ومشاريع تخرج ذات صلة.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-on-primary-container flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                            فجوة محتملة
+                        </h4>
+<p class="font-body-sm text-body-sm text-text-muted">أقل خبرة في العمل ضمن فرق تطوير رشيقة (Agile).</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-secondary text-surface-white font-label-lg text-label-lg py-2.5 rounded-lg hover:bg-on-secondary-container transition-colors text-center">إضافة للمرشحين</button>
+<button class="flex-1 bg-surface-white text-primary-container font-label-lg text-label-lg py-2.5 rounded-lg border border-border-subtle hover:bg-surface-container-low transition-colors text-center">عرض الملف</button>
+</div>
+</article>
+<!-- Candidate 3 -->
+<article class="bg-surface-white border border-border-subtle rounded-xl p-6 ai-match-card ai-border-right relative overflow-hidden flex flex-col h-full">
+<!-- AI Badge -->
+<div class="absolute top-6 left-6 bg-secondary/10 text-secondary font-label-lg text-label-lg px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+                    82% تطابق
+                </div>
+<!-- Header -->
+<div class="flex items-start gap-4 mb-6">
+<div class="w-16 h-16 rounded-full overflow-hidden border border-border-subtle shrink-0">
+<img alt="Fahad Ali" class="w-full h-full object-cover" data-alt="A professional portrait of a young Saudi male tech student, casually dressed in a smart polo shirt. Bright startup office setting. High resolution, shallow depth of field, modern cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUTVnSkHwBKcCuGbknOThQEERWnthwLGI9Lc8klA5keKqxiOSW9b1T4g3dhOzqbXLJO6qAw3r8UYxustW2YQI6ukoyLqlbQK_ABhcNSYCl0Lm-n25JM9_oRabFQZalndR4kU_tTAJa12sVuCUki5kC4_IegqIANIPe5AgwpErap5hXB_zCQQoUwyjl-TFkZVhBSl8sKEMgj4Vj2DiNL2qSdqN5rZ4DOGy9UTaYPua0YkZEPlCfN2HR"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary-container">فهد علي</h2>
+<p class="font-body-md text-body-md text-text-muted">تقنية المعلومات - جامعة الملك فهد</p>
+</div>
+</div>
+<!-- Skills -->
+<div class="mb-6 flex-grow">
+<h3 class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-wider mb-3">المهارات المتطابقة</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-3 py-1.5 rounded-md border border-border-subtle">Cybersecurity</span>
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-3 py-1.5 rounded-md border border-border-subtle">Network Admin</span>
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-3 py-1.5 rounded-md border border-border-subtle">Linux</span>
+</div>
+</div>
+<!-- AI Analysis -->
+<div class="bg-surface p-4 rounded-lg border border-border-subtle mb-6">
+<div class="mb-3">
+<h4 class="font-label-sm text-label-sm text-secondary flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                            لماذا هذا التطابق؟
+                        </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">شهادات احترافية متعددة في أمن المعلومات توافق متطلباتكم.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-on-primary-container flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                            فجوة محتملة
+                        </h4>
+<p class="font-body-sm text-body-sm text-text-muted">يحتاج لتطوير مهارات التواصل والعرض التقديمي.</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex gap-3 mt-auto">
+<button class="flex-1 bg-secondary text-surface-white font-label-lg text-label-lg py-2.5 rounded-lg hover:bg-on-secondary-container transition-colors text-center">إضافة للمرشحين</button>
+<button class="flex-1 bg-surface-white text-primary-container font-label-lg text-label-lg py-2.5 rounded-lg border border-border-subtle hover:bg-surface-container-low transition-colors text-center">عرض الملف</button>
+</div>
+</article>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface dark:bg-on-background w-full py-12 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center border-t border-border-subtle dark:border-outline-variant mt-12">
+<div class="text-headline-sm font-headline-sm font-bold text-on-primary-container mb-6 md:mb-0">
+            MAYDAN | ميدان
+        </div>
+<nav class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+<a class="font-label-sm text-label-sm text-text-muted hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">عن ميدان</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">الشروط والأحكام</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">سياسة الخصوصية</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">اتصل بنا</a>
+</nav>
+<div class="font-body-sm text-body-sm text-text-muted">
+            © 2024 ميدان. جميع الحقوق محفوظة.
+        </div>
+</footer>
+</body></html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html><html dir="rtl" lang="ar"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>MAYDAN | ميدان - لوحة تحكم الطالب</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "tertiary": "#ffb2b7",
+                "surface-container-lowest": "#090f0e",
+                "primary-fixed-dim": "#4fdbc8",
+                "inverse-surface": "#dde4e1",
+                "surface-dim": "#0e1513",
+                "primary-fixed": "#71f8e4",
+                "on-primary-fixed-variant": "#005048",
+                "secondary-container": "#3f465c",
+                "on-primary": "#003731",
+                "surface-tint": "#4fdbc8",
+                "error-container": "#93000a",
+                "tertiary-container": "#ff7b88",
+                "primary": "#4fdbc8",
+                "tertiary-fixed-dim": "#ffb2b7",
+                "on-surface-variant": "#bbcac6",
+                "on-surface": "#dde4e1",
+                "primary-container": "#14b8a6",
+                "inverse-primary": "#006b5f",
+                "on-secondary-fixed-variant": "#3f465c",
+                "surface-bright": "#343b39",
+                "error": "#ffb4ab",
+                "on-error-container": "#ffdad6",
+                "on-primary-fixed": "#00201c",
+                "outline-variant": "#3c4947",
+                "secondary-fixed": "#dae2fd",
+                "surface-container-high": "#252b2a",
+                "secondary-fixed-dim": "#bec6e0",
+                "on-secondary": "#283044",
+                "surface-container-low": "#161d1b",
+                "energy-orange": "#F59E0B",
+                "on-primary-container": "#00423b",
+                "on-error": "#690005",
+                "on-tertiary": "#67001b",
+                "on-tertiary-fixed-variant": "#92002a",
+                "background": "#0e1513",
+                "surface-container": "#1a211f",
+                "surface-variant": "#2f3634",
+                "surface-dark": "#020617",
+                "secondary": "#bec6e0",
+                "on-background": "#dde4e1",
+                "on-secondary-fixed": "#131b2e",
+                "surface": "#0e1513",
+                "on-tertiary-fixed": "#40000d",
+                "inverse-on-surface": "#2b3230",
+                "tertiary-fixed": "#ffdadb",
+                "on-tertiary-container": "#7a0022",
+                "outline": "#859490",
+                "on-secondary-container": "#adb4ce",
+                "vibrant-purple": "#8B5CF6",
+                "surface-container-highest": "#2f3634",
+                "success-emerald": "#10B981"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "margin-desktop": "40px",
+                "gutter": "24px",
+                "base": "8px",
+                "margin-mobile": "16px",
+                "container-max": "1440px"
+        },
+        "fontFamily": {
+                "body-md": [
+                        "Manrope"
+                ],
+                "label-sm": [
+                        "Manrope"
+                ],
+                "body-sm": [
+                        "Manrope"
+                ],
+                "label-md": [
+                        "Manrope"
+                ],
+                "headline-md": [
+                        "IBM Plex Sans"
+                ],
+                "headline-lg": [
+                        "IBM Plex Sans"
+                ],
+                "body-lg": [
+                        "Manrope"
+                ],
+                "display-lg": [
+                        "IBM Plex Sans"
+                ]
+        },
+        "fontSize": {
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "14px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "fontWeight": "700"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #0e1513; }
+        h1, h2, h3, h4, h5, h6, .font-arabic { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    </style>
+</head>
+<body class="text-on-background min-h-screen pb-24 bg-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-3 bg-surface/80 backdrop-blur-md rounded-full mt-4 mx-auto w-[90%] max-w-container-max border border-outline-variant shadow-lg hidden md:flex">
+<div class="text-headline-md font-headline-md font-bold text-primary">
+            MAYDAN | ميدان
+        </div>
+<div class="flex gap-8 items-center font-label-md text-label-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">الرئيسية</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">الفرص</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">طلباتي</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">الملف الشخصي</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-variant/50 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-primary" data-alt="Professional faceless avatar of a university student man, flat minimal illustration style, clean lines, vibrant background color, modern and friendly aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbrqgR7PgyjAgrMfXfwsXZjo79oUmxkvqUx1naQrO8hkJTgyZQKJiV76Z2e_Gn8J1DjYFy4tEJRvCTESXwIjE5j_89jKYwWKVlR9rPL1lJ04ajLfTTLGe_H8oJRiRrcyYI0Fpf7Oq_wO0J0X-QMs2fAXQcCvnQrZ8D7oIDRaSJO5VnwXCDz-YgLG-8wwuzSiUEzEhe0CPBza62BACUAAXjVZbaU91vquEiW1XvbyXK8FJPc5wQkM2U">
+</div>
+</nav>
+<!-- Main Content -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-32 md:pt-40">
+<!-- Header Section -->
+<header class="mb-24 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">أهلًا حنين 👋</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">هذه الفرص اللي تناسب مهاراتك.</p>
+</div>
+<!-- Search/Filter (Minimalist) -->
+<div class="relative w-full md:w-auto">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full md:w-80 pl-4 pr-12 py-3 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-on-surface-variant" placeholder="ابحث عن فرص..." type="text">
+</div>
+</header>
+<!-- Bento Grid Layout for Opportunities -->
+<section class="mb-24">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface">فرص مناسبة لك</h2>
+<button class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1">
+                    عرض الكل
+                    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-min">
+<!-- Featured Opportunity (Spans 8 cols on desktop) -->
+<article class="col-span-1 md:col-span-8 bg-surface-container rounded-xl border border-outline-variant overflow-hidden relative group hover:shadow-lg hover:shadow-primary/5 transition-shadow duration-300">
+<!-- AI Match Highlight -->
+<div class="absolute right-0 top-0 bottom-0 w-[4px] bg-primary"></div>
+<div class="p-8 flex flex-col h-full">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[32px]">code</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">مطور واجهات أمامية (React)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Saudi Tech Startup</p>
+</div>
+</div>
+<!-- Match Chip -->
+<div class="bg-primary/20 text-primary px-4 py-2 rounded-full font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+                                94% تطابق
+                            </div>
+</div>
+<div class="flex flex-wrap gap-3 mb-8">
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant rounded-full font-label-sm text-label-sm border border-outline-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 3 أشهر
+                            </span>
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant rounded-full font-label-sm text-label-sm border border-outline-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> الرياض (حضوري)
+                            </span>
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant rounded-full font-label-sm text-label-sm border border-outline-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">payments</span> مدفوعة
+                            </span>
+</div>
+<div class="mt-auto flex gap-4">
+<button class="flex-1 bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md text-label-md hover:bg-primary/90 transition-colors text-center">عرض الفرصة</button>
+<button class="px-4 py-3 border border-outline-variant text-on-surface rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Smaller Opportunity Cards (Span 4 cols) -->
+<article class="col-span-1 md:col-span-4 bg-surface-container rounded-xl border border-outline-variant overflow-hidden relative group hover:shadow-lg hover:shadow-primary/5 transition-shadow duration-300">
+<div class="absolute right-0 top-0 bottom-0 w-[4px] bg-primary/50"></div>
+<div class="p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant mb-4">
+<span class="material-symbols-outlined text-primary text-[24px]">design_services</span>
+</div>
+<div class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-sm text-label-sm">
+                                88% تطابق
+                            </div>
+</div>
+<h3 class="font-headline-md text-[20px] leading-7 text-on-surface mb-1">مصمم تجربة مستخدم UI/UX</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Creative Agency Riyadh</p>
+<div class="flex flex-wrap gap-2 mb-6 mt-auto">
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded-md font-label-sm text-[10px] border border-outline-variant">Figma</span>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded-md font-label-sm text-[10px] border border-outline-variant">Prototyping</span>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded-md font-label-sm text-[10px] border border-outline-variant">عن بعد</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-label-sm text-label-sm hover:bg-primary-container/90 transition-colors text-center">عرض الفرصة</button>
+<button class="px-3 py-2 border border-outline-variant text-on-surface rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Another Smaller Opportunity Card (Span 4 cols) -->
+<article class="col-span-1 md:col-span-4 bg-surface-container rounded-xl border border-outline-variant overflow-hidden relative group hover:shadow-lg hover:shadow-primary/5 transition-shadow duration-300">
+<div class="absolute right-0 top-0 bottom-0 w-[4px] bg-primary/30"></div>
+<div class="p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant mb-4">
+<span class="material-symbols-outlined text-primary text-[24px]">analytics</span>
+</div>
+<div class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-sm text-label-sm">
+                                82% تطابق
+                            </div>
+</div>
+<h3 class="font-headline-md text-[20px] leading-7 text-on-surface mb-1">محلل بيانات (تدريب تعاوني)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">FinTech Solutions</p>
+<div class="flex flex-wrap gap-2 mb-6 mt-auto">
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded-md font-label-sm text-[10px] border border-outline-variant">SQL</span>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded-md font-label-sm text-[10px] border border-outline-variant">Python</span>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded-md font-label-sm text-[10px] border border-outline-variant">٦ أشهر</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-label-sm text-label-sm hover:bg-primary-container/90 transition-colors text-center">عرض الفرصة</button>
+<button class="px-3 py-2 border border-outline-variant text-on-surface rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full py-12 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center opacity-80 hover:opacity-100 transition-opacity">
+<div class="text-headline-md text-[20px] font-bold text-primary mb-6 md:mb-0">
+            MAYDAN | ميدان
+        </div>
+<div class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">عن ميدان</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">الشروط والأحكام</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">سياسة الخصوصية</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">اتصل بنا</a>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+            © 2024 ميدان. جميع الحقوق محفوظة.
+        </div>
+</footer>
+
+
+</body></html>
