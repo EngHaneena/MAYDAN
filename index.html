@@ -20,29 +20,31 @@
 <body class="bg-[#f7f9fb] text-[#191c1e] antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
 
   <!-- ==================== TOP FLOATING GLASS NAVBAR ==================== -->
-  <header class="fixed top-0 left-0 right-0 z-50 mt-3 mx-auto w-[94%] max-w-[1440px] px-5 py-3 glass-nav rounded-full flex items-center justify-between transition-all">
+  <header class="fixed top-0 left-0 right-0 z-50 mt-3 mx-auto w-[94%] max-w-[1440px] px-6 py-3 glass-nav rounded-full flex items-center justify-between transition-all">
     
     <!-- Logo & Slogan -->
-    <div class="flex items-center gap-3 cursor-pointer group" onclick="window.location.hash='landing-page'">
-      <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-teal-500 via-teal-700 to-slate-950 text-white flex items-center justify-center shadow-md border border-teal-400/30 shrink-0 group-hover:scale-105 transition-all">
+    <div class="flex items-center gap-3 cursor-pointer group shrink-0" onclick="window.location.hash='landing-page'">
+      <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-teal-600 via-teal-800 to-slate-950 text-white flex items-center justify-center shadow-md border border-teal-400/30 shrink-0 group-hover:scale-105 transition-all">
         <span class="material-symbols-outlined text-2xl text-teal-300 animate-ai-pulse">workspace_premium</span>
       </div>
       <div>
-        <h1 class="text-lg font-extrabold text-slate-900 dark:text-slate-100 tracking-tight font-headline flex items-center gap-2 flex-wrap">
-          MAYDAN | <span class="text-teal-600 dark:text-teal-400">ميدان</span>
-          <span class="text-[10px] font-semibold px-2 py-0.5 bg-teal-100 dark:bg-teal-900/50 text-teal-800 dark:text-teal-300 rounded-full border border-teal-200 dark:border-teal-800">AI Co-op</span>
+        <h1 class="text-lg font-extrabold text-slate-900 dark:text-slate-100 tracking-tight font-headline flex items-center gap-1.5 flex-wrap">
+          <span class="text-slate-900 dark:text-white font-extrabold">MAYDAN</span> 
+          <span class="text-slate-300 dark:text-slate-600 font-normal">|</span> 
+          <span class="text-teal-700 dark:text-teal-400 font-extrabold">ميدان</span>
+          <span class="text-[10px] font-semibold px-2 py-0.5 bg-teal-100 dark:bg-teal-900/60 text-teal-800 dark:text-teal-300 rounded-full border border-teal-200 dark:border-teal-800">AI Co-op</span>
         </h1>
         <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium hidden sm:block">من الجامعة إلى الميدان</p>
       </div>
     </div>
 
     <!-- Single Role-Aware Navigation Container (Dynamically rendered in app.js) -->
-    <nav id="main-nav-links" class="hidden md:flex items-center gap-1.5 text-xs font-bold">
+    <nav id="main-nav-links" class="hidden md:flex items-center gap-1 sm:gap-2 text-xs font-bold mx-auto">
       <!-- Injected Dynamically by MAYDAN_APP -->
     </nav>
 
     <!-- Right Controls: Demo Role Toggle, Dark Mode, Lang Toggle & User Badge -->
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-2 shrink-0">
       
       <!-- Role Selector Dropdown -->
       <div class="relative flex items-center bg-slate-100/90 dark:bg-slate-800 rounded-full p-1 border border-slate-200 dark:border-slate-700 text-xs font-semibold">

@@ -46,6 +46,7 @@ window.MAYDAN_APP = (function() {
       document.documentElement.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
       document.documentElement.setAttribute("lang", lang);
       if (langLabel) langLabel.textContent = lang === "en" ? "AR" : "EN";
+      translatePageElements(lang);
       updateNavbarRoleUI();
     }
 
@@ -57,6 +58,57 @@ window.MAYDAN_APP = (function() {
     }
 
     applyLanguage(savedLang);
+  }
+
+  function translatePageElements(lang) {
+    const isEn = lang === "en";
+
+    // Hero Section
+    const heroBadge = document.querySelector("#view-landing-page .inline-flex");
+    if (heroBadge) {
+      heroBadge.innerHTML = `<span class="material-symbols-outlined text-sm text-teal-400">auto_awesome</span> ${isEn ? 'From University to the Field.' : 'من الجامعة إلى الميدان.'}`;
+    }
+
+    const heroSubtitle = document.querySelector("#view-landing-page h2");
+    if (heroSubtitle) {
+      heroSubtitle.textContent = isEn ? '"From Company Needs... We Create Opportunities for Students."' : '"من احتياج الشركة... نصنع فرصة للطالب."';
+    }
+
+    const heroDesc = document.querySelector("#view-landing-page p");
+    if (heroDesc) {
+      heroDesc.textContent = isEn 
+        ? 'MAYDAN transforms company needs that do not require full-time employees into real training opportunities, matching them with the best students using AI.' 
+        : 'ميدان يحوّل احتياجات الشركات التي لا تتطلب موظفًا بدوام كامل إلى فرص تدريبية حقيقية، ويربطها بالطلاب الأنسب باستخدام الذكاء الاصطناعي.';
+    }
+
+    const heroPrimaryCta = document.querySelector("#view-landing-page a[href='#auth']");
+    if (heroPrimaryCta) {
+      heroPrimaryCta.innerHTML = `<span class="material-symbols-outlined text-lg">rocket_launch</span> ${isEn ? 'Get Started Now' : 'ابدأ الآن'}`;
+    }
+
+    const heroSecCta = document.querySelector("#view-landing-page a[href='#student-marketplace']");
+    if (heroSecCta) {
+      heroSecCta.innerHTML = `<span class="material-symbols-outlined text-lg">search</span> ${isEn ? 'Explore Opportunities' : 'اكتشف الفرص'}`;
+    }
+
+    // Auth View
+    const authTitle = document.getElementById("auth-title");
+    if (authTitle) authTitle.textContent = isEn ? 'Welcome to MAYDAN' : 'أهلاً بك في ميدان';
+
+    const authSubtitle = document.getElementById("auth-subtitle");
+    if (authSubtitle) authSubtitle.textContent = isEn ? 'Sign in or create a new account to get started' : 'سجل دخولك أو أنشئ حسابًا جديدًا للبدء في المنصة';
+
+    const tabLoginBtn = document.getElementById("tab-login-btn");
+    if (tabLoginBtn) tabLoginBtn.textContent = isEn ? 'Sign In' : 'تسجيل الدخول';
+
+    const tabSignupBtn = document.getElementById("tab-signup-btn");
+    if (tabSignupBtn) tabSignupBtn.textContent = isEn ? 'New Account' : 'حساب جديد';
+
+    const roleChoiceStudentTitle = document.querySelector("#role-choice-student h4");
+    if (roleChoiceStudentTitle) roleChoiceStudentTitle.textContent = isEn ? 'Student' : 'طالب';
+
+    const roleChoiceCompanyTitle = document.querySelector("#role-choice-company h4");
+    if (roleChoiceCompanyTitle) roleChoiceCompanyTitle.textContent = isEn ? 'Company' : 'شركة';
   }
 
   function handleRouting() {
