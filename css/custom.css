@@ -162,3 +162,46 @@ html.dark textarea {
   border-color: #334155 !important;
 }
 
+/* Light Mode Only Overrides (Pure High Contrast for Light Mode) */
+html:not(.dark) body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html:not(.dark) .glass-nav {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(203, 213, 225, 0.9) !important;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08) !important;
+}
+
+html:not(.dark) .nav-link-pill {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html:not(.dark) .nav-link-pill:hover {
+  background-color: rgba(20, 184, 166, 0.15) !important;
+  color: #0d9488 !important;
+}
+
+html:not(.dark) .text-teal-950 {
+  color: #042f2e !important;
+  font-weight: 900 !important;
+}
+
+html:not(.dark) .text-slate-900 {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .text-slate-800 {
+  color: #1e293b !important;
+}
+
+html:not(.dark) .text-slate-700 {
+  color: #334155 !important;
+}
+
+html:not(.dark) .text-slate-600 {
+  color: #475569 !important;
+}
+
