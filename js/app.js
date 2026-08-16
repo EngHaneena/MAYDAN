@@ -54,8 +54,11 @@ window.MAYDAN_APP = (function() {
     roleSelect.addEventListener("change", function(e) {
       const newRole = e.target.value;
       window.MAYDAN_STORE.setRole(newRole);
+      if (window.MAYDAN_AUTH) {
+        window.MAYDAN_AUTH.setSessionRole(newRole);
+      }
       updateNavbarRoleUI();
-      const defaultView = getDefaultViewForRole();
+      const defaultView = newRole === "company" ? "company-dashboard" : "student-dashboard";
       window.location.hash = defaultView;
       navigateTo(defaultView);
     });
@@ -75,8 +78,10 @@ window.MAYDAN_APP = (function() {
   }
 
   function updateNavbarRoleUI() {
-    const user = window.MAYDAN_AUTH ? window.MAYDAN_AUTH.getCurrentUser() : null;
-    if (user) return; // Managed by firebase-auth.js
+    if (window.MAYDAN_AUTH && window.MAYDAN_AUTH.getCurrentUser()) {
+      window.MAYDAN_AUTH.updateNavbarForAuthUser();
+      return;
+    }
 
     const role = window.MAYDAN_STORE.getRole();
     const navContainer = document.getElementById("main-nav-links");

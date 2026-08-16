@@ -147,7 +147,7 @@ window.MAYDAN_AUTH = (function() {
   }
 
   function updateNavbarForAuthUser() {
-    const role = userProfile ? userProfile.role : window.MAYDAN_STORE.getRole();
+    const role = window.MAYDAN_STORE ? window.MAYDAN_STORE.getRole() : (userProfile ? userProfile.role : "company");
     const navContainer = document.getElementById("main-nav-links");
     const userBadge = document.getElementById("nav-user-badge");
 
@@ -222,7 +222,12 @@ window.MAYDAN_AUTH = (function() {
     logout: logout,
     getCurrentUser: function() { return currentUser; },
     getUserProfile: function() { return userProfile; },
-    getRole: function() { return userProfile ? userProfile.role : window.MAYDAN_STORE.getRole(); }
+    getRole: function() { return window.MAYDAN_STORE ? window.MAYDAN_STORE.getRole() : (userProfile ? userProfile.role : "company"); },
+    setSessionRole: function(role) {
+      if (userProfile) userProfile.role = role;
+      updateNavbarForAuthUser();
+    },
+    updateNavbarForAuthUser: updateNavbarForAuthUser
   };
 })();
 
