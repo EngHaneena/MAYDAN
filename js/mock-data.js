@@ -123,19 +123,21 @@ window.MAYDAN_MOCK = {
     {
       id: "prop-102",
       studentId: "student-5",
-      studentName: "عبدالمجيد خالد العتيبي",
-      studentMajor: "علوم الحاسب",
+      studentName: "فهد إبراهيم التويجري",
+      studentMajor: "هندسة الحاسب",
       studentUniversity: "جامعة القصيم",
       studentAvatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png",
+      studentLinkedin: "https://linkedin.com/in/fahad-altuwaijri",
+      studentGithub: "https://github.com/fahad-altuwaijri",
       companyId: "comp-smart-methods",
       companyName: "شركة الأساليب الذكية (Smart Methods)",
-      title: "أتمتة البنية التحتية وحماية الأنظمة الرقمية بالشركة",
-      description: "بناء وتطوير بيئة أتمتة الأنظمة وحاويات Docker وتأمين شبكة الاتصالات المحلية لمنع الثغرات الأمنية.",
-      value: "رفع أمان الأنظمة البرمجية بنسبة 80% وتقليل زمن انتشار التطبيقات والخدمات بالشركة.",
-      skills: ["Python", "Linux", "Docker", "Cybersecurity"],
+      title: "تطوير أنظمة الحساسات المدمجة وأتمتة محاكاة الرقائق بالشركة",
+      description: "تطوير نظام مدمج محلي واختبار أداء الرقائق والمعالجات الصغيرة بالقصيم لرفع كفاءة المعالجة وتقليل استهلاك الطاقة.",
+      value: "تسريع عملية اختبار وتصميم الأنظمة المدمجة بالشركة بنسبة 50% وتسهيل عملية التطوير الميداني بالقصيم.",
+      skills: ["C++", "Embedded Systems", "Verilog", "Linux"],
       duration: "12 أسبوع",
-      message: "السلام عليكم ورحمة الله، أود تقديم هذا المقترح التقني لبناء وحماية البيئة السحابية للشركة بالقصيم.",
-      matchScore: 92,
+      message: "السلام عليكم ورحمة الله، أود تقديم هذا المقترح الميداني للاستفادة من شغفي واختصاصي في الأنظمة المدمجة لخدمة نشاط الشركة بالقصيم.",
+      matchScore: 94,
       status: "مهتم",
       createdAt: "2026-08-16"
     }
@@ -228,25 +230,25 @@ window.MAYDAN_MOCK = {
     },
     {
       id: "student-5",
-      name: "عبدالمجيد خالد العتيبي",
-      title: "طالب علوم حاسب - جامعة القصيم",
+      name: "فهد إبراهيم التويجري",
+      title: "طالب هندسة حاسب - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
-      major: "علوم الحاسب",
+      major: "هندسة الحاسب",
       level: "سنة تخرج (Senior)",
-      gpa: "3.85 / 4.00",
+      gpa: "3.90 / 4.00",
       city: "القصيم (بريدة)",
-      bio: "طالب علوم حاسب بجامعة القصيم مهتم بالذكاء الاصطناعي وهندسة البرمجيات وأتمتة الأنظمة السحابية والأمن السيبراني.",
-      linkedin: "https://linkedin.com/in/abdulmajeed-alotaibi",
-      github: "https://github.com/abdulmajeed-alotaibi",
+      bio: "طالب هندسة حاسب بجامعة القصيم متقدم في الأنظمة المدمجة والذكاء الاصطناعي وتصميم الرقائق الرقمية وتطبيقات البرمجة بلغة C++ و Verilog بالقصيم.",
+      linkedin: "https://linkedin.com/in/fahad-altuwaijri",
+      github: "https://github.com/fahad-altuwaijri",
       avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png",
-      skills: ["Python", "C++", "Linux", "Docker", "SQL", "Cybersecurity", "AI"],
+      skills: ["C++", "Python", "Verilog/VHDL", "Embedded Systems", "Linux", "SQL", "AI"],
       projects: [
-        { name: "Cloud Infrastructure Automation", desc: "نظام أتمتة البنية التحتية السحابية وإدارة الحاويات باستخدام Docker و Python" },
-        { name: "Cybersecurity Vulnerability Scanner", desc: "أداة فحص الثغرات البرمجية وحماية قواعد البيانات بالشركات" }
+        { name: "Embedded Smart Sensors Simulator", desc: "نظام أتمتة ومحاكاة الحساسات الرقمية للأنظمة المدمجة بمنطقة القصيم" },
+        { name: "AI Traffic Flow Optimizer in Buraidah", desc: "نموذج ذكاء اصطناعي ورؤية حاسوبية لتحليل وتقييم الكثافة المرورية بمدينة بريدة" }
       ],
-      certifications: ["AWS Certified Solutions Architect", "CompTIA Security+"],
+      certifications: ["Embedded Systems Architecture Certificate", "AWS Certified Cloud Practitioner"],
       cvUploaded: true,
-      cvName: "Abdulmajeed_Alotaibi_CV.pdf"
+      cvName: "Fahad_AlTuwaijri_Qassim_University_CV.pdf"
     }
   ],
 
