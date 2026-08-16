@@ -1,7 +1,7 @@
 // LocalStorage Persistent Store with Firebase Integration for MAYDAN (ميدان)
 
 window.MAYDAN_STORE = (function() {
-  const STORAGE_KEY = "MAYDAN_APP_STATE_V13"; // Updated to V13 for Rola & Weaam Rank Swap
+  const STORAGE_KEY = "MAYDAN_APP_STATE_V15"; // Updated to V15 for Light Mode Contrast and Student Hierarchy
 
   let state = {
     role: "company", // "company" or "student"
@@ -18,7 +18,7 @@ window.MAYDAN_STORE = (function() {
       if (saved) {
         state = JSON.parse(saved);
         // Ensure student count and names match latest mock data
-        if (window.MAYDAN_MOCK && (!state.students || state.students.length < window.MAYDAN_MOCK.students.length)) {
+        if (window.MAYDAN_MOCK && (!state.students || state.students.length < window.MAYDAN_MOCK.students.length || !state.students.some(s => s.name.includes("البيطار")))) {
           resetToDefaultSeed();
         }
         return;
