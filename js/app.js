@@ -1114,18 +1114,18 @@ window.MAYDAN_APP = (function() {
     if (!container) return;
 
     const statusBadges = {
-      "قيد المراجعة": "bg-blue-50 text-blue-800 border-blue-200",
-      "مرشح": "bg-amber-50 text-amber-800 border-amber-200",
-      "مقبول": "bg-emerald-50 text-emerald-800 border-emerald-300 font-bold animate-pulse",
-      "غير مقبول": "bg-rose-50 text-rose-800 border-rose-200"
+      "قيد المراجعة": "bg-amber-100 dark:bg-amber-950/80 text-amber-950 dark:text-amber-200 border-amber-300 dark:border-amber-700 font-bold",
+      "مرشح": "bg-blue-100 dark:bg-blue-950/80 text-blue-950 dark:text-blue-200 border-blue-300 dark:border-blue-700 font-bold",
+      "مقبول": "bg-emerald-500 text-white border-emerald-600 font-bold animate-pulse",
+      "غير مقبول": "bg-rose-100 dark:bg-rose-950/80 text-rose-950 dark:text-rose-200 border-rose-300 dark:border-rose-700 font-bold"
     };
 
     const propStatusBadges = {
-      "قيد المراجعة": "bg-amber-100 dark:bg-amber-900/40 text-amber-900 dark:text-amber-300 border-amber-300",
-      "مهتم": "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-300 border-emerald-300 font-bold",
-      "يحتاج مناقشة": "bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-300 border-blue-300",
+      "قيد المراجعة": "bg-amber-100 dark:bg-amber-950/80 text-amber-950 dark:text-amber-200 border-amber-300 dark:border-amber-700 font-bold",
+      "مهتم": "bg-emerald-100 dark:bg-emerald-950/80 text-emerald-950 dark:text-emerald-200 border-emerald-300 dark:border-emerald-700 font-bold",
+      "يحتاج مناقشة": "bg-blue-100 dark:bg-blue-950/80 text-blue-950 dark:text-blue-200 border-blue-300 dark:border-blue-700 font-bold",
       "تم تحويله إلى فرصة": "bg-teal-600 text-white border-teal-700 font-bold animate-pulse",
-      "غير مناسب حاليًا": "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-300"
+      "غير مناسب حاليًا": "bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-700"
     };
 
     let html = "";
@@ -1137,32 +1137,32 @@ window.MAYDAN_APP = (function() {
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-amber-500">lightbulb</span>
             <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 font-headline">مقترحاتي المباشرة (أعطني فرصة)</h3>
-            <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-xs font-bold rounded-full">${proposals.length}</span>
+            <span class="px-2 py-0.5 bg-amber-500 text-slate-950 text-xs font-extrabold rounded-full">${proposals.length}</span>
           </div>
 
           ${proposals.map(prop => `
-            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-amber-300/60 dark:border-amber-700/50 shadow-sm hover-lift space-y-3">
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-amber-300/80 dark:border-amber-700/60 shadow-sm hover-lift space-y-3">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div class="space-y-1">
                   <div class="flex items-center gap-2 flex-wrap">
-                    <span class="px-2.5 py-0.5 bg-amber-100 text-amber-900 text-xs font-bold rounded-full">أعطني فرصة</span>
-                    <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 font-headline">${prop.title}</h4>
+                    <span class="px-2.5 py-0.5 bg-amber-500 text-slate-950 text-xs font-extrabold rounded-full shadow-sm">أعطني فرصة</span>
+                    <h4 class="text-base font-extrabold text-slate-900 dark:text-slate-100 font-headline">${prop.title}</h4>
                     <span class="px-3 py-0.5 text-xs rounded-full border ${propStatusBadges[prop.status] || 'bg-slate-100'}">${prop.status}</span>
                   </div>
-                  <p class="text-xs text-slate-600 dark:text-slate-400 font-medium">الشركة: <span class="font-bold text-slate-800 dark:text-slate-200">${prop.companyName}</span> • تاريخ الإرسال: ${prop.createdAt}</p>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 font-medium">الشركة: <span class="font-bold text-slate-900 dark:text-slate-100">${prop.companyName}</span> • تاريخ الإرسال: ${prop.createdAt}</p>
                 </div>
 
-                <div class="px-3 py-1 bg-teal-50 dark:bg-slate-800 rounded-xl border border-teal-200 dark:border-slate-700 text-center shrink-0">
-                  <span class="text-teal-700 dark:text-teal-400 font-bold text-sm font-headline flex items-center gap-1">
+                <div class="px-3 py-1 bg-teal-100 dark:bg-teal-950/80 rounded-xl border border-teal-300 dark:border-teal-700 text-center shrink-0">
+                  <span class="text-teal-900 dark:text-teal-300 font-bold text-sm font-headline flex items-center gap-1">
                     <span class="material-symbols-outlined text-xs">auto_awesome</span>
                     ${prop.matchScore || 95}% Mapped
                   </span>
                 </div>
               </div>
 
-              <div class="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl text-xs text-slate-700 dark:text-slate-300 space-y-1">
+              <div class="p-3.5 bg-slate-100 dark:bg-slate-800/90 rounded-xl text-xs text-slate-800 dark:text-slate-200 space-y-1 border border-slate-200 dark:border-slate-700">
                 <span class="font-bold block text-slate-900 dark:text-slate-100">ما ستقدمه للشركة:</span>
-                <p class="leading-relaxed">${prop.description}</p>
+                <p class="leading-relaxed text-slate-700 dark:text-slate-300">${prop.description}</p>
               </div>
             </div>
           `).join('')}
@@ -1179,7 +1179,7 @@ window.MAYDAN_APP = (function() {
         </h3>
 
         ${apps.length === 0 ? `
-          <div class="p-12 text-center text-slate-500 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">لم تقم بالتقديم على أي فرصة رسمية حتى الآن.</div>
+          <div class="p-12 text-center text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">لم تقم بالتقديم على أي فرصة رسمية حتى الآن.</div>
         ` : apps.map(app => {
           const isAccepted = app.status === "مقبول";
 
@@ -1198,18 +1198,18 @@ window.MAYDAN_APP = (function() {
               <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div class="space-y-1">
                   <div class="flex items-center gap-3 flex-wrap">
-                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 font-headline">${app.opportunityTitle}</h3>
+                    <h3 class="text-lg font-extrabold text-slate-900 dark:text-slate-100 font-headline">${app.opportunityTitle}</h3>
                     <span class="px-3 py-1 text-xs rounded-full border ${statusBadges[app.status] || 'bg-slate-100'}">${app.status}</span>
                   </div>
-                  <p class="text-xs text-slate-500 font-medium">${app.companyName} • تاريخ التقديم: ${app.appliedDate}</p>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 font-medium">${app.companyName} • تاريخ التقديم: ${app.appliedDate}</p>
                 </div>
 
                 <div class="flex items-center gap-4">
-                  <span class="px-3 py-1.5 bg-teal-50 text-teal-800 text-xs font-bold rounded-xl border border-teal-200 flex items-center gap-1 shrink-0">
+                  <span class="px-3 py-1.5 bg-teal-100 dark:bg-teal-950/80 text-teal-900 dark:text-teal-300 text-xs font-bold rounded-xl border border-teal-300 dark:border-teal-700 flex items-center gap-1 shrink-0">
                     <span class="material-symbols-outlined text-sm">auto_awesome</span>
                     ${app.matchScore}% Match
                   </span>
-                  <button onclick="MAYDAN_APP.viewOpportunityDetails('${app.opportunityId}')" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-xl transition-all">
+                  <button onclick="MAYDAN_APP.viewOpportunityDetails('${app.opportunityId}')" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 text-xs font-bold rounded-xl transition-all border border-slate-300 dark:border-slate-700">
                     تفاصيل الفرصة
                   </button>
                 </div>
