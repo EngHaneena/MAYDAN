@@ -74,8 +74,8 @@ window.MAYDAN_AUTH = (function() {
         } else {
           currentUser = null;
           userProfile = null;
-          updateNavbarForGuest();
-          console.log("🔒 User signed out / Guest session");
+          updateNavbarForAuthUser();
+          console.log("🔒 Demo / Guest session with active role:", window.MAYDAN_STORE ? window.MAYDAN_STORE.getRole() : "company");
         }
       });
     }

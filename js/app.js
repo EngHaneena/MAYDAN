@@ -423,18 +423,12 @@ window.MAYDAN_APP = (function() {
   }
 
   function setupNavigation() {
-    // Delegated click and touch handler for all navigation links and targets
-    document.addEventListener("click", function(e) {
-      const link = e.target.closest("a[href^='#'], [data-nav-target]");
-      if (link) {
-        const href = link.getAttribute("href");
-        const target = link.getAttribute("data-nav-target") || (href ? href.replace("#", "") : null);
-        if (target) {
-          e.preventDefault();
-          window.location.hash = target;
-          navigateTo(target);
-        }
-      }
+    document.querySelectorAll("[data-nav-target]").forEach(element => {
+      element.addEventListener("click", function(e) {
+        e.preventDefault();
+        const target = this.getAttribute("data-nav-target");
+        window.location.hash = target;
+      });
     });
   }
 
