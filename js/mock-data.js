@@ -119,6 +119,25 @@ window.MAYDAN_MOCK = {
       matchScore: 95,
       status: "قيد المراجعة",
       createdAt: "2026-08-16"
+    },
+    {
+      id: "prop-102",
+      studentId: "student-5",
+      studentName: "عبدالمجيد خالد العتيبي",
+      studentMajor: "علوم الحاسب",
+      studentUniversity: "جامعة القصيم",
+      studentAvatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png",
+      companyId: "comp-smart-methods",
+      companyName: "شركة الأساليب الذكية (Smart Methods)",
+      title: "أتمتة البنية التحتية وحماية الأنظمة الرقمية بالشركة",
+      description: "بناء وتطوير بيئة أتمتة الأنظمة وحاويات Docker وتأمين شبكة الاتصالات المحلية لمنع الثغرات الأمنية.",
+      value: "رفع أمان الأنظمة البرمجية بنسبة 80% وتقليل زمن انتشار التطبيقات والخدمات بالشركة.",
+      skills: ["Python", "Linux", "Docker", "Cybersecurity"],
+      duration: "12 أسبوع",
+      message: "السلام عليكم ورحمة الله، أود تقديم هذا المقترح التقني لبناء وحماية البيئة السحابية للشركة بالقصيم.",
+      matchScore: 92,
+      status: "مهتم",
+      createdAt: "2026-08-16"
     }
   ],
 
@@ -206,6 +225,28 @@ window.MAYDAN_MOCK = {
       certifications: ["Full Stack Web Development Certificate"],
       cvUploaded: true,
       cvName: "Nora_Mohammed_CV.pdf"
+    },
+    {
+      id: "student-5",
+      name: "عبدالمجيد خالد العتيبي",
+      title: "طالب علوم حاسب - جامعة القصيم",
+      university: "جامعة القصيم (Qassim University)",
+      major: "علوم الحاسب",
+      level: "سنة تخرج (Senior)",
+      gpa: "3.85 / 4.00",
+      city: "القصيم (بريدة)",
+      bio: "طالب علوم حاسب بجامعة القصيم مهتم بالذكاء الاصطناعي وهندسة البرمجيات وأتمتة الأنظمة السحابية والأمن السيبراني.",
+      linkedin: "https://linkedin.com/in/abdulmajeed-alotaibi",
+      github: "https://github.com/abdulmajeed-alotaibi",
+      avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png",
+      skills: ["Python", "C++", "Linux", "Docker", "SQL", "Cybersecurity", "AI"],
+      projects: [
+        { name: "Cloud Infrastructure Automation", desc: "نظام أتمتة البنية التحتية السحابية وإدارة الحاويات باستخدام Docker و Python" },
+        { name: "Cybersecurity Vulnerability Scanner", desc: "أداة فحص الثغرات البرمجية وحماية قواعد البيانات بالشركات" }
+      ],
+      certifications: ["AWS Certified Solutions Architect", "CompTIA Security+"],
+      cvUploaded: true,
+      cvName: "Abdulmajeed_Alotaibi_CV.pdf"
     }
   ],
 
