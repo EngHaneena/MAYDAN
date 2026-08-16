@@ -837,7 +837,11 @@ window.MAYDAN_APP = (function() {
 
               <p class="text-slate-600 text-xs line-clamp-2">${opp.description}</p>
 
-              <div class="flex flex-wrap gap-1">
+              <div class="flex flex-wrap gap-1 items-center">
+                <span class="px-2.5 py-0.5 bg-amber-50 dark:bg-amber-900/40 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700 text-[11px] font-bold rounded-full flex items-center gap-1">
+                  <span class="material-symbols-outlined text-xs text-amber-600">school</span> 
+                  معتمدة للتدريب التعاوني الجامعي
+                </span>
                 <span class="px-2 py-0.5 bg-emerald-50 text-emerald-800 text-xs rounded font-medium">${opp.location}</span>
                 <span class="px-2 py-0.5 bg-blue-50 text-blue-800 text-xs rounded font-medium">${opp.workType || 'حضوري'}</span>
                 ${(opp.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded">${sk}</span>`).join('')}
