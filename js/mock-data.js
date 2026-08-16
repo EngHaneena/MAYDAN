@@ -27,6 +27,7 @@ window.MAYDAN_MOCK = {
       activity: "تطوير الحلول الرقمية، البرمجة المدمجة، محاكاة الرقائق المعالجة، وأتمتة النظم التجارية.",
       fields: ["هندسة الحاسب", "علوم الحاسب", "الذكاء الاصطناعي", "تحليل البيانات"],
       website: "https://smartmethods.sa",
+      linkedin: "https://www.linkedin.com/company/smartmethods",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     },
     {
@@ -40,6 +41,7 @@ window.MAYDAN_MOCK = {
       activity: "تصميم الرقائق الرقمية بلغات Verilog/VHDL، اختبار البرمجيات التعليمية، وتطوير الأنظمة المدمجة.",
       fields: ["هندسة الحاسب", "تصميم الرقائق RTL", "الأنظمة المدمجة", "هندسة البرمجيات"],
       website: "https://techandteach.sa",
+      linkedin: "https://www.linkedin.com/company/tech-and-teach",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     },
     {
@@ -53,6 +55,7 @@ window.MAYDAN_MOCK = {
       activity: "تطوير المنصات الوطنية، نماذج الذكاء الاصطناعي التنبؤية، وإدارة قواعد البيانات الضخمة.",
       fields: ["علم البيانات", "الذكاء الاصطناعي", "هندسة البرمجيات", "الأمن السيبراني"],
       website: "https://elm.sa",
+      linkedin: "https://www.linkedin.com/company/elm",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     },
     {
@@ -66,6 +69,7 @@ window.MAYDAN_MOCK = {
       activity: "بناء البنى التحتية السحابية، أتمتة العمليات الرقمية، وتحليل أداء الشبكات.",
       fields: ["الحوسبة السحابية", "نظم المعلومات", "تحليل البيانات", "هندسة الشبكات"],
       website: "https://solutions.com.sa",
+      linkedin: "https://www.linkedin.com/company/solutionsbystc",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     },
     {
@@ -79,6 +83,7 @@ window.MAYDAN_MOCK = {
       activity: "أتمتة خطوط الإنتاج، تتبع سلاسل الإمداد بالذكاء الاصطناعي، وتحليل بيانات المبيعات والتوزيع.",
       fields: ["نظم المعلومات اللوجستية", "تحليل البيانات", "الهندسة الميكانيكية/الكهربائية"],
       website: "https://al-watania.com",
+      linkedin: "https://www.linkedin.com/company/alwatania-poultry",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     },
     {
@@ -92,6 +97,7 @@ window.MAYDAN_MOCK = {
       activity: "تصميم واجهات المستخدم، تطوير المنصات الحكومية التفاعلية، وتحليل قواعد البيانات التجاريّة.",
       fields: ["هندسة البرمجيات", "تصميم تجربة المستخدم UI/UX", "علوم الحاسب"],
       website: "https://thiqah.sa",
+      linkedin: "https://www.linkedin.com/company/thiqahsa",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     }
   ],

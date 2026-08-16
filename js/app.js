@@ -1400,13 +1400,16 @@ window.MAYDAN_APP = (function() {
               <p class="text-slate-600 dark:text-slate-300 text-xs line-clamp-2 leading-relaxed">${c.description || c.activity}</p>
 
               <div class="flex flex-wrap gap-1 text-xs">
-                <span class="px-2 py-0.5 bg-emerald-50 text-emerald-800 text-xs rounded font-medium">${c.area || c.city}</span>
-                <span class="px-2 py-0.5 bg-blue-50 text-blue-800 text-xs rounded font-medium">${c.workType || 'حضوري'}</span>
+                <span class="px-2 py-0.5 bg-emerald-50 dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 text-xs rounded font-medium border border-emerald-200 dark:border-slate-700">${c.area || c.city}</span>
+                <span class="px-2 py-0.5 bg-blue-50 dark:bg-slate-800 text-blue-800 dark:text-blue-300 text-xs rounded font-medium border border-blue-200 dark:border-slate-700">${c.workType || 'حضوري'}</span>
               </div>
             </div>
 
-            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">نشاط ميداني متاح</span>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between flex-wrap gap-2">
+              <div class="flex items-center gap-1.5">
+                ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" rel="noopener" title="صفحة لينكد إن الرسمية" class="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200 dark:border-blue-800"><span class="material-symbols-outlined text-sm">link</span> LinkedIn</a>` : ''}
+                ${c.website ? `<a href="${c.website}" target="_blank" rel="noopener" title="الموقع الرسمي" class="p-1 text-slate-500 hover:text-teal-600 transition-colors"><span class="material-symbols-outlined text-base">language</span></a>` : ''}
+              </div>
               <button onclick="MAYDAN_APP.viewCompanyStudentDetail('${c.id}')" class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-1">
                 اعرض ما يمكنك تقديمه ➔
               </button>
@@ -1435,6 +1438,16 @@ window.MAYDAN_APP = (function() {
     document.getElementById("comp-detail-area").textContent = company.area || company.city;
     document.getElementById("comp-detail-desc").textContent = company.description;
     document.getElementById("comp-detail-activity").textContent = company.activity;
+
+    const linkedinElem = document.getElementById("comp-detail-linkedin");
+    if (linkedinElem) {
+      linkedinElem.href = company.linkedin || `https://www.linkedin.com/company/${company.id}`;
+    }
+
+    const websiteElem = document.getElementById("comp-detail-website");
+    if (websiteElem) {
+      websiteElem.href = company.website || "#";
+    }
 
     const fieldsContainer = document.getElementById("comp-detail-fields");
     if (fieldsContainer) {
