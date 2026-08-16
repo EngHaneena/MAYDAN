@@ -132,7 +132,7 @@ window.MAYDAN_MOCK = {
     {
       id: "prop-103",
       studentId: "student-3",
-      studentName: "رُلى العثيم",
+      studentName: "رولا العثيم",
       studentMajor: "علوم الحاسب",
       studentUniversity: "جامعة القصيم",
       studentAvatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
@@ -199,7 +199,7 @@ window.MAYDAN_MOCK = {
     },
     {
       id: "student-3",
-      name: "رُلى العثيم",
+      name: "رولا العثيم",
       title: "طالبة علوم حاسب - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
       major: "علوم الحاسب",
@@ -220,7 +220,7 @@ window.MAYDAN_MOCK = {
     },
     {
       id: "student-4",
-      name: "كيان الغفاري",
+      name: "كيان القفاري",
       title: "طالبة هندسة برمجيات - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
       major: "هندسة البرمجيات",
@@ -241,7 +241,7 @@ window.MAYDAN_MOCK = {
     },
     {
       id: "student-5",
-      name: "سناء الإدلبـي",
+      name: "سنا ادلبي",
       title: "طالبة هندسة حاسب - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
       major: "هندسة الحاسب",
@@ -262,7 +262,7 @@ window.MAYDAN_MOCK = {
     },
     {
       id: "student-6",
-      name: "سناء البتار",
+      name: "سنا البيطار",
       title: "طالبة علوم حاسب - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
       major: "علوم الحاسب",

@@ -204,8 +204,8 @@ window.MAYDAN_AI = {
       };
     }
 
-    // Explicit high match for Sana Al-Edilbi
-    if (student.name.includes("الإدلب") || student.name.includes("الادلب")) {
+    // Explicit high match for Sana Edilbi
+    if (student.name.includes("ادلبي") || student.name.includes("الإدلب") || student.name.includes("الادلب")) {
       return {
         score: 93,
         pros: [
@@ -219,8 +219,8 @@ window.MAYDAN_AI = {
       };
     }
 
-    // Explicit high match for Sana Al-Bettar
-    if (student.name.includes("البتار")) {
+    // Explicit high match for Sana Al-Bitar
+    if (student.name.includes("البيطار") || student.name.includes("البتار")) {
       return {
         score: 92,
         pros: [
