@@ -213,5 +213,115 @@ window.MAYDAN_AI = {
       pros: pros,
       improvements: improvements
     };
+  },
+
+  /**
+   * Generates 3 contextual proposal ideas for a student matching a company's activity ("أفكار ممكن تقدمها للشركة")
+   */
+  generateCompanyIdeasForStudent: function(student, company) {
+    const skills = (student && student.skills) ? student.skills : ["Python", "SQL", "Verilog/VHDL", "React", "AI"];
+    const compName = company ? company.name : "الشركة";
+
+    if (skills.some(s => s.includes("Verilog") || s.includes("Digital Logic") || s.includes("Hardware"))) {
+      return [
+        {
+          title: "تصميم ومحاكاة شريحة رقمية معالجة (Digital Chip Logic)",
+          description: "بناء نموذج محاكاة رقيقة رقمية بلغة Verilog/VHDL واختبار التوقيت والمنطق الرقمي لمساندة مشاريع العتاد في " + compName + ".",
+          value: "اختبار النماذج الرقمية بسرعة وتوفير بيئة محاكاة قبل التصنيع النهائي للرقائق.",
+          suggestedSkills: ["Verilog/VHDL", "Digital Logic", "C++", "FPGA"],
+          duration: "12 أسبوع"
+        },
+        {
+          title: "تحليل وتصفية بيانات اختبار البرمجيات والعتاد",
+          description: "تطوير سكربتات بلغة Python لاتتمة معالجة قراءات الاختبار والتحقق من جودة النظم الرقمية بالشركة.",
+          value: "تقليل وقت مراجعة نواتج الاختبار الميداني بنسبة 50%.",
+          suggestedSkills: ["Python", "C++", "Data Analysis"],
+          duration: "8 أسابيع"
+        },
+        {
+          title: "بناء لوحة تحكم لتتبع أداء الأنظمة المدمجة",
+          description: "تصميم واجهة مستخدم تفاعلية لعرض مؤشرات التشغيل الحية للأنظمة والرقائق الميدانية.",
+          value: "تمكين فريق الهندسة والقيادة من مراقبة كفاءة الأجهزة لحظياً.",
+          suggestedSkills: ["Python", "React", "SQL", "AI"],
+          duration: "12 أسبوع"
+        }
+      ];
+    }
+
+    return [
+      {
+        title: "تحليل بيانات العملاء وبناء لوحة مؤشرات أداء تفاعلية",
+        description: "بناء لوحة تحكم تفاعلية باستعمال Power BI و SQL لتصفية بيانات العملاء والأنشطة التجارية بالشركة وتحليل السلوك الشرائي.",
+        value: "توفير وقت إعداد التقارير بنسبة 60% ومساعدة فريق الإدارة على اتخاذ قرارات مبنية على البيانات الميدانية.",
+        suggestedSkills: ["Python", "SQL", "Power BI", "Data Analysis"],
+        duration: "12 أسبوع"
+      },
+      {
+        title: "تطوير نموذج ذكاء اصطناعي لأتمتة خدمة العملاء والتذاكر",
+        description: "اقتراح نموذج معالجة لغات طبيعية (NLP) للرد التلقائي على الاستفسارات المتكررة بـ " + compName + ".",
+        value: "رفع سرعة الاستجابة للعملاء وتقليل التكاليف التشغيلية بنسبة 35%.",
+        suggestedSkills: ["Python", "AI", "NLP", "Machine Learning"],
+        duration: "8 أسابيع"
+      },
+      {
+        title: "أتمتة تقارير التشغيل الميدانية وسلاسل الإمداد",
+        description: "تطوير أدوات ذكية لتجميع بيانات التشغيل اليومية وإنشاء تقارير ملخصة تلقائياً.",
+        value: "تقليل الأخطاء البشرية والرفع من موثوقية التقرير الميداني.",
+        suggestedSkills: ["SQL", "Data Analysis", "Python"],
+        duration: "8 أسابيع"
+      }
+    ];
+  },
+
+  /**
+   * Generates a proposal draft using AI ("ساعدني بالذكاء الاصطناعي ✨")
+   */
+  generateProposalFromAi: function(student, company) {
+    const ideas = this.generateCompanyIdeasForStudent(student, company);
+    const topIdea = ideas[0];
+
+    return {
+      title: topIdea.title,
+      description: topIdea.description,
+      value: topIdea.value,
+      skills: topIdea.suggestedSkills,
+      duration: topIdea.duration,
+      message: `السلام عليكم ورحمة الله وبركاته،\nأنا الطالبة ${student ? student.name : "حنين هيثم"}، تخصص ${(student ? student.major : "هندسة الحاسب")} بجامعة القصيم. أود تقديم هذا المقترح العملي للاستفادة من مهاراتي الميدانية في مساندة أنشطة ${company ? company.name : "الشركة"} وتوفير قيمة مضافة حقيقية.`
+    };
+  },
+
+  /**
+   * Converts a student proposal into a structured Co-op Opportunity Draft for Company publishing ("حوّلها إلى فرصة")
+   */
+  convertProposalToOpportunityDraft: function(proposal, companyInfo) {
+    return {
+      id: "opp-" + Date.now(),
+      title: proposal.title,
+      titleAr: proposal.title,
+      category: "مبادرة طالب (أعطني فرصة)",
+      categoryAr: "مبادرة طالب (أعطني فرصة)",
+      duration: proposal.duration || "12 أسبوع",
+      durationAr: proposal.duration || "12 أسبوع",
+      company: companyInfo ? companyInfo.name : (proposal.companyName || "شركة الأساليب الذكية"),
+      location: companyInfo ? companyInfo.location : "القصيم (بريدة) - حضوري",
+      workType: companyInfo ? companyInfo.workType : "حضوري",
+      stipend: "تُحدد بعد توقيع العقد",
+      skills: proposal.skills || ["Python", "SQL", "Data Analysis"],
+      majors: [proposal.studentMajor || "هندسة الحاسب", "علوم الحاسب"],
+      description: `فرصة تدريب جامعي تم ابتكارها بناءً على المقترح المقدم من الطالبة (${proposal.studentName}): ${proposal.description}`,
+      responsibilities: [
+        `تنفيذ وتحقيق الهدف الرئيسي للمقترح: ${proposal.title}`,
+        `تطبيق مهارات ${proposal.skills ? proposal.skills.join("، ") : "البرمجة والتحليل"} بمقر الشركة`,
+        `تحقيق القيمة المتوقعة للشركة: ${proposal.value}`,
+        `إعداد تقارير التقييم والتقدم الأسبوعي للجامعة والشركة`
+      ],
+      deliverables: [
+        `المخرج الرئيسي النهائي للمقترح: ${proposal.title}`,
+        `تقرير التقييم الأكاديمي والتقرير الميداني المعتمد`
+      ],
+      isAiGenerated: true,
+      status: "مسودة",
+      sourceProposalId: proposal.id
+    };
   }
 };

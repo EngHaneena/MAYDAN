@@ -98,6 +98,20 @@ window.MAYDAN_FIREBASE = (function() {
     }
   }
 
+  async function saveProposal(proposalData) {
+    if (initialized && db && proposalData) {
+      try {
+        const user = firebase.auth().currentUser;
+        const payload = { ...proposalData };
+        if (user && !payload.studentId) payload.studentId = user.uid;
+
+        await db.collection("proposals").doc(proposalData.id).set(payload, { merge: true });
+      } catch (e) {
+        console.warn("Firestore proposal save:", e.message || e);
+      }
+    }
+  }
+
   return {
     init: init,
     isInitialized: function() { return initialized; },
@@ -105,7 +119,8 @@ window.MAYDAN_FIREBASE = (function() {
     syncInitialDataToFirestore: syncInitialDataToFirestore,
     saveOpportunity: saveOpportunity,
     saveApplication: saveApplication,
-    saveStudentProfile: saveStudentProfile
+    saveStudentProfile: saveStudentProfile,
+    saveProposal: saveProposal
   };
 })();
 

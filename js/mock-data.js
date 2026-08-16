@@ -16,12 +16,106 @@ window.MAYDAN_MOCK = {
   },
 
   realCompanies: [
-    { name: "شركة الأساليب الذكية (Smart Methods)", city: "القصيم", area: "بريدة - حضوري" },
-    { name: "شركة تيك آند تيتش (TECH AND TEACH)", city: "القصيم", area: "بريدة - حضوري" },
-    { name: "شركة علم (Elm)", city: "الرياض", area: "حي الملقا" },
-    { name: "solutions by stc", city: "الرياض", area: "مجمع المنيع التقني" },
-    { name: "شركة دواجن الوطنية (Al-Watania)", city: "القصيم", area: "بريدة / عيون الجواء - حضوري" },
-    { name: "شركة ثقة لخدمات الأعمال (Thiqah)", city: "الرياض", area: "طريق الملك فهد" }
+    {
+      id: "comp-smart-methods",
+      name: "شركة الأساليب الذكية (Smart Methods)",
+      industry: "الحلول التقنية والأنظمة الذكية",
+      city: "القصيم",
+      area: "بريدة - حضوري",
+      workType: "حضوري",
+      description: "شركة تقنية سعودية رائدة متخصصة في تطوير الأنظمة المدمجة والحلول الذكية وتصميم الرقائق الرقمية وتطبيقات البرمجة بمنطقة القصيم.",
+      activity: "تطوير الحلول الرقمية، البرمجة المدمجة، محاكاة الرقائق المعالجة، وأتمتة النظم التجارية.",
+      fields: ["هندسة الحاسب", "علوم الحاسب", "الذكاء الاصطناعي", "تحليل البيانات"],
+      website: "https://smartmethods.sa",
+      logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
+    },
+    {
+      id: "comp-tech-teach",
+      name: "شركة تيك آند تيتش (TECH AND TEACH)",
+      industry: "تقنيات التعليم وتطوير العتاد الرقمي",
+      city: "القصيم",
+      area: "بريدة - حضوري",
+      workType: "حضوري",
+      description: "شركة متخصصة في تصميم الأنظمة الميكروإلكترونية والمنصات التعليمية المتقدمة واختبار الرقائق الرقمية.",
+      activity: "تصميم الرقائق الرقمية بلغات Verilog/VHDL، اختبار البرمجيات التعليمية، وتطوير الأنظمة المدمجة.",
+      fields: ["هندسة الحاسب", "تصميم الرقائق RTL", "الأنظمة المدمجة", "هندسة البرمجيات"],
+      website: "https://techandteach.sa",
+      logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
+    },
+    {
+      id: "comp-elm",
+      name: "شركة علم (Elm)",
+      industry: "الخدمات الرقمية والحلول الإلكرونية",
+      city: "الرياض",
+      area: "حي الملقا",
+      workType: "هجين",
+      description: "شركة مملوكة للصندوق الاستثماري تمكّن التحول الرقمي للقطاعات الحكومية والخاصة بالمملكة.",
+      activity: "تطوير المنصات الوطنية، نماذج الذكاء الاصطناعي التنبؤية، وإدارة قواعد البيانات الضخمة.",
+      fields: ["علم البيانات", "الذكاء الاصطناعي", "هندسة البرمجيات", "الأمن السيبراني"],
+      website: "https://elm.sa",
+      logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
+    },
+    {
+      id: "comp-stc",
+      name: "solutions by stc",
+      industry: "الاتصالات والتحول الرقمي",
+      city: "الرياض",
+      area: "مجمع المنيع التقني",
+      workType: "حضوري",
+      description: "مزود الحلول التقنية الأول بالمملكة لتقديم حلول الحوسبة السحابية وتحليل البيانات والأمن السيبراني.",
+      activity: "بناء البنى التحتية السحابية، أتمتة العمليات الرقمية، وتحليل أداء الشبكات.",
+      fields: ["الحوسبة السحابية", "نظم المعلومات", "تحليل البيانات", "هندسة الشبكات"],
+      website: "https://solutions.com.sa",
+      logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
+    },
+    {
+      id: "comp-watania",
+      name: "شركة دواجن الوطنية (Al-Watania)",
+      industry: "الأغذية والأنظمة اللوجستية الميدانية",
+      city: "القصيم",
+      area: "عيون الجواء / بريدة",
+      workType: "حضوري",
+      description: "أكبر منشأة لوجستية وغذائية بالقصيم تعتمد على التقنيات الحديثة في تتبع سلاسل الإمداد وأتمتة الإنتاج.",
+      activity: "أتمتة خطوط الإنتاج، تتبع سلاسل الإمداد بالذكاء الاصطناعي، وتحليل بيانات المبيعات والتوزيع.",
+      fields: ["نظم المعلومات اللوجستية", "تحليل البيانات", "الهندسة الميكانيكية/الكهربائية"],
+      website: "https://al-watania.com",
+      logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
+    },
+    {
+      id: "comp-thiqah",
+      name: "شركة ثقة لخدمات الأعمال (Thiqah)",
+      industry: "الحلول الذكية والأنظمة القانونية والتجارية",
+      city: "الرياض",
+      area: "طريق الملك فهد",
+      workType: "عن بعد",
+      description: "شركة شريكة للجهات الحكومية تبتكر منصات ذكية لتمكين بيئة الأعمال والتجارة بالمملكة.",
+      activity: "تصميم واجهات المستخدم، تطوير المنصات الحكومية التفاعلية، وتحليل قواعد البيانات التجاريّة.",
+      fields: ["هندسة البرمجيات", "تصميم تجربة المستخدم UI/UX", "علوم الحاسب"],
+      website: "https://thiqah.sa",
+      logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
+    }
+  ],
+
+  initialProposals: [
+    {
+      id: "prop-101",
+      studentId: "student-1",
+      studentName: "حنين هيثم القصير",
+      studentMajor: "هندسة الحاسب",
+      studentUniversity: "جامعة القصيم",
+      studentAvatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
+      companyId: "comp-smart-methods",
+      companyName: "شركة الأساليب الذكية (Smart Methods)",
+      title: "تحليل بيانات العملاء وبناء لوحة مؤشرات أداء تفاعلية",
+      description: "بناء لوحة تحكم تفاعلية متقدمة باستخدام Power BI و SQL لتصفية بيانات العملاء والأنشطة التجارية بالشركة وتحليل السلوك الشرائي بالقصيم.",
+      value: "توفير وقت إعداد التقارير بنسبة 60% ومساعدة فريق الإدارة بالشركة على اتخاذ قرارات استراتيجية مبنية على البيانات الميدانية.",
+      skills: ["Python", "SQL", "Power BI", "Data Analysis"],
+      duration: "12 أسبوع",
+      message: "السلام عليكم ورحمة الله، أود تقديم هذا المقترح العملي للاستفادة من مهارتي في تحليل البيانات لتطوير لوحة مؤشرات تفاعلية تخدم نشاط الشركة بالقصيم.",
+      matchScore: 95,
+      status: "قيد المراجعة",
+      createdAt: "2026-08-16"
+    }
   ],
 
   students: [

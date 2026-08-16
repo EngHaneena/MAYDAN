@@ -774,6 +774,124 @@
 
     </section>
 
+    <!-- ==================== VIEW 11: COMPANY DISCOVERY ("اكتشف الشركات") ==================== -->
+    <section id="view-company-discovery" class="view-panel hidden space-y-6">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div class="space-y-1">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 rounded-full text-xs font-bold border border-amber-300 dark:border-amber-700">
+            <span class="material-symbols-outlined text-sm text-amber-600">lightbulb</span>
+            أعطني فرصة — المسار المباشر
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 font-headline">اكتشف الشركات ورؤيتها الميدانية</h2>
+          <p class="text-slate-600 dark:text-slate-300 text-sm">تصفح الشركات والمنشآت المتاحة، افهم نشاطها التجاري، وقدم مقترحاً ابتكارياً يصنع لك فرصة جامعية خاصة.</p>
+        </div>
+      </div>
+
+      <!-- Search & Filters Bar -->
+      <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="md:col-span-2 relative flex items-center">
+            <span class="material-symbols-outlined absolute right-3 text-slate-400 text-xl pointer-events-none">search</span>
+            <input id="company-search-input" type="text" class="w-full rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 pr-10 pl-4 text-sm p-3 focus:ring-teal-500 focus:border-teal-500" placeholder="ابحث باسم الشركة، المجال (مثال: الذكاء الاصطناعي، الرقائق)..."/>
+          </div>
+          <div>
+            <select id="filter-company-industry" class="w-full rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 text-xs font-medium p-3">
+              <option value="">جميع المجالات والقطاعات</option>
+              <option value="الحلول التقنية">الحلول التقنية والأنظمة</option>
+              <option value="الخدمات الرقمية">الخدمات الرقمية والحكومية</option>
+              <option value="الأنظمة اللوجستية">الأنظمة اللوجستية والأغذية</option>
+              <option value="الاتصالات">الاتصالات والحوسبة السحابية</option>
+            </select>
+          </div>
+          <div>
+            <select id="filter-company-location" class="w-full rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 text-xs font-medium p-3">
+              <option value="">جميع المواقع</option>
+              <option value="القصيم">القصيم (بريدة / عنيزة)</option>
+              <option value="الرياض">الرياض</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company Discovery Cards Grid -->
+      <div id="company-discovery-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Injected Dynamically by MAYDAN_APP -->
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 12: COMPANY STUDENT DETAIL & AI IDEAS ==================== -->
+    <section id="view-company-student-detail" class="view-panel hidden max-w-4xl mx-auto space-y-8">
+      
+      <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-800 shadow-md space-y-8">
+        
+        <!-- Header & Back Button -->
+        <div class="flex flex-col sm:flex-row justify-between items-start gap-4 pb-6 border-b border-slate-100 dark:border-slate-800">
+          <div class="flex items-center gap-4">
+            <img id="comp-detail-logo" src="stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png" class="w-20 h-20 rounded-2xl object-cover border-2 border-teal-500/30 shadow-sm shrink-0" alt="Company Logo"/>
+            <div class="space-y-1">
+              <h2 id="comp-detail-name" class="text-2xl font-bold text-slate-900 dark:text-slate-100 font-headline">شركة الأساليب الذكية</h2>
+              <p id="comp-detail-industry" class="text-sm text-teal-700 dark:text-teal-400 font-semibold">الحلول التقنية والأنظمة الذكية</p>
+              <p id="comp-detail-location" class="text-xs text-slate-500 dark:text-slate-400 font-medium flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">location_on</span>
+                <span id="comp-detail-area">القصيم (بريدة) - حضوري</span>
+              </p>
+            </div>
+          </div>
+
+          <a href="#company-discovery" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition-all flex items-center gap-1">
+            ← العودة للشركات
+          </a>
+        </div>
+
+        <!-- About Company & Activity -->
+        <div class="space-y-4">
+          <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base flex items-center gap-2">
+            <span class="material-symbols-outlined text-teal-600">corporate_fare</span>
+            عن المنشأة ونشاطها الميداني:
+          </h3>
+          <p id="comp-detail-desc" class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed bg-slate-50 dark:bg-slate-800/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800"></p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 bg-teal-50/70 dark:bg-slate-800 rounded-2xl border border-teal-200/60 dark:border-slate-700 space-y-1">
+              <span class="font-bold text-teal-900 dark:text-teal-300 block">النشاط التجاري التشغيلي:</span>
+              <span id="comp-detail-activity" class="text-slate-700 dark:text-slate-300 font-medium">تطوير الحلول الرقمية، البرمجة المدمجة، ومحاكاة الرقائق الرقمية.</span>
+            </div>
+            <div class="p-4 bg-emerald-50/70 dark:bg-slate-800 rounded-2xl border border-emerald-200/60 dark:border-slate-700 space-y-1">
+              <span class="font-bold text-emerald-900 dark:text-emerald-300 block">المجالات المتاحة للطلاب:</span>
+              <div id="comp-detail-fields" class="flex flex-wrap gap-1 pt-1"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: "وش تقدر تقدم لهم؟" -->
+        <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-slate-100 text-lg font-headline flex items-center gap-2">
+                <span class="material-symbols-outlined text-amber-500">lightbulb</span>
+                وش تقدر تقدم لهم؟ (أفكار الذكاء الاصطناعي)
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">تحليل تلقائي يطابق مهاراتك وسيرتك الذاتية مع نشاط هذه الشركة لاقتراح أفكار مشاريع حقيقية:</p>
+            </div>
+
+            <button id="open-proposal-modal-btn" type="button" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-2xl text-xs shadow-md transition-all flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-base">rocket_launch</span>
+              اعرض عليهم فكرتك
+            </button>
+          </div>
+
+          <!-- AI Suggestions List ("أفكار ممكن تقدمها للشركة") -->
+          <div id="ai-company-ideas-container" class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
   <!-- ==================== MODALS ==================== -->
@@ -923,6 +1041,127 @@
           <button type="button" id="cancel-company-edit-modal-btn" class="px-5 py-3 bg-slate-100 text-slate-700 font-bold rounded-xl">إلغاء</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- ==================== PROPOSAL CREATION MODAL ("اعرض عليهم فكرتك") ==================== -->
+  <div id="create-proposal-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-2xl w-full space-y-6 shadow-2xl border border-slate-200 dark:border-slate-800 max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex justify-between items-start pb-4 border-b border-slate-100 dark:border-slate-800">
+        <div>
+          <div class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 rounded-full text-xs font-bold">
+            <span class="material-symbols-outlined text-xs">lightbulb</span>
+            أعطني فرصة — التقديم المباشر
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 font-headline mt-1">اعرض فكرتك على الشركة</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">اقترح كيف يمكن لمهاراتك وتخصصك الأكاديمي خلق قيمة مضافة لمنشأة <span id="prop-modal-company-name" class="font-bold text-teal-600"></span>.</p>
+        </div>
+        <button id="close-proposal-modal-btn" type="button" class="p-2 text-slate-400 hover:text-slate-600 rounded-full">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- AI Assistant Button -->
+      <div class="p-4 bg-gradient-to-r from-teal-500/10 via-amber-500/10 to-emerald-500/10 rounded-2xl border border-teal-500/30 flex items-center justify-between flex-wrap gap-3">
+        <div class="space-y-0.5">
+          <span class="font-bold text-xs text-slate-900 dark:text-slate-100 flex items-center gap-1">
+            <span class="material-symbols-outlined text-teal-600 text-sm">auto_awesome</span>
+            مساعد الذكاء الاصطناعي (AI Assistant)
+          </span>
+          <p class="text-[11px] text-slate-600 dark:text-slate-300">يولّد مقترحًا مخصصًا يطابق سيرتك الذاتية ومهاراتك مع نشاط هذه الشركة.</p>
+        </div>
+        <button id="ai-help-proposal-btn" type="button" class="px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-500 hover:to-teal-400 text-white font-bold rounded-xl text-xs shadow-md transition-all flex items-center gap-1.5 shrink-0">
+          <span class="material-symbols-outlined text-sm">auto_awesome</span>
+          ساعدني بالذكاء الاصطناعي ✨
+        </button>
+      </div>
+
+      <form id="create-proposal-form" class="space-y-4 text-xs">
+        
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-800 dark:text-slate-200">عنوان المقترح</label>
+          <input type="text" id="proposal-title-input" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-teal-500" placeholder="مثال: تحليل بيانات العملاء وبناء لوحة مؤشرات أداء تفاعلية" required>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-800 dark:text-slate-200">ماذا سأقدم؟ (تفاصيل المشروع)</label>
+            <textarea id="proposal-desc-input" rows="3" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-teal-500" placeholder="وصف ملخص للعمل أو الخدمة التقنية التي ستنفذها للشركة..." required></textarea>
+          </div>
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-800 dark:text-slate-200">كيف سيفيد الشركة؟ (الفائدة المتوقعة)</label>
+            <textarea id="proposal-value-input" rows="3" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-teal-500" placeholder="الفائدة التجارية والتشغيلية المتوقعة للشركة من تطبيق فكرتك..." required></textarea>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-800 dark:text-slate-200">المهارات المستخدمة</label>
+            <input type="text" id="proposal-skills-input" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-teal-500" placeholder="Python, SQL, Power BI, Data Analysis">
+          </div>
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-800 dark:text-slate-200">المدة المقترحة</label>
+            <select id="proposal-duration-input" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none">
+              <option value="8 أسابيع">8 أسابيع (تدريب صيفي)</option>
+              <option value="12 أسبوع">12 أسبوع (تدريب جامعي أساسي)</option>
+              <option value="16 أسبوع">16 أسبوع (فصل دراسي كامل)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-800 dark:text-slate-200">رسالة شخصية موجهة للشركة</label>
+          <textarea id="proposal-message-input" rows="3" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-teal-500" placeholder="السلام عليكم، أود تقديم هذا المقترح الميداني لخدمة نشاط الشركة..."></textarea>
+        </div>
+
+        <div class="pt-4 flex gap-3">
+          <button type="submit" class="flex-1 py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md transition-all text-xs flex items-center justify-center gap-1.5">
+            <span class="material-symbols-outlined text-sm">send</span>
+            إرسال للشركة
+          </button>
+          <button type="button" id="cancel-proposal-modal-btn" class="px-5 py-3.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-xl text-xs">إلغاء</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- PROPOSAL CONFIRMATION MODAL -->
+  <div id="proposal-confirm-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-md w-full space-y-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-center">
+      <div class="w-14 h-14 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-600 flex items-center justify-center mx-auto text-2xl font-bold">
+        <span class="material-symbols-outlined">help_outline</span>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 font-headline">جاهز ترسل فكرتك؟</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-300">سيتم إرسال مقترحك إلى الشركة لمراجعته والاطلاع على تفاصيل الفائدة المتوقعة.</p>
+      </div>
+
+      <div class="flex items-center gap-3 pt-2">
+        <button id="confirm-submit-proposal-btn" class="flex-1 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl text-xs shadow-md transition-all">
+          إرسال
+        </button>
+        <button id="edit-back-proposal-btn" class="flex-1 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-bold rounded-xl text-xs transition-colors">
+          تعديل
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPOSAL SUCCESS CELEBRATION MODAL -->
+  <div id="proposal-success-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-md w-full text-center space-y-6 shadow-2xl border border-slate-200 dark:border-slate-800">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 flex items-center justify-center mx-auto text-3xl">
+        🎉
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 font-headline">تم إرسال مقترحك بنجاح 🎉</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">وصل مقترحك للشركة، وبانتظار ردهم. يمكنك تتبع حالة المقترح من صفحة طلباتي ومقترحاتي.</p>
+      </div>
+      <button id="close-proposal-success-btn" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl text-xs shadow-md transition-all">
+        الانتقال إلى طلباتي ومقترحاتي ➔
+      </button>
     </div>
   </div>
 

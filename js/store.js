@@ -41,6 +41,7 @@ window.MAYDAN_STORE = (function() {
       students: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.students)),
       opportunities: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.opportunities)),
       applications: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.initialApplications)),
+      proposals: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.initialProposals || [])),
       shortlisted: [
         { studentId: "student-1", opportunityId: "opp-tech-teach" },
         { studentId: "student-1", opportunityId: "opp-1" }
@@ -231,6 +232,70 @@ window.MAYDAN_STORE = (function() {
       if (window.MAYDAN_FIREBASE) {
         window.MAYDAN_FIREBASE.saveApplication(app);
       }
+    },
+
+    // --- PROPOSALS API ("أعطني فرصة") ---
+    getProposals: function() {
+      if (!state.proposals || state.proposals.length === 0) {
+        state.proposals = JSON.parse(JSON.stringify(window.MAYDAN_MOCK.initialProposals || []));
+        saveState();
+      }
+      return state.proposals;
+    },
+
+    getProposalsForCompany: function(companyId) {
+      const all = this.getProposals();
+      return all.filter(p => !companyId || p.companyId === companyId || p.companyId === "comp-smart-methods" || companyId === "comp-smart-methods");
+    },
+
+    getProposalsForStudent: function(studentId) {
+      const all = this.getProposals();
+      return all.filter(p => !studentId || p.studentId === studentId || p.studentId === "student-1");
+    },
+
+    addProposal: function(data) {
+      if (!state.proposals) state.proposals = [];
+      const newProp = {
+        id: "prop-" + Date.now(),
+        studentId: data.studentId || "student-1",
+        studentName: data.studentName || "حنين هيثم القصير",
+        studentMajor: data.studentMajor || "هندسة الحاسب",
+        studentUniversity: data.studentUniversity || "جامعة القصيم",
+        studentAvatar: data.studentAvatar || "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
+        companyId: data.companyId || "comp-smart-methods",
+        companyName: data.companyName || "شركة الأساليب الذكية (Smart Methods)",
+        title: data.title || "مقترح فرصة تدريبية جديدة",
+        description: data.description || "",
+        value: data.value || "",
+        skills: data.skills || ["Python", "SQL", "Data Analysis"],
+        duration: data.duration || "12 أسبوع",
+        message: data.message || "",
+        matchScore: data.matchScore || 92,
+        status: "قيد المراجعة",
+        createdAt: new Date().toISOString().split("T")[0]
+      };
+
+      state.proposals.unshift(newProp);
+      saveState();
+
+      if (window.MAYDAN_FIREBASE) {
+        window.MAYDAN_FIREBASE.saveProposal(newProp);
+      }
+
+      return newProp;
+    },
+
+    updateProposalStatus: function(proposalId, newStatus) {
+      const all = this.getProposals();
+      const prop = all.find(p => p.id === proposalId);
+      if (prop) {
+        prop.status = newStatus;
+        saveState();
+        if (window.MAYDAN_FIREBASE) {
+          window.MAYDAN_FIREBASE.saveProposal(prop);
+        }
+      }
+      return prop;
     }
   };
 })();

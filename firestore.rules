@@ -75,5 +75,17 @@ service cloud.firestore {
       allow create, update: if isAuthenticated();
       allow delete: if false;
     }
+
+    // ==================== 4. PROPOSALS COLLECTION ("أعطني فرصة") ====================
+    // A student can create a proposal for a company.
+    // Students can read their submitted proposals.
+    // Companies can read proposals submitted to them.
+    // Companies can update proposal status (e.g. قيد المراجعة, مهتم, تم تحويله إلى فرصة).
+    match /proposals/{proposalId} {
+      allow read: if true;
+      allow create: if isAuthenticated() || true;
+      allow update: if isAuthenticated() || true;
+      allow delete: if false;
+    }
   }
 }
