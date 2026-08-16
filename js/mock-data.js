@@ -112,26 +112,6 @@ window.MAYDAN_MOCK = {
     {
       id: "prop-102",
       studentId: "student-2",
-      studentName: "وئام عبدالله",
-      studentMajor: "هندسة الحاسب",
-      studentUniversity: "جامعة القصيم",
-      studentAvatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
-      studentLinkedin: "https://www.linkedin.com/in/weaam-abdullah-27b50632b/",
-      companyId: "comp-smart-methods",
-      companyName: "شركة الأساليب الذكية (Smart Methods)",
-      title: "تطوير برمجيات الأنظمة المدمجة ومحاكاة الرقائق الإلكترونية",
-      description: "بناء وتطوير حلول برمجة مدمجة واختبار منطق الرقائق الرقمية المعالجة بلغة Verilog و C++ لتطوير بيئة العمل بالشركة.",
-      value: "رفع كفاءة المعالجة بالشركة وتخفيض الأخطاء التشغيلية بنسبة 50% وتسهيل تجربة المعالجة الرقمية.",
-      skills: ["Python", "C++", "Verilog", "Embedded Systems"],
-      duration: "12 أسبوع",
-      message: "السلام عليكم ورحمة الله، أود تقديم هذا المقترح الميداني للاستفادة من شغفي في هندسة الحاسب والأنظمة المدمجة لخدمة نشاط الشركة بالقصيم.",
-      matchScore: 96,
-      status: "قيد المراجعة",
-      createdAt: "2026-08-16"
-    },
-    {
-      id: "prop-103",
-      studentId: "student-3",
       studentName: "رولا العثيم",
       studentMajor: "علوم الحاسب",
       studentUniversity: "جامعة القصيم",
@@ -145,8 +125,28 @@ window.MAYDAN_MOCK = {
       skills: ["Python", "SQL", "Power BI", "Data Analysis"],
       duration: "12 أسبوع",
       message: "السلام عليكم ورحمة الله، أود تقديم هذا المقترح العملي للاستفادة من مهارتي في تحليل البيانات لتطوير لوحة مؤشرات تفاعلية تخدم نشاط الشركة بالقصيم.",
-      matchScore: 95,
+      matchScore: 96,
       status: "مهتم",
+      createdAt: "2026-08-16"
+    },
+    {
+      id: "prop-103",
+      studentId: "student-3",
+      studentName: "وئام عبدالله",
+      studentMajor: "هندسة الحاسب",
+      studentUniversity: "جامعة القصيم",
+      studentAvatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
+      studentLinkedin: "https://www.linkedin.com/in/weaam-abdullah-27b50632b/",
+      companyId: "comp-smart-methods",
+      companyName: "شركة الأساليب الذكية (Smart Methods)",
+      title: "تطوير برمجيات الأنظمة المدمجة ومحاكاة الرقائق الإلكترونية",
+      description: "بناء وتطوير حلول برمجة مدمجة واختبار منطق الرقائق الرقمية المعالجة بلغة Verilog و C++ لتطوير بيئة العمل بالشركة.",
+      value: "رفع كفاءة المعالجة بالشركة وتخفيض الأخطاء التشغيلية بنسبة 50% وتسهيل تجربة المعالجة الرقمية.",
+      skills: ["Python", "C++", "Verilog", "Embedded Systems"],
+      duration: "12 أسبوع",
+      message: "السلام عليكم ورحمة الله، أود تقديم هذا المقترح الميداني للاستفادة من شغفي في هندسة الحاسب والأنظمة المدمجة لخدمة نشاط الشركة بالقصيم.",
+      matchScore: 95,
+      status: "قيد المراجعة",
       createdAt: "2026-08-16"
     }
   ],
@@ -177,6 +177,27 @@ window.MAYDAN_MOCK = {
     },
     {
       id: "student-2",
+      name: "رولا العثيم",
+      title: "طالبة علوم حاسب - جامعة القصيم",
+      university: "جامعة القصيم (Qassim University)",
+      major: "علوم الحاسب",
+      level: "سنة تخرج (Senior)",
+      gpa: "3.91 / 4.00",
+      city: "القصيم (بريدة)",
+      bio: "طالبة علوم حاسب بجامعة القصيم متخصصة في الذكاء الاصطناعي وتنقيب البيانات وتحليل السلوك الرقمي للمنشآت.",
+      linkedin: "https://www.linkedin.com/in/rola-alothaim-5792a2338/",
+      github: "https://github.com/rola-alothaim",
+      avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
+      skills: ["Python", "Machine Learning", "SQL", "Power BI", "Data Analysis"],
+      projects: [
+        { name: "Business Insights Dashboard", desc: "لوحة تحكم تفاعلية متقدمة لتصفية بيانات العملاء وسلوك الشراء" }
+      ],
+      certifications: ["TensorFlow Developer Certificate"],
+      cvUploaded: true,
+      cvName: "Rola_AlOthaim_CV.pdf"
+    },
+    {
+      id: "student-3",
       name: "وئام عبدالله",
       title: "طالبة هندسة حاسب - جامعة القصيم",
       university: "جامعة القصيم (Qassim University)",
@@ -196,27 +217,6 @@ window.MAYDAN_MOCK = {
       certifications: ["AWS Certified Cloud Practitioner", "Digital Systems Architecture"],
       cvUploaded: true,
       cvName: "Weaam_Abdullah_Qassim_University_CV.pdf"
-    },
-    {
-      id: "student-3",
-      name: "رولا العثيم",
-      title: "طالبة علوم حاسب - جامعة القصيم",
-      university: "جامعة القصيم (Qassim University)",
-      major: "علوم الحاسب",
-      level: "سنة تخرج (Senior)",
-      gpa: "3.91 / 4.00",
-      city: "القصيم (بريدة)",
-      bio: "طالبة علوم حاسب بجامعة القصيم متخصصة في الذكاء الاصطناعي وتنقيب البيانات وتحليل السلوك الرقمي للمنشآت.",
-      linkedin: "https://www.linkedin.com/in/rola-alothaim-5792a2338/",
-      github: "https://github.com/rola-alothaim",
-      avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
-      skills: ["Python", "Machine Learning", "SQL", "Power BI", "Data Analysis"],
-      projects: [
-        { name: "Business Insights Dashboard", desc: "لوحة تحكم تفاعلية متقدمة لتصفية بيانات العملاء وسلوك الشراء" }
-      ],
-      certifications: ["TensorFlow Developer Certificate"],
-      cvUploaded: true,
-      cvName: "Rola_AlOthaim_CV.pdf"
     },
     {
       id: "student-4",

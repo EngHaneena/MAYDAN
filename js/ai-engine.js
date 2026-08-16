@@ -159,32 +159,32 @@ window.MAYDAN_AI = {
       };
     }
 
-    // Explicit high match for Weaam Abdullah
-    if (student.name.includes("وئام")) {
+    // Rank 2 - Explicit high match for Rola Al-Othaim (رولا العثيم)
+    if (student.name.includes("رُلى") || student.name.includes("رلى")) {
       return {
         score: 96,
         pros: [
-          "تطابق مهارات Verilog و C++ والأنظمة المدمجة بنسبة (100%)",
+          "تطابق مهارات تحليل البيانات والذكاء الاصطناعي و SQL بنسبة (96%)",
+          "تخصص علوم الحاسب بجامعة القصيم مطابق تماماً لاحتياج المنشأة",
+          "مشروع سابق متميز في بناء لوحات التحكم التفاعلية Business Insights"
+        ],
+        improvements: [
+          "تعزيز مهارات النمذجة التنبؤية بالذكاء الاصطناعي"
+        ]
+      };
+    }
+
+    // Rank 3 - Explicit high match for Weaam Abdullah (وئام عبدالله)
+    if (student.name.includes("وئام")) {
+      return {
+        score: 95,
+        pros: [
+          "تطابق مهارات Verilog و C++ والأنظمة المدمجة بنسبة (95%)",
           "تخصص هندسة الحاسب بجامعة القصيم مباشر ومطابق لاحتياج الشركة",
           "سجل أكاديمي متميز بمعدل 3.95 / 4.00"
         ],
         improvements: [
           "توسيع الخبرة في اختبارات FPGA أثناء فترة التدريب"
-        ]
-      };
-    }
-
-    // Explicit high match for Rola Al-Othaim
-    if (student.name.includes("رُلى") || student.name.includes("رلى")) {
-      return {
-        score: 95,
-        pros: [
-          "تطابق مهارات تحليل البيانات والذكاء الاصطناعي و SQL بنسبة (95%)",
-          "تخصص علوم الحاسب بجامعة القصيم مطابق تماماً",
-          "مشروع سابق في بناء لوحات التحكم التفاعلية Business Insights"
-        ],
-        improvements: [
-          "تعزيز مهارات النمذجة التنبؤية بالذكاء الاصطناعي"
         ]
       };
     }
