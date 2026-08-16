@@ -1466,19 +1466,19 @@ window.MAYDAN_APP = (function() {
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             ${challenges.map(ch => `
-              <div class="bg-amber-50/60 dark:bg-slate-800/80 rounded-2xl p-5 border border-amber-200/80 dark:border-slate-700 space-y-3 flex flex-col justify-between">
+              <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-5 border border-amber-300 dark:border-slate-700 space-y-3 flex flex-col justify-between shadow-sm">
                 <div class="space-y-2">
                   <div class="flex justify-between items-start gap-2">
-                    <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100 font-headline">${ch.title}</h4>
-                    <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/50 text-amber-900 dark:text-amber-300 text-[10px] font-bold rounded-full">${ch.status}</span>
+                    <h4 class="font-extrabold text-sm text-slate-900 dark:text-slate-100 font-headline">${ch.title}</h4>
+                    <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-950/80 text-amber-950 dark:text-amber-200 text-[10px] font-bold rounded-full border border-amber-300 dark:border-amber-700">${ch.status}</span>
                   </div>
-                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${ch.description}</p>
+                  <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">${ch.description}</p>
                   <div class="flex flex-wrap gap-1 text-[11px]">
-                    <span class="px-2 py-0.5 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded font-medium">${ch.workType}</span>
-                    ${(ch.skills || []).map(s => `<span class="px-2 py-0.5 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">${s}</span>`).join('')}
+                    <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded font-semibold border border-slate-200 dark:border-slate-600">${ch.workType}</span>
+                    ${(ch.skills || []).map(s => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded font-semibold border border-slate-200 dark:border-slate-600">${s}</span>`).join('')}
                   </div>
                 </div>
-                <button onclick="MAYDAN_APP.openProposalModalForChallenge('${company.id}', '${ch.id}', '${encodeURIComponent(ch.title)}')" class="w-full py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1 shadow-sm">
+                <button onclick="MAYDAN_APP.openProposalModalForChallenge('${company.id}', '${ch.id}', '${encodeURIComponent(ch.title)}')" class="w-full py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl text-xs transition-all flex items-center justify-center gap-1 shadow-sm">
                   <span class="material-symbols-outlined text-sm">rocket_launch</span>
                   ورّهم وش عندك 🚀
                 </button>
@@ -1623,41 +1623,41 @@ window.MAYDAN_APP = (function() {
         container.innerHTML = `<div class="col-span-full p-8 text-center text-slate-500 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">لم تقم بطرح أي احتياج حتى الآن. انقر على "+ اطرح احتياجك" لبدء دعوة الطلاب!</div>`;
       } else {
         const statusBadges = {
-          "مفتوح": "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 border-emerald-300",
-          "قيد المراجعة": "bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 border-amber-300",
-          "مغلق": "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-300"
+          "مفتوح": "bg-emerald-100 dark:bg-emerald-950/80 text-emerald-950 dark:text-emerald-200 border-emerald-300 dark:border-emerald-700 font-bold",
+          "قيد المراجعة": "bg-amber-100 dark:bg-amber-950/80 text-amber-950 dark:text-amber-200 border-amber-300 dark:border-amber-700 font-bold",
+          "مغلق": "bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border-slate-300 dark:border-slate-700 font-bold"
         };
 
         container.innerHTML = challenges.map(ch => {
-          const statusClass = statusBadges[ch.status] || "bg-emerald-100 text-emerald-800 border-emerald-300";
+          const statusClass = statusBadges[ch.status] || "bg-emerald-100 text-emerald-950 border-emerald-300";
 
           return `
-            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover-lift relative overflow-hidden flex flex-col justify-between space-y-4">
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-300/80 dark:border-slate-800 shadow-sm hover-lift relative overflow-hidden flex flex-col justify-between space-y-4">
               <div class="space-y-3">
                 <div class="flex justify-between items-start gap-2">
                   <div>
-                    <span class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 text-xs font-semibold rounded-full mb-2">${ch.category || 'تحدي ميداني'}</span>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 font-headline">${ch.title}</h3>
+                    <span class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-950/80 text-amber-950 dark:text-amber-200 text-xs font-bold rounded-full mb-2 border border-amber-300 dark:border-amber-700">${ch.category || 'تحدي ميداني'}</span>
+                    <h3 class="text-xl font-extrabold text-slate-900 dark:text-slate-100 font-headline">${ch.title}</h3>
                   </div>
                   <span class="px-2.5 py-1 ${statusClass} border text-xs font-bold rounded-full shrink-0">${ch.status}</span>
                 </div>
 
-                <p class="text-slate-600 dark:text-slate-300 text-xs line-clamp-3 leading-relaxed">${ch.description}</p>
+                <p class="text-slate-700 dark:text-slate-300 text-xs line-clamp-3 leading-relaxed font-medium">${ch.description}</p>
 
                 <div class="flex flex-wrap gap-1.5 pt-2 text-xs">
-                  <span class="px-2 py-0.5 bg-emerald-50 dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 rounded border border-emerald-200 dark:border-slate-700">${ch.location || 'القصيم'}</span>
-                  <span class="px-2 py-0.5 bg-blue-50 dark:bg-slate-800 text-blue-800 dark:text-blue-300 rounded border border-blue-200 dark:border-slate-700">${ch.workType || 'حضوري'}</span>
-                  ${(ch.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">${sk}</span>`).join('')}
+                  <span class="px-2 py-0.5 bg-emerald-100 dark:bg-slate-800 text-emerald-950 dark:text-emerald-300 rounded border border-emerald-300 dark:border-slate-700 font-semibold">${ch.location || 'القصيم'}</span>
+                  <span class="px-2 py-0.5 bg-blue-100 dark:bg-slate-800 text-blue-950 dark:text-blue-300 rounded border border-blue-300 dark:border-slate-700 font-semibold">${ch.workType || 'حضوري'}</span>
+                  ${(ch.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 rounded border border-slate-300 dark:border-slate-700 font-semibold">${sk}</span>`).join('')}
                 </div>
               </div>
 
-              <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between flex-wrap gap-2 text-xs">
-                <span class="text-slate-500 font-medium">${ch.responsesCount || 0} ردود من الطلاب</span>
+              <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between flex-wrap gap-2 text-xs">
+                <span class="text-slate-700 dark:text-slate-400 font-bold">${ch.responsesCount || 0} ردود من الطلاب</span>
                 <div class="flex items-center gap-2">
-                  <button onclick="MAYDAN_APP.scrollToChallengeProposals()" class="px-3.5 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl font-bold transition-all shadow-sm">
+                  <button onclick="MAYDAN_APP.scrollToChallengeProposals()" class="px-3.5 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl font-extrabold transition-all shadow-sm">
                     عرض الردود
                   </button>
-                  <button onclick="MAYDAN_APP.toggleChallengeStatus('${ch.id}', '${ch.status === 'مفتوح' ? 'مغلق' : 'مفتوح'}')" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl font-bold hover:bg-slate-200 transition-all">
+                  <button onclick="MAYDAN_APP.toggleChallengeStatus('${ch.id}', '${ch.status === 'مفتوح' ? 'مغلق' : 'مفتوح'}')" class="px-3 py-1.5 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-200 rounded-xl font-bold hover:bg-slate-300 transition-all border border-slate-300 dark:border-slate-700">
                     ${ch.status === 'مفتوح' ? 'إغلاق' : 'إعادة فتح'}
                   </button>
                 </div>
