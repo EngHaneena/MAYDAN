@@ -599,53 +599,53 @@ window.MAYDAN_APP = (function() {
         const statusClass = statusBadges[prop.status] || "bg-amber-100 text-amber-800 border-amber-300";
 
         return `
-          <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover-lift relative overflow-hidden space-y-4">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-300/80 dark:border-slate-800 shadow-sm hover-lift relative overflow-hidden space-y-4">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
               
               <div class="flex items-start gap-4">
                 <img src="${prop.studentAvatar || 'stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png'}" class="w-14 h-14 rounded-2xl object-cover border-2 border-teal-500/30 shadow-sm shrink-0" alt="${prop.studentName}"/>
                 <div class="space-y-1">
                   <div class="flex items-center gap-2 flex-wrap">
-                    <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 font-headline">${prop.studentName}</h4>
-                    <span class="px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-full">${prop.studentMajor} • ${prop.studentUniversity}</span>
+                    <h4 class="text-base font-extrabold text-slate-900 dark:text-slate-100 font-headline">${prop.studentName}</h4>
+                    <span class="px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-slate-200 dark:border-slate-700">${prop.studentMajor} • ${prop.studentUniversity}</span>
                     <span class="px-2.5 py-0.5 ${statusClass} border text-xs font-bold rounded-full">${prop.status}</span>
                   </div>
-                  <h3 class="text-lg font-bold text-teal-700 dark:text-teal-400 font-headline pt-1">${prop.title}</h3>
+                  <h3 class="text-lg font-extrabold text-teal-800 dark:text-teal-300 font-headline pt-1">${prop.title}</h3>
                 </div>
               </div>
 
               <div class="flex items-center gap-3 shrink-0">
-                <div class="px-3.5 py-1.5 bg-teal-50 dark:bg-slate-800 rounded-xl border border-teal-200 dark:border-slate-700 text-center">
-                  <span class="text-teal-700 dark:text-teal-400 font-bold text-lg font-headline flex items-center gap-1">
+                <div class="px-3.5 py-1.5 bg-teal-100 dark:bg-teal-950/80 rounded-xl border border-teal-300 dark:border-teal-700 text-center">
+                  <span class="text-teal-950 dark:text-teal-300 font-extrabold text-lg font-headline flex items-center gap-1">
                     <span class="material-symbols-outlined text-sm">auto_awesome</span>
                     ${prop.matchScore || 95}%
                   </span>
-                  <span class="text-[10px] text-slate-500 dark:text-slate-400 block">نسبة الملاءمة</span>
+                  <span class="text-[10px] text-slate-700 dark:text-slate-400 font-bold block">نسبة الملاءمة</span>
                 </div>
               </div>
 
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200/60 dark:border-slate-800">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs bg-slate-100 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
               <div>
-                <span class="font-bold text-slate-800 dark:text-slate-200 block mb-0.5">ماذا سيقدم الطالب؟</span>
-                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">${prop.description}</p>
+                <span class="font-extrabold text-slate-900 dark:text-slate-100 block mb-0.5 text-xs">ماذا سيقدم الطالب؟</span>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">${prop.description}</p>
               </div>
               <div>
-                <span class="font-bold text-slate-800 dark:text-slate-200 block mb-0.5">الفائدة المتوقعة للمنشأة:</span>
-                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">${prop.value}</p>
+                <span class="font-extrabold text-slate-900 dark:text-slate-100 block mb-0.5 text-xs">الفائدة المتوقعة للمنشأة:</span>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">${prop.value}</p>
               </div>
             </div>
 
-            <div class="flex items-center justify-between flex-wrap gap-4 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between flex-wrap gap-4 pt-2 border-t border-slate-200 dark:border-slate-800">
               <div class="flex items-center gap-2 flex-wrap">
-                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">المهارات:</span>
-                ${(prop.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">${sk}</span>`).join('')}
-                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium mr-2">المدة: ${prop.duration || '12 أسبوع'}</span>
+                <span class="text-xs text-slate-800 dark:text-slate-300 font-bold">المهارات:</span>
+                ${(prop.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs rounded border border-slate-200 dark:border-slate-700 font-semibold">${sk}</span>`).join('')}
+                <span class="text-xs text-slate-800 dark:text-slate-300 font-bold mr-2">المدة: ${prop.duration || '12 أسبوع'}</span>
               </div>
 
               <div class="flex items-center gap-2 flex-wrap">
-                <select onchange="MAYDAN_APP.updateProposalStatus('${prop.id}', this.value)" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-xl py-1.5 px-3 focus:ring-teal-500">
+                <select onchange="MAYDAN_APP.updateProposalStatus('${prop.id}', this.value)" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-200 text-xs font-bold rounded-xl py-1.5 px-3 focus:ring-teal-500 shadow-sm">
                   <option value="قيد المراجعة" ${prop.status === 'قيد المراجعة' ? 'selected' : ''}>⏳ قيد المراجعة</option>
                   <option value="مهتم" ${prop.status === 'مهتم' ? 'selected' : ''}>🌟 مهتم</option>
                   <option value="يحتاج مناقشة" ${prop.status === 'يحتاج مناقشة' ? 'selected' : ''}>💬 يحتاج مناقشة</option>
@@ -653,11 +653,11 @@ window.MAYDAN_APP = (function() {
                   <option value="غير مناسب حاليًا" ${prop.status === 'غير مناسب حاليًا' ? 'selected' : ''}>❌ غير مناسب حاليًا</option>
                 </select>
 
-                <button onclick="MAYDAN_APP.showStudentProfileModal('${prop.studentId}')" class="px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-xl transition-all">
+                <button onclick="MAYDAN_APP.showStudentProfileModal('${prop.studentId}')" class="px-3.5 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-900 dark:text-slate-200 text-xs font-extrabold rounded-xl transition-all border border-slate-300 dark:border-slate-700">
                   عرض الملف
                 </button>
 
-                <button onclick="MAYDAN_APP.convertProposalToOpportunity('${prop.id}')" class="px-4 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
+                <button onclick="MAYDAN_APP.convertProposalToOpportunity('${prop.id}')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
                   <span class="material-symbols-outlined text-sm">rocket_launch</span>
                   حوّلها إلى فرصة
                 </button>

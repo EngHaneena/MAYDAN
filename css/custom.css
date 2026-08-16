@@ -289,3 +289,54 @@ html:not(.dark) #view-student-applications button:hover {
   color: #0d9488 !important;
 }
 
+/* Light Mode Only: All Challenge & Response Cards High Contrast */
+html:not(.dark) #view-company-challenges .bg-white,
+html:not(.dark) #company-published-challenges .bg-white,
+html:not(.dark) #company-challenge-proposals-container .bg-white,
+html:not(.dark) #company-proposals-container .bg-white {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+html:not(.dark) #view-company-challenges h3,
+html:not(.dark) #view-company-challenges h4,
+html:not(.dark) #company-challenge-proposals-container h3,
+html:not(.dark) #company-challenge-proposals-container h4,
+html:not(.dark) #company-proposals-container h3,
+html:not(.dark) #company-proposals-container h4 {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html:not(.dark) #view-company-challenges p,
+html:not(.dark) #company-challenge-proposals-container p,
+html:not(.dark) #company-proposals-container p {
+  color: #334155 !important;
+}
+
+html:not(.dark) #view-company-challenges .bg-slate-50,
+html:not(.dark) #company-challenge-proposals-container .bg-slate-50,
+html:not(.dark) #company-proposals-container .bg-slate-50,
+html:not(.dark) #view-company-challenges .bg-slate-100,
+html:not(.dark) #company-challenge-proposals-container .bg-slate-100,
+html:not(.dark) #company-proposals-container .bg-slate-100 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+html:not(.dark) #company-challenge-proposals-container select,
+html:not(.dark) #company-proposals-container select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  font-weight: 700 !important;
+}
+
+html:not(.dark) #company-challenge-proposals-container select option,
+html:not(.dark) #company-proposals-container select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
