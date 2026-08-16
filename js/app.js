@@ -430,10 +430,9 @@ window.MAYDAN_APP = (function() {
         const href = link.getAttribute("href");
         const target = link.getAttribute("data-nav-target") || (href ? href.replace("#", "") : null);
         if (target) {
-          // If hash already matches, force navigation immediately
-          if (window.location.hash === `#${target}` || window.location.hash.replace("#", "") === target) {
-            navigateTo(target);
-          }
+          e.preventDefault();
+          window.location.hash = target;
+          navigateTo(target);
         }
       }
     });
