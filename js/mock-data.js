@@ -679,3 +679,9 @@ window.MAYDAN_MOCK = {
     }
   ]
 };
+
+// Aliases for seamless access
+window.MAYDAN_MOCK.opportunities = window.MAYDAN_MOCK.initialOpportunities;
+window.MAYDAN_MOCK.applications = window.MAYDAN_MOCK.initialApplications;
+window.MAYDAN_MOCK.proposals = window.MAYDAN_MOCK.initialProposals;
+window.MAYDAN_MOCK.challenges = window.MAYDAN_MOCK.initialCompanyChallenges;

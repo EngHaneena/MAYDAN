@@ -1,7 +1,7 @@
 // LocalStorage Persistent Store with Firebase Integration for MAYDAN (ميدان)
 
 window.MAYDAN_STORE = (function() {
-  const STORAGE_KEY = "MAYDAN_APP_STATE_V18";
+  const STORAGE_KEY = "MAYDAN_APP_STATE_V19";
 
   let state = {
     role: "company", // "company" or "student"
@@ -39,14 +39,15 @@ window.MAYDAN_STORE = (function() {
 
   function resetToDefaultSeed() {
     if (!window.MAYDAN_MOCK) return;
+    const mock = window.MAYDAN_MOCK;
     state = {
       role: "company",
-      companyInfo: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.companyInfo)),
-      students: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.students)),
-      opportunities: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.opportunities)),
-      applications: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.initialApplications)),
-      proposals: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.initialProposals || [])),
-      challenges: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.initialCompanyChallenges || [])),
+      companyInfo: JSON.parse(JSON.stringify(mock.companyInfo || {})),
+      students: JSON.parse(JSON.stringify(mock.students || [])),
+      opportunities: JSON.parse(JSON.stringify(mock.initialOpportunities || mock.opportunities || [])),
+      applications: JSON.parse(JSON.stringify(mock.initialApplications || mock.applications || [])),
+      proposals: JSON.parse(JSON.stringify(mock.initialProposals || mock.proposals || [])),
+      challenges: JSON.parse(JSON.stringify(mock.initialCompanyChallenges || mock.challenges || [])),
       shortlisted: [
         { studentId: "student-1", opportunityId: "opp-tech-teach" },
         { studentId: "student-1", opportunityId: "opp-1" }
