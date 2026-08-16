@@ -1152,7 +1152,7 @@ window.MAYDAN_APP = (function() {
     document.getElementById("opp-detail-category").textContent = isEn ? opp.category : (opp.categoryAr || opp.category);
     document.getElementById("opp-detail-duration").textContent = isEn ? opp.duration : (opp.durationAr || opp.duration);
     document.getElementById("opp-detail-stipend").textContent = opp.stipend || (isEn ? 'To be decided' : 'تُحدد بعد توقيع العقد');
-    document.getElementById("opp-detail-description").textContent = opp.description;
+    document.getElementById("opp-detail-description").textContent = isEn ? (opp.descriptionEn || opp.description) : opp.description;
     document.getElementById("opp-detail-match-score").textContent = `${match.score}% ${isEn ? 'Match' : 'تطابق'}`;
 
     const matchReasonsContainer = document.getElementById("opp-detail-match-reasons");
@@ -1173,16 +1173,18 @@ window.MAYDAN_APP = (function() {
       ).join('');
     }
 
+    const respList = isEn ? (opp.responsibilitiesEn || opp.responsibilities) : opp.responsibilities;
     const respContainer = document.getElementById("opp-detail-responsibilities");
     if (respContainer) {
-      respContainer.innerHTML = (opp.responsibilities || []).map(r => 
+      respContainer.innerHTML = (respList || []).map(r => 
         `<li class="flex items-start gap-2 text-slate-700 text-sm"><span class="text-teal-600 font-bold">•</span> ${r}</li>`
       ).join('');
     }
 
+    const delivList = isEn ? (opp.deliverablesEn || opp.deliverables) : opp.deliverables;
     const delivContainer = document.getElementById("opp-detail-deliverables");
     if (delivContainer) {
-      delivContainer.innerHTML = (opp.deliverables || []).map(d => 
+      delivContainer.innerHTML = (delivList || []).map(d => 
         `<li class="flex items-start gap-2 text-slate-700 text-sm"><span class="material-symbols-outlined text-teal-600 text-base">verified</span> ${d}</li>`
       ).join('');
     }
