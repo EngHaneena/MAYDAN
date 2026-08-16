@@ -187,7 +187,7 @@ window.MAYDAN_AUTH = (function() {
       if (navContainer) {
         navContainer.innerHTML = `
           <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">الرئيسية</a>
-          <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
+          <a href="#company-challenges" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
             <span class="material-symbols-outlined text-amber-500 text-sm">touch_app</span>
             ضع بصمتك
           </a>
@@ -239,9 +239,17 @@ window.MAYDAN_AUTH = (function() {
 
     if (navContainer) {
       navContainer.innerHTML = `
-        <a href="#landing-page" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">عن ميدان</a>
-        <a href="#student-marketplace" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">استكشاف الفرص</a>
-        <a href="#auth" class="nav-link text-teal-600 font-bold hover:text-teal-700 transition-colors py-1">تسجيل الدخول</a>
+        <a href="#landing-page" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">عن ميدان</a>
+        <a href="#student-marketplace" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">استكشاف الفرص</a>
+        <a href="#company-discovery" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
+          <span class="material-symbols-outlined text-amber-500 text-sm">lightbulb</span>
+          أعطني فرصة
+        </a>
+        <a href="#company-challenges" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
+          <span class="material-symbols-outlined text-amber-500 text-sm">touch_app</span>
+          ضع بصمتك
+        </a>
+        <a href="#auth" class="nav-link nav-link-pill text-teal-600 font-bold hover:text-teal-700 transition-colors">تسجيل الدخول</a>
       `;
     }
 

@@ -892,6 +892,74 @@
 
     </section>
 
+    <!-- ==================== VIEW 13: COMPANY CHALLENGES & NEED HUB ("ضع بصمتك") ==================== -->
+    <section id="view-company-challenges" class="view-panel hidden max-w-5xl mx-auto space-y-8">
+      
+      <!-- Page Hero -->
+      <div class="bg-gradient-to-r from-amber-950 via-slate-900 to-slate-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden space-y-4">
+        <div class="absolute -left-10 -bottom-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="relative z-10 space-y-3 max-w-3xl">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold rounded-full">
+            <span class="material-symbols-outlined text-sm text-amber-400">touch_app</span>
+            ضع بصمتك — سوق الاحتياجات الميدانية
+          </div>
+          <h2 class="text-3xl font-bold font-headline text-white">اعرض تحدياتك، واكتشف مواهب قادرة على تحويلها إلى حلول.</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">اعرض تحديًا أو احتياجًا حقيقيًا في منشأتك، ودع الطلاب يشاركونك أفكارهم ومهاراتهم وحلولهم المبتكرة.</p>
+          
+          <div class="pt-2 flex flex-wrap gap-3 items-center">
+            <button id="open-challenge-modal-btn" class="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-2xl text-xs shadow-lg transition-all flex items-center gap-2 cursor-pointer shrink-0">
+              <span class="material-symbols-outlined text-base">add_circle</span>
+              + اطرح احتياجك
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Important Value Proposition Message to Company -->
+      <div class="p-6 bg-gradient-to-r from-amber-500/10 via-teal-500/10 to-emerald-500/10 dark:from-amber-900/30 dark:to-teal-900/30 border border-amber-400/40 dark:border-amber-700/50 rounded-3xl shadow-sm flex items-start gap-4">
+        <span class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-900 dark:text-amber-300 flex items-center justify-center text-2xl shrink-0">
+          💡
+        </span>
+        <div class="space-y-1">
+          <h3 class="font-bold text-base text-slate-900 dark:text-slate-100 font-headline">مو لازم تعرف بالضبط وش تحتاج من طالب.</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">شاركنا احتياجك أو التحدي التجاري الذي تواجهه، وخَل الطلاب يورونك كيف ممكن مهاراتهم تساعد منشأتك وتحول هذا الاحتياج إلى مشروع فرصة تدريبية ناجح.</p>
+        </div>
+      </div>
+
+      <!-- Published Company Challenges List -->
+      <div class="space-y-4">
+        <div class="flex justify-between items-center">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 font-headline flex items-center gap-2">
+            <span class="material-symbols-outlined text-amber-500">list_alt</span>
+            الاحتياجات والتحديات المطروحة للمنشأة
+          </h3>
+        </div>
+
+        <div id="company-published-challenges" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+
+      <!-- Section: Received Student Proposals for Challenges ("الطلاب المهتمون والردود") -->
+      <div class="space-y-4 pt-6 border-t border-slate-200/80 dark:border-slate-800">
+        <div class="flex justify-between items-center flex-wrap gap-2">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 font-headline flex items-center gap-2">
+              <span class="material-symbols-outlined text-teal-600">groups</span>
+              الطلاب المهتمون والردود المباشرة (ورّهم وش عندك)
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">استعرض مقترحات الطلاب المخصصة لتحديات منشأتك وحوّلها مباشرة لفرص تدريب جامعي رسمية.</p>
+          </div>
+        </div>
+
+        <div id="company-challenge-proposals-container" class="space-y-4">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+
+    </section>
+
   </main>
 
   <!-- ==================== MODALS ==================== -->
@@ -1161,6 +1229,122 @@
       </div>
       <button id="close-proposal-success-btn" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl text-xs shadow-md transition-all">
         الانتقال إلى طلباتي ومقترحاتي ➔
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== CREATE CHALLENGE / NEED MODAL ("+ اطرح احتياجك") ==================== -->
+  <div id="create-challenge-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-2xl w-full space-y-6 shadow-2xl border border-slate-200 dark:border-slate-800 max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex justify-between items-start pb-4 border-b border-slate-100 dark:border-slate-800">
+        <div>
+          <div class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 rounded-full text-xs font-bold">
+            <span class="material-symbols-outlined text-xs">touch_app</span>
+            ضع بصمتك — اطرح احتياجك
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 font-headline mt-1">وش تحتاج؟ (طرح احتياج/تحدي للطلاب)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">اعرض الاحتياج أو المجال التجاري الذي ترغب بدعوة الطلاب لتقديم أفكارهم وحلولهم حوله.</p>
+        </div>
+        <button id="close-challenge-modal-btn" type="button" class="p-2 text-slate-400 hover:text-slate-600 rounded-full">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Important Guidance Box to Company -->
+      <div class="p-4 bg-amber-50 dark:bg-slate-800 rounded-2xl border border-amber-300/60 dark:border-amber-700/50 space-y-1 text-xs">
+        <span class="font-bold text-amber-900 dark:text-amber-300 flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">lightbulb</span>
+          مو لازم تعرف بالضبط وش تحتاج من طالب.
+        </span>
+        <p class="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">شاركنا احتياجك بلغة عامية بسيطة، وخَل الطلاب يورونك كيف ممكن مهاراتهم تساعد منشأتك.</p>
+      </div>
+
+      <!-- AI Assistant Button -->
+      <div class="p-4 bg-gradient-to-r from-teal-500/10 via-amber-500/10 to-emerald-500/10 rounded-2xl border border-teal-500/30 flex items-center justify-between flex-wrap gap-3">
+        <div class="space-y-0.5">
+          <span class="font-bold text-xs text-slate-900 dark:text-slate-100 flex items-center gap-1">
+            <span class="material-symbols-outlined text-teal-600 text-sm">auto_awesome</span>
+            مساعد الذكاء الاصطناعي (AI Assistant)
+          </span>
+          <p class="text-[11px] text-slate-600 dark:text-slate-300">أدخل احتياجك بلغة طبيعية وسيساعدك AI في صياغته وهيكلته فوراً.</p>
+        </div>
+        <button id="ai-help-challenge-btn" type="button" class="px-4 py-2 bg-gradient-to-r from-amber-500 to-teal-600 hover:from-amber-400 hover:to-teal-500 text-slate-950 dark:text-white font-bold rounded-xl text-xs shadow-md transition-all flex items-center gap-1.5 shrink-0">
+          <span class="material-symbols-outlined text-sm">auto_awesome</span>
+          ساعدني بالذكاء الاصطناعي ✨
+        </button>
+      </div>
+
+      <form id="create-challenge-form" class="space-y-4 text-xs">
+        
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-800 dark:text-slate-200">عنوان الاحتياج</label>
+          <input type="text" id="challenge-title-input" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-amber-500" placeholder="مثال: نحتاج تحسين طريقة عرض بيانات المبيعات ومتابعة أداء الفروع" required>
+        </div>
+
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-800 dark:text-slate-200">وصف الاحتياج والتحدي</label>
+          <textarea id="challenge-desc-input" rows="3" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-amber-500" placeholder="شرح مبسط للاحتياج التجاري أو المشكلة التي تبحث عن أفكار وحلول الطلاب لمواجهتها..." required></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-800 dark:text-slate-200">المجال / القطاع</label>
+            <input type="text" id="challenge-category-input" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-amber-500" placeholder="تحليل البيانات والأنظمة">
+          </div>
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-800 dark:text-slate-200">المهارات التي قد تساعد</label>
+            <input type="text" id="challenge-skills-input" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-amber-500" placeholder="Python, SQL, Power BI, Data Analysis">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-800 dark:text-slate-200">المدة المقترحة</label>
+            <select id="challenge-duration-input" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none">
+              <option value="8 أسابيع">8 أسابيع (تدريب صيفي)</option>
+              <option value="12 أسبوع" selected>12 أسبوع (تدريب جامعي)</option>
+              <option value="16 أسبوع">16 أسبوع (فصل دراسي كامل)</option>
+            </select>
+          </div>
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-800 dark:text-slate-200">الموقع</label>
+            <input type="text" id="challenge-location-input" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none" value="القصيم (بريدة)">
+          </div>
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-800 dark:text-slate-200">نوع العمل</label>
+            <select id="challenge-worktype-input" class="w-full p-3 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs outline-none">
+              <option value="حضوري" selected>حضوري</option>
+              <option value="عن بعد">عن بعد</option>
+              <option value="هجين">هجين</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pt-4 flex gap-3">
+          <button type="submit" class="flex-1 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl shadow-md transition-all text-xs flex items-center justify-center gap-1.5">
+            <span class="material-symbols-outlined text-sm">send</span>
+            اعرض الاحتياج للطلاب
+          </button>
+          <button type="button" id="cancel-challenge-modal-btn" class="px-5 py-3.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-xl text-xs">إلغاء</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- CHALLENGE SUCCESS CELEBRATION MODAL -->
+  <div id="challenge-success-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-md w-full text-center space-y-6 shadow-2xl border border-slate-200 dark:border-slate-800">
+      <div class="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-600 flex items-center justify-center mx-auto text-3xl">
+        🎉
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 font-headline">تم نشر احتياجك بنجاح 🎉</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">الآن يمكن للطلاب الاطلاع عليه وورينا وش يقدرون يقدمون لك من أفكار وحلول حقيقية.</p>
+      </div>
+      <button id="close-challenge-success-btn" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs shadow-md transition-all">
+        الانتقال لاحتياجات المنشأة ➔
       </button>
     </div>
   </div>

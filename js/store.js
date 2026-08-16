@@ -42,6 +42,7 @@ window.MAYDAN_STORE = (function() {
       opportunities: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.opportunities)),
       applications: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.initialApplications)),
       proposals: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.initialProposals || [])),
+      challenges: JSON.parse(JSON.stringify(window.MAYDAN_MOCK.initialCompanyChallenges || [])),
       shortlisted: [
         { studentId: "student-1", opportunityId: "opp-tech-teach" },
         { studentId: "student-1", opportunityId: "opp-1" }
@@ -296,6 +297,58 @@ window.MAYDAN_STORE = (function() {
         }
       }
       return prop;
+    },
+
+    // --- COMPANY CHALLENGES API ("ضع بصمتك") ---
+    getCompanyChallenges: function(companyId) {
+      if (!state.challenges || state.challenges.length === 0) {
+        state.challenges = JSON.parse(JSON.stringify(window.MAYDAN_MOCK.initialCompanyChallenges || []));
+        saveState();
+      }
+      if (!companyId) return state.challenges;
+      return state.challenges.filter(c => c.companyId === companyId || c.companyId === "comp-smart-methods" || companyId === "comp-smart-methods");
+    },
+
+    addCompanyChallenge: function(data) {
+      if (!state.challenges) state.challenges = [];
+      const newChallenge = {
+        id: "ch-" + Date.now(),
+        companyId: data.companyId || "comp-smart-methods",
+        companyName: data.companyName || "شركة الأساليب الذكية (Smart Methods)",
+        companyLogo: data.companyLogo || "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png",
+        title: data.title || "احتياج جديد للمنشأة",
+        description: data.description || "",
+        category: data.category || "تحليل البيانات والأنظمة",
+        skills: data.skills || ["Python", "Data Analysis"],
+        duration: data.duration || "12 أسبوع",
+        location: data.location || "القصيم - حضوري",
+        workType: data.workType || "حضوري",
+        status: "مفتوح",
+        responsesCount: 0,
+        createdAt: new Date().toISOString().split("T")[0]
+      };
+
+      state.challenges.unshift(newChallenge);
+      saveState();
+
+      if (window.MAYDAN_FIREBASE) {
+        window.MAYDAN_FIREBASE.saveCompanyChallenge(newChallenge);
+      }
+
+      return newChallenge;
+    },
+
+    updateChallengeStatus: function(challengeId, newStatus) {
+      const all = this.getCompanyChallenges();
+      const ch = all.find(c => c.id === challengeId);
+      if (ch) {
+        ch.status = newStatus;
+        saveState();
+        if (window.MAYDAN_FIREBASE) {
+          window.MAYDAN_FIREBASE.saveCompanyChallenge(ch);
+        }
+      }
+      return ch;
     }
   };
 })();

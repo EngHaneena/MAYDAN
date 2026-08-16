@@ -13,6 +13,7 @@ window.MAYDAN_APP = (function() {
     setupAuthViewUI();
     setupProfileModalsUI();
     setupProposalModalsUI();
+    setupChallengeModalsUI();
     handleRouting();
     window.addEventListener("hashchange", handleRouting);
   }
@@ -191,7 +192,7 @@ window.MAYDAN_APP = (function() {
       if (navContainer) {
         navContainer.innerHTML = `
           <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Home' : 'الرئيسية'}</a>
-          <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
+          <a href="#company-challenges" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
             <span class="material-symbols-outlined text-amber-500 text-sm">touch_app</span>
             ${isEn ? 'Leave Your Mark' : 'ضع بصمتك'}
           </a>
@@ -473,6 +474,9 @@ window.MAYDAN_APP = (function() {
       case "company-student-detail":
         renderCompanyStudentDetail();
         break;
+      case "company-challenges":
+        renderCompanyChallenges();
+        break;
     }
   }
 
@@ -562,15 +566,14 @@ window.MAYDAN_APP = (function() {
   }
 
   function renderCompanyProposals() {
-    const container = document.getElementById("company-proposals-container");
-    if (!container) return;
+    const containers = [
+      document.getElementById("company-proposals-container"),
+      document.getElementById("company-challenge-proposals-container")
+    ].filter(Boolean);
+
+    if (containers.length === 0) return;
 
     const proposals = window.MAYDAN_STORE.getProposalsForCompany("comp-smart-methods");
-
-    if (!proposals || proposals.length === 0) {
-      container.innerHTML = `<div class="p-8 text-center text-slate-500 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">لا توجد مقترحات مباشرة من الطلاب حاليًا.</div>`;
-      return;
-    }
 
     const statusBadges = {
       "قيد المراجعة": "bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 border-amber-300",
@@ -580,77 +583,84 @@ window.MAYDAN_APP = (function() {
       "غير مناسب حاليًا": "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-300"
     };
 
-    container.innerHTML = proposals.map(prop => {
-      const statusClass = statusBadges[prop.status] || "bg-amber-100 text-amber-800 border-amber-300";
+    containers.forEach(container => {
+      if (!proposals || proposals.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center text-slate-500 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">لا توجد مقترحات مباشرة من الطلاب حاليًا.</div>`;
+        return;
+      }
 
-      return `
-        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover-lift relative overflow-hidden space-y-4">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            
-            <div class="flex items-start gap-4">
-              <img src="${prop.studentAvatar || 'stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png'}" class="w-14 h-14 rounded-2xl object-cover border-2 border-teal-500/30 shadow-sm shrink-0" alt="${prop.studentName}"/>
-              <div class="space-y-1">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 font-headline">${prop.studentName}</h4>
-                  <span class="px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-full">${prop.studentMajor} • ${prop.studentUniversity}</span>
-                  <span class="px-2.5 py-0.5 ${statusClass} border text-xs font-bold rounded-full">${prop.status}</span>
+      container.innerHTML = proposals.map(prop => {
+        const statusClass = statusBadges[prop.status] || "bg-amber-100 text-amber-800 border-amber-300";
+
+        return `
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover-lift relative overflow-hidden space-y-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              
+              <div class="flex items-start gap-4">
+                <img src="${prop.studentAvatar || 'stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png'}" class="w-14 h-14 rounded-2xl object-cover border-2 border-teal-500/30 shadow-sm shrink-0" alt="${prop.studentName}"/>
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 font-headline">${prop.studentName}</h4>
+                    <span class="px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-full">${prop.studentMajor} • ${prop.studentUniversity}</span>
+                    <span class="px-2.5 py-0.5 ${statusClass} border text-xs font-bold rounded-full">${prop.status}</span>
+                  </div>
+                  <h3 class="text-lg font-bold text-teal-700 dark:text-teal-400 font-headline pt-1">${prop.title}</h3>
                 </div>
-                <h3 class="text-lg font-bold text-teal-700 dark:text-teal-400 font-headline pt-1">${prop.title}</h3>
+              </div>
+
+              <div class="flex items-center gap-3 shrink-0">
+                <div class="px-3.5 py-1.5 bg-teal-50 dark:bg-slate-800 rounded-xl border border-teal-200 dark:border-slate-700 text-center">
+                  <span class="text-teal-700 dark:text-teal-400 font-bold text-lg font-headline flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                    ${prop.matchScore || 95}%
+                  </span>
+                  <span class="text-[10px] text-slate-500 dark:text-slate-400 block">نسبة الملاءمة</span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200/60 dark:border-slate-800">
+              <div>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block mb-0.5">ماذا سيقدم الطالب؟</span>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">${prop.description}</p>
+              </div>
+              <div>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block mb-0.5">الفائدة المتوقعة للمنشأة:</span>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">${prop.value}</p>
               </div>
             </div>
 
-            <div class="flex items-center gap-3 shrink-0">
-              <div class="px-3.5 py-1.5 bg-teal-50 dark:bg-slate-800 rounded-xl border border-teal-200 dark:border-slate-700 text-center">
-                <span class="text-teal-700 dark:text-teal-400 font-bold text-lg font-headline flex items-center gap-1">
-                  <span class="material-symbols-outlined text-sm">auto_awesome</span>
-                  ${prop.matchScore || 95}%
-                </span>
-                <span class="text-[10px] text-slate-500 dark:text-slate-400 block">نسبة الملاءمة</span>
+            <div class="flex items-center justify-between flex-wrap gap-4 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">المهارات:</span>
+                ${(prop.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">${sk}</span>`).join('')}
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium mr-2">المدة: ${prop.duration || '12 أسبوع'}</span>
+              </div>
+
+              <div class="flex items-center gap-2 flex-wrap">
+                <select onchange="MAYDAN_APP.updateProposalStatus('${prop.id}', this.value)" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-xl py-1.5 px-3 focus:ring-teal-500">
+                  <option value="قيد المراجعة" ${prop.status === 'قيد المراجعة' ? 'selected' : ''}>⏳ قيد المراجعة</option>
+                  <option value="مهتم" ${prop.status === 'مهتم' ? 'selected' : ''}>🌟 مهتم</option>
+                  <option value="يحتاج مناقشة" ${prop.status === 'يحتاج مناقشة' ? 'selected' : ''}>💬 يحتاج مناقشة</option>
+                  <option value="تم تحويله إلى فرصة" ${prop.status === 'تم تحويله إلى فرصة' ? 'selected' : ''}>🚀 تم تحويله إلى فرصة</option>
+                  <option value="غير مناسب حاليًا" ${prop.status === 'غير مناسب حاليًا' ? 'selected' : ''}>❌ غير مناسب حاليًا</option>
+                </select>
+
+                <button onclick="MAYDAN_APP.showStudentProfileModal('${prop.studentId}')" class="px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-xl transition-all">
+                  عرض الملف
+                </button>
+
+                <button onclick="MAYDAN_APP.convertProposalToOpportunity('${prop.id}')" class="px-4 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-sm">rocket_launch</span>
+                  حوّلها إلى فرصة
+                </button>
               </div>
             </div>
-
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200/60 dark:border-slate-800">
-            <div>
-              <span class="font-bold text-slate-800 dark:text-slate-200 block mb-0.5">ماذا سيقدم الطالب؟</span>
-              <p class="text-slate-600 dark:text-slate-300 leading-relaxed">${prop.description}</p>
-            </div>
-            <div>
-              <span class="font-bold text-slate-800 dark:text-slate-200 block mb-0.5">الفائدة المتوقعة للمنشأة:</span>
-              <p class="text-slate-600 dark:text-slate-300 leading-relaxed">${prop.value}</p>
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between flex-wrap gap-4 pt-2 border-t border-slate-100 dark:border-slate-800">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">المهارات:</span>
-              ${(prop.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded">${sk}</span>`).join('')}
-              <span class="text-xs text-slate-500 dark:text-slate-400 font-medium mr-2">المدة: ${prop.duration || '12 أسبوع'}</span>
-            </div>
-
-            <div class="flex items-center gap-2 flex-wrap">
-              <select onchange="MAYDAN_APP.updateProposalStatus('${prop.id}', this.value)" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-xl py-1.5 px-3 focus:ring-teal-500">
-                <option value="قيد المراجعة" ${prop.status === 'قيد المراجعة' ? 'selected' : ''}>⏳ قيد المراجعة</option>
-                <option value="مهتم" ${prop.status === 'مهتم' ? 'selected' : ''}>🌟 مهتم</option>
-                <option value="يحتاج مناقشة" ${prop.status === 'يحتاج مناقشة' ? 'selected' : ''}>💬 يحتاج مناقشة</option>
-                <option value="تم تحويله إلى فرصة" ${prop.status === 'تم تحويله إلى فرصة' ? 'selected' : ''}>🚀 تم تحويله إلى فرصة</option>
-                <option value="غير مناسب حاليًا" ${prop.status === 'غير مناسب حاليًا' ? 'selected' : ''}>❌ غير مناسب حاليًا</option>
-              </select>
-
-              <button onclick="MAYDAN_APP.showStudentProfileModal('${prop.studentId}')" class="px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-xl transition-all">
-                عرض الملف
-              </button>
-
-              <button onclick="MAYDAN_APP.convertProposalToOpportunity('${prop.id}')" class="px-4 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-sm">rocket_launch</span>
-                حوّلها إلى فرصة
-              </button>
-            </div>
-          </div>
-        </div>
-      `;
-    }).join('');
+        `;
+      }).join('');
+    });
   }
 
   // --- 2. CREATE OPPORTUNITY WITH AI ---
@@ -1427,6 +1437,54 @@ window.MAYDAN_APP = (function() {
       ).join('');
     }
 
+    // Render Company Challenges ("الشركة تبحث عن ماذا؟")
+    const challenges = window.MAYDAN_STORE.getCompanyChallenges(company.id);
+    let challengesSection = document.getElementById("comp-detail-challenges-section");
+    
+    if (!challengesSection && fieldsContainer) {
+      const parentDiv = fieldsContainer.closest(".space-y-4");
+      if (parentDiv) {
+        challengesSection = document.createElement("div");
+        challengesSection.id = "comp-detail-challenges-section";
+        challengesSection.className = "space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800";
+        parentDiv.after(challengesSection);
+      }
+    }
+
+    if (challengesSection) {
+      if (challenges.length > 0) {
+        challengesSection.innerHTML = `
+          <h3 class="font-bold text-slate-900 dark:text-slate-100 text-lg font-headline flex items-center gap-2">
+            <span class="material-symbols-outlined text-amber-500">touch_app</span>
+            الشركة تبحث عن ماذا؟ (تحديات واحتياجات المنشأة)
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            ${challenges.map(ch => `
+              <div class="bg-amber-50/60 dark:bg-slate-800/80 rounded-2xl p-5 border border-amber-200/80 dark:border-slate-700 space-y-3 flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex justify-between items-start gap-2">
+                    <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100 font-headline">${ch.title}</h4>
+                    <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/50 text-amber-900 dark:text-amber-300 text-[10px] font-bold rounded-full">${ch.status}</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${ch.description}</p>
+                  <div class="flex flex-wrap gap-1 text-[11px]">
+                    <span class="px-2 py-0.5 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded font-medium">${ch.workType}</span>
+                    ${(ch.skills || []).map(s => `<span class="px-2 py-0.5 bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">${s}</span>`).join('')}
+                  </div>
+                </div>
+                <button onclick="MAYDAN_APP.openProposalModalForChallenge('${company.id}', '${ch.id}', '${encodeURIComponent(ch.title)}')" class="w-full py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1 shadow-sm">
+                  <span class="material-symbols-outlined text-sm">rocket_launch</span>
+                  ورّهم وش عندك 🚀
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } else {
+        challengesSection.innerHTML = ``;
+      }
+    }
+
     // Render AI Suggestions ("أفكار ممكن تقدمها للشركة")
     const ideasContainer = document.getElementById("ai-company-ideas-container");
     if (ideasContainer) {
@@ -1548,6 +1606,136 @@ window.MAYDAN_APP = (function() {
     }
   }
 
+  // --- 11. COMPANY CHALLENGES & NEED HUB ("ضع بصمتك") ---
+  function renderCompanyChallenges() {
+    const challenges = window.MAYDAN_STORE.getCompanyChallenges("comp-smart-methods");
+    const container = document.getElementById("company-published-challenges");
+    const proposalsContainer = document.getElementById("company-challenge-proposals-container");
+
+    if (container) {
+      if (challenges.length === 0) {
+        container.innerHTML = `<div class="col-span-full p-8 text-center text-slate-500 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">لم تقم بطرح أي احتياج حتى الآن. انقر على "+ اطرح احتياجك" لبدء دعوة الطلاب!</div>`;
+      } else {
+        const statusBadges = {
+          "مفتوح": "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 border-emerald-300",
+          "قيد المراجعة": "bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 border-amber-300",
+          "مغلق": "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-300"
+        };
+
+        container.innerHTML = challenges.map(ch => {
+          const statusClass = statusBadges[ch.status] || "bg-emerald-100 text-emerald-800 border-emerald-300";
+
+          return `
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover-lift relative overflow-hidden flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex justify-between items-start gap-2">
+                  <div>
+                    <span class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 text-xs font-semibold rounded-full mb-2">${ch.category || 'تحدي ميداني'}</span>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 font-headline">${ch.title}</h3>
+                  </div>
+                  <span class="px-2.5 py-1 ${statusClass} border text-xs font-bold rounded-full shrink-0">${ch.status}</span>
+                </div>
+
+                <p class="text-slate-600 dark:text-slate-300 text-xs line-clamp-3 leading-relaxed">${ch.description}</p>
+
+                <div class="flex flex-wrap gap-1.5 pt-2 text-xs">
+                  <span class="px-2 py-0.5 bg-emerald-50 dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 rounded border border-emerald-200 dark:border-slate-700">${ch.location || 'القصيم'}</span>
+                  <span class="px-2 py-0.5 bg-blue-50 dark:bg-slate-800 text-blue-800 dark:text-blue-300 rounded border border-blue-200 dark:border-slate-700">${ch.workType || 'حضوري'}</span>
+                  ${(ch.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-700">${sk}</span>`).join('')}
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between flex-wrap gap-2 text-xs">
+                <span class="text-slate-500 font-medium">${ch.responsesCount || 0} ردود من الطلاب</span>
+                <div class="flex items-center gap-2">
+                  <button onclick="MAYDAN_APP.scrollToChallengeProposals()" class="px-3.5 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl font-bold transition-all shadow-sm">
+                    عرض الردود
+                  </button>
+                  <button onclick="MAYDAN_APP.toggleChallengeStatus('${ch.id}', '${ch.status === 'مفتوح' ? 'مغلق' : 'مفتوح'}')" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl font-bold hover:bg-slate-200 transition-all">
+                    ${ch.status === 'مفتوح' ? 'إغلاق' : 'إعادة فتح'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    if (proposalsContainer) {
+      renderCompanyProposals();
+    }
+  }
+
+  function setupChallengeModalsUI() {
+    const modal = document.getElementById("create-challenge-modal");
+    const successModal = document.getElementById("challenge-success-modal");
+    const openBtn = document.getElementById("open-challenge-modal-btn");
+    const closeBtn = document.getElementById("close-challenge-modal-btn");
+    const cancelBtn = document.getElementById("cancel-challenge-modal-btn");
+    const aiHelpBtn = document.getElementById("ai-help-challenge-btn");
+    const form = document.getElementById("create-challenge-form");
+    const closeSuccessBtn = document.getElementById("close-challenge-success-btn");
+
+    if (openBtn && modal) {
+      openBtn.onclick = function() {
+        modal.classList.remove("hidden");
+      };
+    }
+
+    if (closeBtn && modal) closeBtn.onclick = () => modal.classList.add("hidden");
+    if (cancelBtn && modal) cancelBtn.onclick = () => modal.classList.add("hidden");
+
+    if (aiHelpBtn) {
+      aiHelpBtn.onclick = function() {
+        const inputVal = document.getElementById("challenge-desc-input").value.trim() || document.getElementById("challenge-title-input").value.trim() || "نحتاج تحسين طريقة عرض بيانات المبيعات ومتابعة أداء الفروع";
+        const compInfo = window.MAYDAN_STORE.getCompanyInfo();
+
+        const draft = window.MAYDAN_AI.generateChallengeFromAi(inputVal, compInfo);
+        document.getElementById("challenge-title-input").value = draft.title;
+        document.getElementById("challenge-desc-input").value = draft.description;
+        document.getElementById("challenge-category-input").value = draft.category;
+        document.getElementById("challenge-skills-input").value = draft.skills.join(", ");
+        document.getElementById("challenge-duration-input").value = draft.duration;
+        document.getElementById("challenge-location-input").value = draft.location;
+        document.getElementById("challenge-worktype-input").value = draft.workType;
+
+        alert("تمت هيكلة الاحتياج بالذكاء الاصطناعي بنجاح! يمكنك مراجعة البيانات وتعديلها قبل العرض للطلاب. ✨");
+      };
+    }
+
+    if (form) {
+      form.onsubmit = function(e) {
+        e.preventDefault();
+        const compInfo = window.MAYDAN_STORE.getCompanyInfo();
+
+        const newChallenge = {
+          companyId: compInfo ? compInfo.id : "comp-smart-methods",
+          companyName: compInfo ? compInfo.name : "شركة الأساليب الذكية (Smart Methods)",
+          title: document.getElementById("challenge-title-input").value,
+          description: document.getElementById("challenge-desc-input").value,
+          category: document.getElementById("challenge-category-input").value || "تحليل البيانات والأنظمة",
+          skills: document.getElementById("challenge-skills-input").value.split(",").map(s => s.trim()).filter(Boolean),
+          duration: document.getElementById("challenge-duration-input").value,
+          location: document.getElementById("challenge-location-input").value,
+          workType: document.getElementById("challenge-worktype-input").value
+        };
+
+        window.MAYDAN_STORE.addCompanyChallenge(newChallenge);
+        if (modal) modal.classList.add("hidden");
+        if (successModal) successModal.classList.remove("hidden");
+        renderCompanyChallenges();
+      };
+    }
+
+    if (closeSuccessBtn && successModal) {
+      closeSuccessBtn.onclick = function() {
+        successModal.classList.add("hidden");
+        window.location.hash = "company-challenges";
+      };
+    }
+  }
+
   // --- PUBLIC CONTROLLERS ---
   return {
     init: init,
@@ -1555,16 +1743,19 @@ window.MAYDAN_APP = (function() {
     viewCandidates: function(oppId) {
       activeOpportunityId = oppId;
       window.location.hash = "company-candidates";
+      navigateTo("company-candidates");
     },
 
     viewOpportunityDetails: function(oppId) {
       activeOpportunityId = oppId;
       window.location.hash = "student-opportunity-details";
+      navigateTo("student-opportunity-details");
     },
 
     viewCompanyStudentDetail: function(companyId) {
       activeCompanyId = companyId || "comp-smart-methods";
       window.location.hash = "company-student-detail";
+      navigateTo("company-student-detail");
     },
 
     openProposalModal: function(companyId) {
@@ -1615,6 +1806,35 @@ window.MAYDAN_APP = (function() {
 
       alert(`تم تحويل مقترح الطالبة (${prop.studentName}) إلى مسودة فرصة جديدة! جاري نقلك لإدارة وصياغة الفرصة بالذكاء الاصطناعي. 🚀`);
       window.location.hash = "company-create";
+      navigateTo("company-create");
+    },
+
+    openChallengeModal: function() {
+      const modal = document.getElementById("create-challenge-modal");
+      if (modal) modal.classList.remove("hidden");
+    },
+
+    toggleChallengeStatus: function(challengeId, newStatus) {
+      window.MAYDAN_STORE.updateChallengeStatus(challengeId, newStatus);
+      alert(`تم تحديث حالة الاحتياج إلى (${newStatus}) بنجاح! ✨`);
+      renderCompanyChallenges();
+    },
+
+    scrollToChallengeProposals: function() {
+      const container = document.getElementById("company-challenge-proposals-container");
+      if (container) {
+        container.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+
+    openProposalModalForChallenge: function(companyId, challengeId, encodedTitle) {
+      this.openProposalModal(companyId);
+      try {
+        const title = decodeURIComponent(encodedTitle);
+        document.getElementById("proposal-title-input").value = `استجابة لاحتياج: ${title}`;
+      } catch (e) {
+        console.warn("Could not parse challenge title", e);
+      }
     },
 
     toggleShortlistCandidate: function(studentId, oppId) {
