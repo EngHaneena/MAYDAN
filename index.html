@@ -20,7 +20,7 @@
   </script>
   
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/custom.css?v=17">
+  <link rel="stylesheet" href="css/custom.css?v=18">
 </head>
 <body class="bg-[#f7f9fb] text-[#191c1e] antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
 
@@ -44,7 +44,7 @@
     </div>
 
     <!-- Single Role-Aware Navigation Container (Dynamically rendered in app.js) -->
-    <nav id="main-nav-links" class="hidden md:flex items-center gap-1 sm:gap-2 text-xs font-bold mx-auto">
+    <nav id="main-nav-links" class="hidden lg:flex items-center gap-1 sm:gap-2 text-xs font-bold mx-auto">
       <!-- Injected Dynamically by MAYDAN_APP -->
     </nav>
 
@@ -84,7 +84,7 @@
   </header>
 
   <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
-  <main class="pt-36 sm:pt-44 pb-16 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto w-full flex-grow">
+  <main class="pt-36 sm:pt-44 pb-28 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto w-full flex-grow">
 
     <!-- ==================== VIEW 0: MAYDAN LANDING PAGE ==================== -->
     <section id="view-landing-page" class="view-panel space-y-16 py-4">
@@ -519,10 +519,16 @@
       <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-md space-y-8">
         
         <!-- Header -->
-        <div class="flex flex-col sm:flex-row justify-between items-start gap-4 pb-6 border-b border-slate-100">
+        <div class="flex flex-col sm:flex-row justify-between items-start gap-4 pb-6 border-b border-slate-100 dark:border-slate-800">
           <div class="space-y-1">
-            <span id="opp-detail-category" class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold">Data Analytics</span>
-            <h2 id="opp-detail-title" class="text-2xl font-bold text-slate-900 font-headline">Customer Insights Dashboard</h2>
+            <div class="flex items-center gap-2 flex-wrap pb-1">
+              <a href="#student-marketplace" class="inline-flex items-center gap-1 px-3 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold transition-all">
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                العودة للفرص
+              </a>
+              <span id="opp-detail-category" class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold">Data Analytics</span>
+            </div>
+            <h2 id="opp-detail-title" class="text-2xl font-bold text-slate-900 dark:text-slate-100 font-headline">Customer Insights Dashboard</h2>
             <div class="flex items-center gap-2 flex-wrap">
               <p class="text-sm text-slate-600 dark:text-slate-300 font-medium flex items-center gap-1">
                 <span class="material-symbols-outlined text-base">corporate_fare</span>
@@ -533,12 +539,12 @@
           </div>
 
           <!-- AI Match Ring / Score -->
-          <div class="p-4 bg-teal-50 rounded-2xl border border-teal-200/70 text-center min-w-[140px]">
-            <div class="flex items-center justify-center gap-1 text-teal-700 font-bold text-2xl font-headline">
+          <div class="p-4 bg-teal-50 dark:bg-slate-800/80 rounded-2xl border border-teal-200/70 dark:border-slate-700 text-center min-w-[140px] shrink-0">
+            <div class="flex items-center justify-center gap-1 text-teal-700 dark:text-teal-300 font-bold text-2xl font-headline">
               <span class="material-symbols-outlined text-teal-600 text-2xl animate-ai-pulse">auto_awesome</span>
               <span id="opp-detail-match-score">92%</span>
             </div>
-            <p class="text-[11px] text-teal-800 font-medium">نسبة تطابق ملفك</p>
+            <p class="text-[11px] text-teal-800 dark:text-teal-300 font-medium">نسبة تطابق ملفك</p>
           </div>
         </div>
 
@@ -999,6 +1005,13 @@
     </section>
 
   </main>
+
+  <!-- ==================== MOBILE BOTTOM NAVIGATION DOCK ==================== -->
+  <nav id="mobile-bottom-nav" class="fixed bottom-0 left-0 right-0 z-40 lg:hidden mobile-bottom-nav px-2 py-1.5 transition-all">
+    <div id="mobile-nav-links" class="flex items-center justify-around gap-1 max-w-lg mx-auto">
+      <!-- Injected Dynamically by MAYDAN_APP -->
+    </div>
+  </nav>
 
   <!-- ==================== MODALS ==================== -->
 
@@ -1519,9 +1532,9 @@
   <script src="js/firebase-auth.js"></script>
 
   <!-- App JavaScript Modules -->
-  <script src="js/mock-data.js?v=17"></script>
-  <script src="js/ai-engine.js?v=17"></script>
-  <script src="js/store.js?v=17"></script>
-  <script src="js/app.js?v=17"></script>
+  <script src="js/mock-data.js?v=18"></script>
+  <script src="js/ai-engine.js?v=18"></script>
+  <script src="js/store.js?v=18"></script>
+  <script src="js/app.js?v=18"></script>
 </body>
 </html>

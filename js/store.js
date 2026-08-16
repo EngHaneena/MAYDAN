@@ -1,7 +1,7 @@
 // LocalStorage Persistent Store with Firebase Integration for MAYDAN (ميدان)
 
 window.MAYDAN_STORE = (function() {
-  const STORAGE_KEY = "MAYDAN_APP_STATE_V17"; // Updated to V17 to clear Mojibake cached data
+  const STORAGE_KEY = "MAYDAN_APP_STATE_V18";
 
   let state = {
     role: "company", // "company" or "student"

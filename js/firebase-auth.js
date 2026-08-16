@@ -179,30 +179,56 @@ window.MAYDAN_AUTH = (function() {
   }
 
   function updateNavbarForAuthUser() {
+    const isEn = window.MAYDAN_LANG === "en";
     const role = window.MAYDAN_STORE ? window.MAYDAN_STORE.getRole() : (userProfile ? userProfile.role : "company");
     const navContainer = document.getElementById("main-nav-links");
+    const mobileNavContainer = document.getElementById("mobile-nav-links");
     const userBadge = document.getElementById("nav-user-badge");
 
     if (role === "company") {
       if (navContainer) {
         navContainer.innerHTML = `
-          <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">الرئيسية</a>
+          <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Home' : 'الرئيسية'}</a>
           <a href="#company-challenges" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
             <span class="material-symbols-outlined text-amber-500 text-sm">touch_app</span>
-            ضع بصمتك
+            ${isEn ? 'Leave Your Mark' : 'ضع بصمتك'}
           </a>
           <a href="#company-create" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors flex items-center gap-1">
             <span class="material-symbols-outlined text-teal-500 text-base">auto_awesome</span>
-            إنشاء فرصة
+            ${isEn ? 'Create Opportunity' : 'إنشاء فرصة'}
           </a>
-          <a href="#company-candidates" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">المرشحون المطابقون</a>
-          <a href="#company-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">ملف الشركة</a>
+          <a href="#company-candidates" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Candidates' : 'المرشحون المطابقون'}</a>
+          <a href="#company-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Company Profile' : 'ملف الشركة'}</a>
+        `;
+      }
+      if (mobileNavContainer) {
+        mobileNavContainer.innerHTML = `
+          <a href="#company-dashboard" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">home</span>
+            <span>${isEn ? 'Home' : 'الرئيسية'}</span>
+          </a>
+          <a href="#company-challenges" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5 text-amber-500">touch_app</span>
+            <span>${isEn ? 'Challenges' : 'ضع بصمتك'}</span>
+          </a>
+          <a href="#company-create" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5 text-teal-500">add_circle</span>
+            <span>${isEn ? 'Create' : 'إنشاء فرصة'}</span>
+          </a>
+          <a href="#company-candidates" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">group</span>
+            <span>${isEn ? 'Candidates' : 'المرشحون'}</span>
+          </a>
+          <a href="#company-profile" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">corporate_fare</span>
+            <span>${isEn ? 'Profile' : 'الملف'}</span>
+          </a>
         `;
       }
       if (userBadge) {
         userBadge.innerHTML = `
           <img src="stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png" class="w-8 h-8 rounded-full border border-teal-500/30 object-cover shrink-0" alt="Company Logo"/>
-          <span class="font-semibold text-xs text-slate-800 hidden lg:inline">${userProfile ? userProfile.name : 'شركة الأساليب الذكية'}</span>
+          <span class="font-semibold text-xs text-slate-800 dark:text-slate-200 hidden lg:inline">${userProfile ? userProfile.name : (isEn ? 'Smart Methods' : 'شركة الأساليب الذكية')}</span>
           <button onclick="MAYDAN_AUTH.logout()" title="تسجيل الخروج" class="p-1 text-slate-400 hover:text-rose-600 transition-colors">
             <span class="material-symbols-outlined text-base">logout</span>
           </button>
@@ -211,20 +237,44 @@ window.MAYDAN_AUTH = (function() {
     } else {
       if (navContainer) {
         navContainer.innerHTML = `
-          <a href="#student-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">الرئيسية</a>
-          <a href="#student-marketplace" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">استكشاف الفرص</a>
+          <a href="#student-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Home' : 'الرئيسية'}</a>
+          <a href="#student-marketplace" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Explore Opportunities' : 'استكشاف الفرص'}</a>
           <a href="#company-discovery" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
             <span class="material-symbols-outlined text-amber-500 text-sm">lightbulb</span>
-            أعطني فرصة
+            ${isEn ? 'Give Me A Chance' : 'أعطني فرصة'}
           </a>
-          <a href="#student-applications" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">طلباتي ومقترحاتي</a>
-          <a href="#student-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">الملف الشخصي</a>
+          <a href="#student-applications" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Applications & Proposals' : 'طلباتي ومقترحاتي'}</a>
+          <a href="#student-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Profile' : 'الملف الشخصي'}</a>
+        `;
+      }
+      if (mobileNavContainer) {
+        mobileNavContainer.innerHTML = `
+          <a href="#student-dashboard" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">home</span>
+            <span>${isEn ? 'Home' : 'الرئيسية'}</span>
+          </a>
+          <a href="#student-marketplace" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">search</span>
+            <span>${isEn ? 'Explore' : 'استكشاف'}</span>
+          </a>
+          <a href="#company-discovery" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5 text-amber-500">lightbulb</span>
+            <span>${isEn ? 'Chance' : 'أعطني فرصة'}</span>
+          </a>
+          <a href="#student-applications" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">assignment</span>
+            <span>${isEn ? 'Applications' : 'طلباتي'}</span>
+          </a>
+          <a href="#student-profile" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">person</span>
+            <span>${isEn ? 'Profile' : 'الملف'}</span>
+          </a>
         `;
       }
       if (userBadge) {
         userBadge.innerHTML = `
           <img src="stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png" class="w-8 h-8 rounded-full border border-teal-500/30 object-cover shrink-0" alt="Student Avatar"/>
-          <span class="font-semibold text-xs text-slate-800 hidden lg:inline">${userProfile ? userProfile.name : 'حنين هيثم القصير'}</span>
+          <span class="font-semibold text-xs text-slate-800 dark:text-slate-200 hidden lg:inline">${userProfile ? userProfile.name : (isEn ? 'Haneen Haytham' : 'حنين هيثم القصير')}</span>
           <button onclick="MAYDAN_AUTH.logout()" title="تسجيل الخروج" class="p-1 text-slate-400 hover:text-rose-600 transition-colors">
             <span class="material-symbols-outlined text-base">logout</span>
           </button>
@@ -234,22 +284,49 @@ window.MAYDAN_AUTH = (function() {
   }
 
   function updateNavbarForGuest() {
+    const isEn = window.MAYDAN_LANG === "en";
     const navContainer = document.getElementById("main-nav-links");
+    const mobileNavContainer = document.getElementById("mobile-nav-links");
     const userBadge = document.getElementById("nav-user-badge");
 
     if (navContainer) {
       navContainer.innerHTML = `
-        <a href="#landing-page" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">عن ميدان</a>
-        <a href="#student-marketplace" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">استكشاف الفرص</a>
+        <a href="#landing-page" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'About Maydan' : 'عن ميدان'}</a>
+        <a href="#student-marketplace" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Explore Opportunities' : 'استكشاف الفرص'}</a>
         <a href="#company-discovery" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
           <span class="material-symbols-outlined text-amber-500 text-sm">lightbulb</span>
-          أعطني فرصة
+          ${isEn ? 'Give Me A Chance' : 'أعطني فرصة'}
         </a>
         <a href="#company-challenges" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-amber-500 transition-colors flex items-center gap-1 font-bold">
           <span class="material-symbols-outlined text-amber-500 text-sm">touch_app</span>
-          ضع بصمتك
+          ${isEn ? 'Leave Your Mark' : 'ضع بصمتك'}
         </a>
-        <a href="#auth" class="nav-link nav-link-pill text-teal-600 font-bold hover:text-teal-700 transition-colors">تسجيل الدخول</a>
+        <a href="#auth" class="nav-link nav-link-pill text-teal-600 font-bold hover:text-teal-700 transition-colors">${isEn ? 'Login / Register' : 'تسجيل الدخول'}</a>
+      `;
+    }
+
+    if (mobileNavContainer) {
+      mobileNavContainer.innerHTML = `
+        <a href="#landing-page" class="mobile-nav-item">
+          <span class="material-symbols-outlined text-xl mb-0.5">home</span>
+          <span>${isEn ? 'Home' : 'الرئيسية'}</span>
+        </a>
+        <a href="#student-marketplace" class="mobile-nav-item">
+          <span class="material-symbols-outlined text-xl mb-0.5">search</span>
+          <span>${isEn ? 'Explore' : 'استكشاف'}</span>
+        </a>
+        <a href="#company-discovery" class="mobile-nav-item">
+          <span class="material-symbols-outlined text-xl mb-0.5 text-amber-500">lightbulb</span>
+          <span>${isEn ? 'Chance' : 'أعطني فرصة'}</span>
+        </a>
+        <a href="#company-challenges" class="mobile-nav-item">
+          <span class="material-symbols-outlined text-xl mb-0.5 text-amber-500">touch_app</span>
+          <span>${isEn ? 'Challenges' : 'ضع بصمتك'}</span>
+        </a>
+        <a href="#auth" class="mobile-nav-item">
+          <span class="material-symbols-outlined text-xl mb-0.5 text-teal-600">login</span>
+          <span>${isEn ? 'Login' : 'دخول'}</span>
+        </a>
       `;
     }
 
@@ -257,7 +334,7 @@ window.MAYDAN_AUTH = (function() {
       userBadge.innerHTML = `
         <a href="#auth" class="px-4 py-1.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-full text-xs transition-all shadow-sm flex items-center gap-1">
           <span class="material-symbols-outlined text-sm">login</span>
-          ابدأ الآن
+          ${isEn ? 'Get Started' : 'ابدأ الآن'}
         </a>
       `;
     }

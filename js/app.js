@@ -319,6 +319,7 @@ window.MAYDAN_APP = (function() {
     const isEn = window.MAYDAN_LANG === "en";
     const role = window.MAYDAN_STORE.getRole();
     const navContainer = document.getElementById("main-nav-links");
+    const mobileNavContainer = document.getElementById("mobile-nav-links");
     const userBadge = document.getElementById("nav-user-badge");
 
     if (role === "company") {
@@ -335,6 +336,30 @@ window.MAYDAN_APP = (function() {
           </a>
           <a href="#company-candidates" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Candidates' : 'المرشحون المطابقون'}</a>
           <a href="#company-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Company Profile' : 'ملف الشركة'}</a>
+        `;
+      }
+      if (mobileNavContainer) {
+        mobileNavContainer.innerHTML = `
+          <a href="#company-dashboard" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">home</span>
+            <span>${isEn ? 'Home' : 'الرئيسية'}</span>
+          </a>
+          <a href="#company-challenges" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5 text-amber-500">touch_app</span>
+            <span>${isEn ? 'Challenges' : 'ضع بصمتك'}</span>
+          </a>
+          <a href="#company-create" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5 text-teal-500">add_circle</span>
+            <span>${isEn ? 'Create' : 'إنشاء فرصة'}</span>
+          </a>
+          <a href="#company-candidates" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">group</span>
+            <span>${isEn ? 'Candidates' : 'المرشحون'}</span>
+          </a>
+          <a href="#company-profile" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">corporate_fare</span>
+            <span>${isEn ? 'Profile' : 'الملف'}</span>
+          </a>
         `;
       }
       if (userBadge) {
@@ -359,6 +384,30 @@ window.MAYDAN_APP = (function() {
           <a href="#student-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Profile' : 'الملف الشخصي'}</a>
         `;
       }
+      if (mobileNavContainer) {
+        mobileNavContainer.innerHTML = `
+          <a href="#student-dashboard" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">home</span>
+            <span>${isEn ? 'Home' : 'الرئيسية'}</span>
+          </a>
+          <a href="#student-marketplace" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">search</span>
+            <span>${isEn ? 'Explore' : 'استكشاف'}</span>
+          </a>
+          <a href="#company-discovery" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5 text-amber-500">lightbulb</span>
+            <span>${isEn ? 'Chance' : 'أعطني فرصة'}</span>
+          </a>
+          <a href="#student-applications" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">assignment</span>
+            <span>${isEn ? 'Applications' : 'طلباتي'}</span>
+          </a>
+          <a href="#student-profile" class="mobile-nav-item">
+            <span class="material-symbols-outlined text-xl mb-0.5">person</span>
+            <span>${isEn ? 'Profile' : 'الملف'}</span>
+          </a>
+        `;
+      }
       if (userBadge) {
         userBadge.innerHTML = `
           <img src="stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png" class="w-8 h-8 rounded-full border border-teal-500/30 object-cover shrink-0" alt="Student Avatar"/>
@@ -374,18 +423,25 @@ window.MAYDAN_APP = (function() {
   }
 
   function setupNavigation() {
-    document.querySelectorAll("[data-nav-target]").forEach(element => {
-      element.addEventListener("click", function(e) {
-        e.preventDefault();
-        const target = this.getAttribute("data-nav-target");
-        window.location.hash = target;
-      });
+    // Delegated click and touch handler for all navigation links and targets
+    document.addEventListener("click", function(e) {
+      const link = e.target.closest("a[href^='#'], [data-nav-target]");
+      if (link) {
+        const href = link.getAttribute("href");
+        const target = link.getAttribute("data-nav-target") || (href ? href.replace("#", "") : null);
+        if (target) {
+          // If hash already matches, force navigation immediately
+          if (window.location.hash === `#${target}` || window.location.hash.replace("#", "") === target) {
+            navigateTo(target);
+          }
+        }
+      }
     });
   }
 
   function updateActiveNavLinks() {
     const hash = window.location.hash || `#landing-page`;
-    document.querySelectorAll(".nav-link").forEach(link => {
+    document.querySelectorAll(".nav-link, .mobile-nav-item").forEach(link => {
       const href = link.getAttribute("href");
       if (href === hash) {
         link.classList.add("nav-link-active");
