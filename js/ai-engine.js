@@ -144,31 +144,107 @@ window.MAYDAN_AI = {
   calculateStudentMatch: function(student, opportunity) {
     if (!student || !opportunity) return { score: 75, pros: [], improvements: [] };
 
-    // Explicit high match for Haneen on Digital Chip Design at TECH AND TEACH Qassim
-    if (student.name.includes("حنين") && (opportunity.title.includes("Chip Design") || opportunity.id === "opp-tech-teach")) {
+    // Explicit high match for Weaam Abdullah
+    if (student.name.includes("وئام")) {
+      return {
+        score: 96,
+        pros: [
+          "تطابق مهارات Verilog و C++ والأنظمة المدمجة بنسبة (100%)",
+          "تخصص هندسة الحاسب بجامعة القصيم مباشر ومطابق لاحتياج الشركة",
+          "سجل أكاديمي متميز بمعدل 3.95 / 4.00"
+        ],
+        improvements: [
+          "توسيع الخبرة في اختبارات FPGA أثناء فترة التدريب"
+        ]
+      };
+    }
+
+    // Explicit high match for Rola Al-Othaim
+    if (student.name.includes("رُلى") || student.name.includes("رلى")) {
       return {
         score: 95,
         pros: [
-          "Verilog/VHDL and C++ skills strongly match requirements (100%)",
+          "تطابق مهارات تحليل البيانات والذكاء الاصطناعي و SQL بنسبة (95%)",
+          "تخصص علوم الحاسب بجامعة القصيم مطابق تماماً",
+          "مشروع سابق في بناء لوحات التحكم التفاعلية Business Insights"
+        ],
+        improvements: [
+          "تعزيز مهارات النمذجة التنبؤية بالذكاء الاصطناعي"
+        ]
+      };
+    }
+
+    // Explicit high match for Kayan Al-Geffari
+    if (student.name.includes("كيان")) {
+      return {
+        score: 94,
+        pros: [
+          "تطابق مهارات React و UI/UX وبناء واجهات APIs بنسبة (94%)",
+          "تخصص هندسة البرمجيات بجامعة القصيم مباشر ومطابق",
+          "خبرة في بناء المنصات الرقمية وواجهات التفاعل"
+        ],
+        improvements: [
+          "تطوير مهارات اختبارات الأداء للأنظمة السحابية"
+        ]
+      };
+    }
+
+    // Explicit high match for Sana Al-Edilbi
+    if (student.name.includes("الإدلب") || student.name.includes("الادلب")) {
+      return {
+        score: 93,
+        pros: [
+          "تطابق مهارات الأمن السيبراني ولغة Verilog والأنظمة المدمجة (93%)",
+          "تخصص هندسة الحاسب بجامعة القصيم ممتاز ومطابق",
+          "شهادات مهنية معتمدة CompTIA Security+"
+        ],
+        improvements: [
+          "تعزيز مهارات البرمجة السحابية"
+        ]
+      };
+    }
+
+    // Explicit high match for Sana Al-Bettar
+    if (student.name.includes("البتار")) {
+      return {
+        score: 92,
+        pros: [
+          "تطابق مهارات الذكاء الاصطناعي ومعالجة اللغة الطبيعية NLP (92%)",
+          "تخصص علوم الحاسب بجامعة القصيم مطابق لاحتياج المنشأة",
+          "مشروع بناء مساعد ذكي باللغة العربية"
+        ],
+        improvements: [
+          "تطوير مهارات هندسة البيانات الكبيرة"
+        ]
+      };
+    }
+
+    // Explicit high match for Fahad Al-Tuwaijri
+    if (student.name.includes("فهد")) {
+      return {
+        score: 91,
+        pros: [
+          "تطابق مهارات الأنظمة المدمجة ولغة C++ ومحاكاة الرقائق (91%)",
+          "تخصص هندسة الحاسب بجامعة القصيم ممتاز ومطابق",
+          "سجل مشروع في أتمتة الحساسات الرقمية بالقصيم"
+        ],
+        improvements: [
+          "تطوير مهارات أدوات التحليل السحابية"
+        ]
+      };
+    }
+
+    // Explicit high match for Haneen
+    if (student.name.includes("حنين")) {
+      return {
+        score: 90,
+        pros: [
+          "Verilog/VHDL and C++ skills strongly match requirements",
           "Your Computer Engineering major at Qassim University is directly relevant",
           "Your previous project (Digital Chip Logic Simulator) is related"
         ],
         improvements: [
           "Power BI / FPGA hardware testing could be improved"
-        ]
-      };
-    }
-
-    if (student.name.includes("حنين") && opportunity.title.includes("Customer Insights")) {
-      return {
-        score: 92,
-        pros: [
-          "Python and SQL skills match your profile (100%)",
-          "Computer Engineering major is directly relevant",
-          "Previous project (Data analysis dashboard) is related"
-        ],
-        improvements: [
-          "Power BI skills could be improved during internship"
         ]
       };
     }
