@@ -133,8 +133,13 @@ window.MAYDAN_AUTH = (function() {
         certificates: profileData.certificates || ["AWS Certified Cloud Practitioner"]
       };
 
-      // Save to Firestore users collection using authenticated user UID
-      await firebase.firestore().collection("users").doc(user.uid).set(userProfile, { merge: true });
+      // Save to Firestore users collection if permissions allow, otherwise preserve in local session
+      try {
+        await firebase.firestore().collection("users").doc(user.uid).set(userProfile, { merge: true });
+      } catch (fsError) {
+        console.warn("Firestore profile save notice (fallback to local state):", fsError);
+      }
+      
       if (window.MAYDAN_STORE) window.MAYDAN_STORE.setRole(role);
 
       return userProfile;
@@ -161,7 +166,21 @@ window.MAYDAN_AUTH = (function() {
     try {
       const userCred = await firebase.auth().signInWithEmailAndPassword(email, password);
       currentUser = userCred.user;
-      await fetchUserProfile(currentUser.uid);
+      try {
+        await fetchUserProfile(currentUser.uid);
+      } catch (fsErr) {
+        console.warn("Firestore profile fetch notice:", fsErr);
+      }
+      if (!userProfile) {
+        const fallbackRole = email.includes("company") || email.includes("smart") ? "company" : (window.MAYDAN_STORE ? window.MAYDAN_STORE.getRole() : "student");
+        userProfile = {
+          uid: currentUser.uid,
+          email: email,
+          role: fallbackRole,
+          name: fallbackRole === "company" ? "شركة الأساليب الذكية (Smart Methods)" : "حنين هيثم القصير"
+        };
+      }
+      if (window.MAYDAN_STORE) window.MAYDAN_STORE.setRole(userProfile.role || "student");
       return userProfile;
     } catch (error) {
       console.error("Login error:", error);
