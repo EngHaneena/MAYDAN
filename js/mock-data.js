@@ -133,6 +133,8 @@ window.MAYDAN_MOCK = {
       gpa: "3.92 / 4.00",
       city: "القصيم (بريدة)",
       bio: "طالبة هندسة حاسب بجامعة القصيم شغوفة بتصميم الرقائق الرقمية والأنظمة المدمجة والذكاء الاصطناعي وتطوير البرمجيات.",
+      linkedin: "https://linkedin.com/in/haneen-alqasir",
+      github: "https://github.com/EngHaneena",
       avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
       skills: ["Python", "C++", "Verilog/VHDL", "Digital Logic", "SQL", "Data Analysis", "AI", "React"],
       projects: [
@@ -154,6 +156,8 @@ window.MAYDAN_MOCK = {
       gpa: "3.88 / 4.00",
       city: "القصيم (بريدة)",
       bio: "متخصصة في الذكاء الاصطناعي وتنقيب البيانات مع اهتمام عالي بتطوير النماذج التنبؤية للشركات بمنطقة القصيم والرياض.",
+      linkedin: "https://linkedin.com/in/sara-alali",
+      github: "https://github.com/sara-alali",
       avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
       skills: ["Python", "Machine Learning", "SQL", "Power BI", "Data Analysis"],
       projects: [
@@ -173,6 +177,8 @@ window.MAYDAN_MOCK = {
       gpa: "3.75 / 4.00",
       city: "الرياض",
       bio: "مهتمة بتحليل الأعمال وإدارة قواعد البيانات وإعداد التقارير التفاعلية للقطاع الحكومي والخاص بالرياض.",
+      linkedin: "https://linkedin.com/in/reem-alsalman",
+      github: "https://github.com/reem-alsalman",
       avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
       skills: ["SQL", "Power BI", "Data Analysis", "Excel Analytics"],
       projects: [

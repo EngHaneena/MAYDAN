@@ -518,10 +518,13 @@
           <div class="space-y-1">
             <span id="opp-detail-category" class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold">Data Analytics</span>
             <h2 id="opp-detail-title" class="text-2xl font-bold text-slate-900 font-headline">Customer Insights Dashboard</h2>
-            <p class="text-sm text-slate-600 font-medium flex items-center gap-1">
-              <span class="material-symbols-outlined text-base">corporate_fare</span>
-              <span id="opp-detail-company">TechCorp Saudi</span>
-            </p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <p class="text-sm text-slate-600 dark:text-slate-300 font-medium flex items-center gap-1">
+                <span class="material-symbols-outlined text-base">corporate_fare</span>
+                <span id="opp-detail-company">TechCorp Saudi</span>
+              </p>
+              <div id="opp-detail-company-links" class="flex items-center gap-1.5"></div>
+            </div>
           </div>
 
           <!-- AI Match Ring / Score -->
@@ -1080,6 +1083,17 @@
           <textarea id="edit-student-bio" rows="3" class="w-full p-3 rounded-xl border-slate-200 border outline-none"></textarea>
         </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-700">رابط LinkedIn الطالبة</label>
+            <input type="url" id="edit-student-linkedin" placeholder="https://linkedin.com/in/username" class="w-full p-3 rounded-xl border-slate-200 border outline-none font-mono text-xs">
+          </div>
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-700">رابط GitHub الطالبة</label>
+            <input type="url" id="edit-student-github" placeholder="https://github.com/username" class="w-full p-3 rounded-xl border-slate-200 border outline-none font-mono text-xs">
+          </div>
+        </div>
+
         <div class="space-y-1">
           <label class="block font-bold text-slate-700">المهارات التقنية (مفصولة بفواصل)</label>
           <input type="text" id="edit-student-skills-input" placeholder="Python, SQL, Verilog, React..." class="w-full p-3 rounded-xl border-slate-200 border outline-none">
@@ -1376,6 +1390,88 @@
       <button id="close-challenge-success-btn" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs shadow-md transition-all">
         الانتقال لاحتياجات المنشأة ➔
       </button>
+    </div>
+  </div>
+
+  <!-- STUDENT PROFILE MODAL WITH LINKEDIN & GITHUB LINKS -->
+  <div id="student-profile-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 max-w-xl w-full space-y-6 shadow-2xl border border-slate-200 dark:border-slate-800 max-h-[90vh] overflow-y-auto">
+      
+      <!-- Header -->
+      <div class="flex items-start justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-4">
+          <img id="sp-modal-avatar" src="" class="w-16 h-16 rounded-2xl object-cover border-2 border-teal-500/30 shadow-sm shrink-0" alt="Student Avatar"/>
+          <div class="space-y-1">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 id="sp-modal-name" class="text-xl font-extrabold text-slate-900 dark:text-slate-100 font-headline"></h3>
+              <!-- Social Badges (LinkedIn & GitHub) -->
+              <div id="sp-modal-social-badges" class="flex items-center gap-1.5 flex-wrap"></div>
+            </div>
+            <p id="sp-modal-title" class="text-xs text-teal-700 dark:text-teal-400 font-bold"></p>
+            <p id="sp-modal-university" class="text-xs text-slate-500 dark:text-slate-400 font-medium"></p>
+          </div>
+        </div>
+        <button id="close-student-profile-modal-btn" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 bg-slate-50 dark:bg-slate-800/80 rounded-2xl text-xs border border-slate-200 dark:border-slate-700">
+        <div>
+          <span class="text-slate-500 dark:text-slate-400 block font-medium">المعدل التراكمي:</span>
+          <span id="sp-modal-gpa" class="font-extrabold text-slate-900 dark:text-slate-100"></span>
+        </div>
+        <div>
+          <span class="text-slate-500 dark:text-slate-400 block font-medium">المستوى الأكاديمي:</span>
+          <span id="sp-modal-level" class="font-bold text-slate-800 dark:text-slate-200"></span>
+        </div>
+        <div>
+          <span class="text-slate-500 dark:text-slate-400 block font-medium">المدينة / السكن:</span>
+          <span id="sp-modal-city" class="font-bold text-slate-800 dark:text-slate-200"></span>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="space-y-1.5">
+        <h4 class="font-bold text-xs text-slate-900 dark:text-slate-100">نبذة تعريفية:</h4>
+        <p id="sp-modal-bio" class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700"></p>
+      </div>
+
+      <!-- Social Links Editable Section -->
+      <div class="p-4 bg-gradient-to-r from-blue-50/70 via-slate-50 to-teal-50/70 dark:from-slate-800 dark:to-slate-800/90 rounded-2xl border border-blue-200/70 dark:border-slate-700 space-y-3">
+        <h4 class="font-extrabold text-xs text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-blue-600 text-base">link</span>
+          روابط التواصل المهني (LinkedIn & GitHub)
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-700 dark:text-slate-300">رابط LinkedIn:</label>
+            <input type="url" id="sp-modal-linkedin-input" class="w-full p-2.5 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 text-xs font-mono" placeholder="https://linkedin.com/in/username">
+          </div>
+          <div class="space-y-1">
+            <label class="block font-bold text-slate-700 dark:text-slate-300">رابط GitHub:</label>
+            <input type="url" id="sp-modal-github-input" class="w-full p-2.5 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 text-xs font-mono" placeholder="https://github.com/username">
+          </div>
+        </div>
+        <button id="sp-modal-save-social-btn" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-sm transition-all flex items-center justify-center gap-1">
+          <span class="material-symbols-outlined text-sm">save</span>
+          حفظ وتحديث روابط التواصل
+        </button>
+      </div>
+
+      <!-- Skills -->
+      <div class="space-y-2">
+        <h4 class="font-bold text-xs text-slate-900 dark:text-slate-100">المهارات والتقنيات:</h4>
+        <div id="sp-modal-skills" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <!-- Projects -->
+      <div class="space-y-2">
+        <h4 class="font-bold text-xs text-slate-900 dark:text-slate-100">المشاريع البارزة:</h4>
+        <div id="sp-modal-projects" class="space-y-2"></div>
+      </div>
+
     </div>
   </div>
 

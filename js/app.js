@@ -607,6 +607,8 @@ window.MAYDAN_APP = (function() {
                 <div class="space-y-1">
                   <div class="flex items-center gap-2 flex-wrap">
                     <h4 class="text-base font-extrabold text-slate-900 dark:text-slate-100 font-headline">${prop.studentName}</h4>
+                    <a href="https://linkedin.com/in/haneen-alqasir" target="_blank" rel="noopener" title="LinkedIn الطالبة" class="px-2 py-0.5 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200 dark:border-blue-800"><span class="material-symbols-outlined text-xs">link</span> LinkedIn</a>
+                    <a href="https://github.com/EngHaneena" target="_blank" rel="noopener" title="GitHub الطالبة" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-slate-300 dark:border-slate-700"><span class="material-symbols-outlined text-xs">code</span> GitHub</a>
                     <span class="px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-slate-200 dark:border-slate-700">${prop.studentMajor} • ${prop.studentUniversity}</span>
                     <span class="px-2.5 py-0.5 ${statusClass} border text-xs font-bold rounded-full">${prop.status}</span>
                   </div>
@@ -817,6 +819,8 @@ window.MAYDAN_APP = (function() {
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="px-2.5 py-0.5 bg-amber-50 text-amber-800 border border-amber-200/70 text-xs font-bold rounded-full">${rankBadges[index] || 'مرشح'}</span>
                   <h3 class="text-lg font-bold text-slate-900 font-headline">${st.name}</h3>
+                  ${st.linkedin ? `<a href="${st.linkedin}" target="_blank" rel="noopener" title="LinkedIn المرشحة" class="px-2 py-0.5 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200"><span class="material-symbols-outlined text-xs">link</span> LinkedIn</a>` : ''}
+                  ${st.github ? `<a href="${st.github}" target="_blank" rel="noopener" title="GitHub المرشحة" class="px-2 py-0.5 bg-slate-100 text-slate-800 hover:bg-slate-200 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-slate-300"><span class="material-symbols-outlined text-xs">code</span> GitHub</a>` : ''}
                 </div>
                 <p class="text-xs text-slate-600 font-medium">${st.title}</p>
                 <div class="flex flex-wrap gap-1.5 pt-1">
@@ -1878,7 +1882,82 @@ window.MAYDAN_APP = (function() {
       const student = window.MAYDAN_STORE.getStudentById(studentId);
       if (!student) return;
 
-      alert(`الملف الشخصي للمرشحة:\nالاسم: ${student.name}\nالتخصص: ${student.major}\nالجامعة: ${student.university}\nالمعدل: ${student.gpa}\nالمهارات: ${student.skills.join(", ")}`);
+      const modal = document.getElementById("student-profile-modal");
+      if (!modal) {
+        alert(`الملف الشخصي للمرشحة:\nالاسم: ${student.name}\nالتخصص: ${student.major}\nالجامعة: ${student.university}\nالمعدل: ${student.gpa}\nLinkedIn: ${student.linkedin || 'غير مدخل'}\nGitHub: ${student.github || 'غير مدخل'}`);
+        return;
+      }
+
+      const avatarElem = document.getElementById("sp-modal-avatar");
+      if (avatarElem) avatarElem.src = student.avatar || "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png";
+
+      const nameElem = document.getElementById("sp-modal-name");
+      if (nameElem) nameElem.textContent = student.name;
+
+      const titleElem = document.getElementById("sp-modal-title");
+      if (titleElem) titleElem.textContent = student.title || `${student.major} • ${student.university}`;
+
+      const univElem = document.getElementById("sp-modal-university");
+      if (univElem) univElem.textContent = student.university;
+
+      const gpaElem = document.getElementById("sp-modal-gpa");
+      if (gpaElem) gpaElem.textContent = student.gpa;
+
+      const levelElem = document.getElementById("sp-modal-level");
+      if (levelElem) levelElem.textContent = student.level || "سنة تخرج";
+
+      const cityElem = document.getElementById("sp-modal-city");
+      if (cityElem) cityElem.textContent = student.city || "القصيم (بريدة)";
+
+      const bioElem = document.getElementById("sp-modal-bio");
+      if (bioElem) bioElem.textContent = student.bio || "لا توجد نبذة مدخلة حالياً.";
+
+      const linkedinInput = document.getElementById("sp-modal-linkedin-input");
+      if (linkedinInput) linkedinInput.value = student.linkedin || "";
+
+      const githubInput = document.getElementById("sp-modal-github-input");
+      if (githubInput) githubInput.value = student.github || "";
+
+      const badgesElem = document.getElementById("sp-modal-social-badges");
+      if (badgesElem) {
+        badgesElem.innerHTML = `
+          ${student.linkedin ? `<a href="${student.linkedin}" target="_blank" rel="noopener" class="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200 dark:border-blue-800"><span class="material-symbols-outlined text-xs">link</span> LinkedIn</a>` : ''}
+          ${student.github ? `<a href="${student.github}" target="_blank" rel="noopener" class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-slate-300 dark:border-slate-700"><span class="material-symbols-outlined text-xs">code</span> GitHub</a>` : ''}
+        `;
+      }
+
+      const skillsElem = document.getElementById("sp-modal-skills");
+      if (skillsElem) {
+        skillsElem.innerHTML = (student.skills || []).map(sk =>
+          `<span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700">${sk}</span>`
+        ).join('');
+      }
+
+      const projectsElem = document.getElementById("sp-modal-projects");
+      if (projectsElem) {
+        projectsElem.innerHTML = (student.projects || []).map(p =>
+          `<div class="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-slate-700 text-xs space-y-0.5">
+            <span class="font-bold text-slate-900 dark:text-slate-100 block">${p.name}</span>
+            <span class="text-slate-600 dark:text-slate-300 block">${p.desc}</span>
+          </div>`
+        ).join('');
+      }
+
+      const closeBtn = document.getElementById("close-student-profile-modal-btn");
+      if (closeBtn) closeBtn.onclick = () => modal.classList.add("hidden");
+
+      const saveSocialBtn = document.getElementById("sp-modal-save-social-btn");
+      if (saveSocialBtn) {
+        saveSocialBtn.onclick = () => {
+          student.linkedin = linkedinInput ? linkedinInput.value.trim() : student.linkedin;
+          student.github = githubInput ? githubInput.value.trim() : student.github;
+          if (window.MAYDAN_FIREBASE) window.MAYDAN_FIREBASE.saveStudentProfile(student);
+          alert("تم حفظ وتحديث روابط التواصل المهني للطالبة بنجاح! ✨");
+          this.showStudentProfileModal(student.id);
+        };
+      }
+
+      modal.classList.remove("hidden");
     }
   };
 })();
