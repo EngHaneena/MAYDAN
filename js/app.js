@@ -7,11 +7,56 @@ window.MAYDAN_APP = (function() {
 
   function init() {
     setupRoleToggle();
+    setupThemeAndLangToggle();
     setupNavigation();
     setupAuthViewUI();
     setupProfileModalsUI();
     handleRouting();
     window.addEventListener("hashchange", handleRouting);
+  }
+
+  function setupThemeAndLangToggle() {
+    // 1. Dark Mode Setup
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    const themeIcon = document.getElementById("theme-icon");
+    const savedTheme = localStorage.getItem("MAYDAN_THEME") || "light";
+
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      if (themeIcon) themeIcon.textContent = "light_mode";
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.onclick = function() {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("MAYDAN_THEME", isDark ? "dark" : "light");
+        if (themeIcon) themeIcon.textContent = isDark ? "light_mode" : "dark_mode";
+      };
+    }
+
+    // 2. Language Switcher Setup
+    const langToggleBtn = document.getElementById("lang-toggle-btn");
+    const langLabel = document.getElementById("lang-label");
+    const savedLang = localStorage.getItem("MAYDAN_LANG") || "ar";
+    window.MAYDAN_LANG = savedLang;
+
+    function applyLanguage(lang) {
+      window.MAYDAN_LANG = lang;
+      localStorage.setItem("MAYDAN_LANG", lang);
+      document.documentElement.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
+      document.documentElement.setAttribute("lang", lang);
+      if (langLabel) langLabel.textContent = lang === "en" ? "AR" : "EN";
+      updateNavbarRoleUI();
+    }
+
+    if (langToggleBtn) {
+      langToggleBtn.onclick = function() {
+        const nextLang = window.MAYDAN_LANG === "en" ? "ar" : "en";
+        applyLanguage(nextLang);
+      };
+    }
+
+    applyLanguage(savedLang);
   }
 
   function handleRouting() {
@@ -83,6 +128,7 @@ window.MAYDAN_APP = (function() {
       return;
     }
 
+    const isEn = window.MAYDAN_LANG === "en";
     const role = window.MAYDAN_STORE.getRole();
     const navContainer = document.getElementById("main-nav-links");
     const userBadge = document.getElementById("nav-user-badge");
@@ -90,34 +136,34 @@ window.MAYDAN_APP = (function() {
     if (role === "company") {
       if (navContainer) {
         navContainer.innerHTML = `
-          <a href="#company-dashboard" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">الرئيسية</a>
-          <a href="#company-create" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1 flex items-center gap-1">
+          <a href="#company-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Home' : 'الرئيسية'}</a>
+          <a href="#company-create" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors flex items-center gap-1">
             <span class="material-symbols-outlined text-teal-500 text-base">auto_awesome</span>
-            إنشاء فرصة
+            ${isEn ? 'Create Opportunity' : 'إنشاء فرصة'}
           </a>
-          <a href="#company-candidates" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">المرشحون المطابقون</a>
-          <a href="#company-profile" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">ملف الشركة</a>
+          <a href="#company-candidates" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Candidates' : 'المرشحون المطابقون'}</a>
+          <a href="#company-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Company Profile' : 'ملف الشركة'}</a>
         `;
       }
       if (userBadge) {
         userBadge.innerHTML = `
           <img src="stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png" class="w-8 h-8 rounded-full border border-teal-500/30 object-cover shrink-0" alt="Company Logo"/>
-          <span class="font-semibold text-xs text-slate-800 hidden lg:inline">شركة الأساليب الذكية</span>
+          <span class="font-semibold text-xs text-slate-800 dark:text-slate-200 hidden lg:inline">${isEn ? 'Smart Methods' : 'شركة الأساليب الذكية'}</span>
         `;
       }
     } else {
       if (navContainer) {
         navContainer.innerHTML = `
-          <a href="#student-dashboard" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">الرئيسية</a>
-          <a href="#student-marketplace" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">استكشاف الفرص</a>
-          <a href="#student-applications" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">طلباتي</a>
-          <a href="#student-profile" class="nav-link text-slate-600 hover:text-teal-600 transition-colors py-1">الملف الشخصي</a>
+          <a href="#student-dashboard" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Home' : 'الرئيسية'}</a>
+          <a href="#student-marketplace" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Explore Opportunities' : 'استكشاف الفرص'}</a>
+          <a href="#student-applications" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Applications' : 'طلباتي'}</a>
+          <a href="#student-profile" class="nav-link nav-link-pill text-slate-700 dark:text-slate-200 hover:text-teal-600 transition-colors">${isEn ? 'Profile' : 'الملف الشخصي'}</a>
         `;
       }
       if (userBadge) {
         userBadge.innerHTML = `
           <img src="stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png" class="w-8 h-8 rounded-full border border-teal-500/30 object-cover shrink-0" alt="Student Avatar"/>
-          <span class="font-semibold text-xs text-slate-800 hidden lg:inline">حنين هيثم القصير (95% Match)</span>
+          <span class="font-semibold text-xs text-slate-800 dark:text-slate-200 hidden lg:inline">${isEn ? 'Haneen Haytham (95%)' : 'حنين هيثم القصير (95% Match)'}</span>
         `;
       }
     }
@@ -140,11 +186,9 @@ window.MAYDAN_APP = (function() {
     document.querySelectorAll(".nav-link").forEach(link => {
       const href = link.getAttribute("href");
       if (href === hash) {
-        link.classList.add("text-teal-600", "font-bold", "border-b-2", "border-teal-600");
-        link.classList.remove("text-slate-600");
+        link.classList.add("nav-link-active");
       } else {
-        link.classList.remove("text-teal-600", "font-bold", "border-b-2", "border-teal-600");
-        link.classList.add("text-slate-600");
+        link.classList.remove("nav-link-active");
       }
     });
   }
