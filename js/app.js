@@ -51,6 +51,7 @@ window.MAYDAN_APP = (function() {
       if (langLabel) langLabel.textContent = lang === "en" ? "AR" : "EN";
       translatePageElements(lang);
       updateNavbarRoleUI();
+      renderView(currentView);
     }
 
     if (langToggleBtn) {
@@ -65,6 +66,12 @@ window.MAYDAN_APP = (function() {
 
   function translatePageElements(lang) {
     const isEn = lang === "en";
+
+    // Logo Slogan
+    const logoSlogan = document.querySelector("header p");
+    if (logoSlogan) {
+      logoSlogan.textContent = isEn ? 'From University to the Field' : 'من الجامعة إلى الميدان';
+    }
 
     // Hero Section
     const heroBadge = document.querySelector("#view-landing-page .inline-flex");
@@ -94,6 +101,28 @@ window.MAYDAN_APP = (function() {
       heroSecCta.innerHTML = `<span class="material-symbols-outlined text-lg">search</span> ${isEn ? 'Explore Opportunities' : 'اكتشف الفرص'}`;
     }
 
+    // Landing "How Maydan Works"
+    const howTitleSpan = document.querySelector("#view-landing-page .space-y-8 span.text-teal-600");
+    if (howTitleSpan) howTitleSpan.textContent = isEn ? "HOW MAYDAN WORKS" : "كيف يعمل ميدان";
+    
+    const howTitleH3 = document.querySelector("#view-landing-page .space-y-8 h3");
+    if (howTitleH3) howTitleH3.textContent = isEn ? "The Journey of Matching Needs with the Right Talent" : "رحلة ربط الاحتياج بالطالب المناسب";
+
+    const steps = document.querySelectorAll("#view-landing-page .space-y-8 .grid > div");
+    if (steps.length === 4) {
+      steps[0].querySelector("h4").textContent = isEn ? "🏢 Company Need" : "🏢 احتياج الشركة";
+      steps[0].querySelector("p").textContent = isEn ? "The company enters its business need in simple natural language without complex forms." : "تدخل الشركة احتياجها الميداني بلغة طبيعية بسيطة دون الحاجة لإعداد نماذج معقدة.";
+      
+      steps[1].querySelector("h4").textContent = isEn ? "⚡ Smart Opportunity" : "⚡ الفرصة الذكية";
+      steps[1].querySelector("p").textContent = isEn ? "AI builds the internship structure, expected deliverables, and specialized skills." : "يبني الذكاء الاصطناعي هيكل الفرصة التدريبية والمخرجات المتوقعة والمهارات التخصصية.";
+
+      steps[2].querySelector("h4").textContent = isEn ? "🧠 Explainable Match" : "🧠 المطابقة التفسيرية";
+      steps[2].querySelector("p").textContent = isEn ? "The system analyzes the CV and student profile to calculate matching score and explain reasons." : "يحلل النظام السيرة الذاتية وملف الطالب ليحسب نسبة التطابق وتوضيح أسباب الاختيار.";
+
+      steps[3].querySelector("h4").textContent = isEn ? "🎓 Apply & Select" : "🎓 التقديم والاختيار";
+      steps[3].querySelector("p").textContent = isEn ? "The student applies directly, and the company selects the best talent with a single click." : "يقدم الطالب مباشرة وتحدد الشركة الكفاءة الأنسب بنقرة واحدة مع التوثيق الميداني.";
+    }
+
     // Auth View
     const authTitle = document.getElementById("auth-title");
     if (authTitle) authTitle.textContent = isEn ? 'Welcome to MAYDAN' : 'أهلاً بك في ميدان';
@@ -112,6 +141,110 @@ window.MAYDAN_APP = (function() {
 
     const roleChoiceCompanyTitle = document.querySelector("#role-choice-company h4");
     if (roleChoiceCompanyTitle) roleChoiceCompanyTitle.textContent = isEn ? 'Company' : 'شركة';
+
+    // Student Dashboard
+    const stdGreeting = document.querySelector("#view-student-dashboard h2");
+    if (stdGreeting) stdGreeting.textContent = isEn ? 'Welcome Haneen 👋' : 'أهلًا حنين 👋';
+
+    const stdSubtitle = document.querySelector("#view-student-dashboard h2 + p");
+    if (stdSubtitle) stdSubtitle.textContent = isEn 
+      ? 'Here are the internship opportunities most suitable for your skills and computer engineering major.' 
+      : 'هذي الفرص التدريبية الأكثر ملاءمة لمهاراتك وتخصصك في هندسة الحاسب.';
+
+    const stdRecommendedTitle = document.querySelector("#view-student-dashboard .space-y-4 h3");
+    if (stdRecommendedTitle) stdRecommendedTitle.innerHTML = `<span class="material-symbols-outlined text-teal-600">auto_awesome</span> ${isEn ? 'Your Highest Match Opportunities' : 'الفرص الأعلى تطابقًا معك'}`;
+
+    const stdViewAll = document.querySelector("#view-student-dashboard a[href='#student-marketplace']");
+    if (stdViewAll) stdViewAll.textContent = isEn ? 'View All Opportunities →' : 'عرض جميع الفرص ←';
+
+    // Student Marketplace Search & Filters Bar
+    const marketTitle = document.querySelector("#view-student-marketplace h2");
+    if (marketTitle) marketTitle.textContent = isEn ? "Explore Internship Opportunities" : "استكشاف الفرص التدريبية";
+
+    const marketDesc = document.querySelector("#view-student-marketplace h2 + p");
+    if (marketDesc) marketDesc.textContent = isEn ? "Browse available opportunities in leading Saudi companies matched to your skills." : "تصفح الفرص المتاحة في كبرى الشركات السعودية والمطابقة لمهاراتك.";
+
+    const marketSearch = document.getElementById("marketplace-search-input");
+    if (marketSearch) marketSearch.placeholder = isEn ? "Search by opportunity name, company, or skill..." : "ابحث باسم الفرصة، اسم الشركة، أو المهارة (مثال: Python)...";
+
+    const filterCategory = document.getElementById("filter-category");
+    if (filterCategory) {
+      filterCategory.options[0].text = isEn ? "All Fields" : "جميع المجالات";
+      filterCategory.options[1].text = isEn ? "Data Analytics" : "تحليل البيانات (Data Analytics)";
+      filterCategory.options[2].text = isEn ? "Artificial Intelligence" : "الذكاء الاصطناعي (AI)";
+      filterCategory.options[3].text = isEn ? "Web Development" : "تطوير الويب (Web Dev)";
+    }
+
+    const filterDuration = document.getElementById("filter-duration");
+    if (filterDuration) {
+      filterDuration.options[0].text = isEn ? "All Durations" : "جميع المدد";
+      filterDuration.options[1].text = isEn ? "8 Weeks" : "8 أسابيع";
+      filterDuration.options[2].text = isEn ? "10 Weeks" : "10 أسابيع";
+      filterDuration.options[3].text = isEn ? "12 Weeks" : "12 أسبوعًا";
+    }
+
+    // Company Discovery View (أعطني فرصة)
+    const discBadge = document.querySelector("#view-company-discovery .inline-flex");
+    if (discBadge) discBadge.innerHTML = `<span class="material-symbols-outlined text-sm text-amber-600">lightbulb</span> ${isEn ? 'Give Me A Chance — Direct Route' : 'أعطني فرصة — المسار المباشر'}`;
+
+    const discTitle = document.querySelector("#view-company-discovery h2");
+    if (discTitle) discTitle.textContent = isEn ? "Discover Companies & Their Field Vision" : "اكتشف الشركات ورؤيتها الميدانية";
+
+    const discDesc = document.querySelector("#view-company-discovery h2 + p");
+    if (discDesc) discDesc.textContent = isEn ? "Browse available companies, understand their business activity, and submit an innovative proposal to create your own custom opportunity." : "تصفح الشركات والمنشآت المتاحة، افهم نشاطها التجاري، وقدم مقترحاً ابتكارياً يصنع لك فرصة جامعية خاصة.";
+
+    const discBannerH3 = document.querySelector("#view-company-discovery .bg-amber-500\\/10 h3, #view-company-discovery .bg-amber-50\\/10 h3");
+    if (discBannerH3) discBannerH3.textContent = isEn ? "Not all opportunities are advertised!" : "مو كل الفرص المعلنة هي كل الفرص المتاحة!";
+
+    const discBannerP = document.querySelector("#view-company-discovery .bg-amber-500\\/10 p, #view-company-discovery .bg-amber-50\\/10 p");
+    if (discBannerP) discBannerP.textContent = isEn ? "Many companies have active projects and field tasks but haven't posted them as internships yet. Take the initiative to present your idea and create your custom opportunity! 🚀" : "كثير من المنشآت لديها مشاريع حقيقية ومهام ميدانية قائمة لكنها لم تعلن عنها كتدريب تعاوني بعد. بادر بعرض فكرتك أو مهاراتك، وحوّل احتياجاتهم إلى فرصة تدريبية مخصصة لك! 🚀";
+
+    const discSearchInput = document.getElementById("company-search-input");
+    if (discSearchInput) discSearchInput.placeholder = isEn ? "Search by company name, industry, fields..." : "ابحث باسم الشركة، المجال (مثال: الذكاء الاصطناعي، الرقائق)...";
+
+    const filterCompanyIndustry = document.getElementById("filter-company-industry");
+    if (filterCompanyIndustry) {
+      filterCompanyIndustry.options[0].text = isEn ? "All Sectors" : "جميع المجالات والقطاعات";
+      filterCompanyIndustry.options[1].text = isEn ? "Tech Solutions & Systems" : "الحلول التقنية والأنظمة";
+      filterCompanyIndustry.options[2].text = isEn ? "Digital & Government Services" : "الخدمات الرقمية والحكومية";
+      filterCompanyIndustry.options[3].text = isEn ? "Logistics & Food Systems" : "الأنظمة اللوجستية والأغذية";
+      filterCompanyIndustry.options[4].text = isEn ? "Telecom & Cloud Computing" : "الاتصالات والحوسبة السحابية";
+    }
+
+    const filterCompanyLocation = document.getElementById("filter-company-location");
+    if (filterCompanyLocation) {
+      filterCompanyLocation.options[0].text = isEn ? "All Locations" : "جميع المواقع";
+      filterCompanyLocation.options[1].text = isEn ? "Qassim (Buraidah / Unaizah)" : "القصيم (بريدة / عنيزة)";
+      filterCompanyLocation.options[2].text = isEn ? "Riyadh" : "الرياض";
+    }
+
+    // Company Challenges View (ضع بصمتك)
+    const chalBadge = document.querySelector("#view-company-challenges .inline-flex");
+    if (chalBadge) chalBadge.innerHTML = `<span class="material-symbols-outlined text-sm text-amber-400">touch_app</span> ${isEn ? 'Leave Your Mark — Field Needs Hub' : 'ضع بصمتك — سوق الاحتياجات الميدانية'}`;
+
+    const chalTitle = document.querySelector("#view-company-challenges h2");
+    if (chalTitle) chalTitle.textContent = isEn ? "Post your challenges, discover talent ready to solve them." : "اعرض تحدياتك، واكتشف مواهب قادرة على تحويلها إلى حلول.";
+
+    const chalDesc = document.querySelector("#view-company-challenges h2 + p");
+    if (chalDesc) chalDesc.textContent = isEn ? "Share a real challenge or need in your business, and let local youth share their ideas, skills, and innovative solutions with you." : "اعرض تحديًا أو احتياجًا حقيقيًا في منشأتك، ودع شباب بلدك يشاركونك أفكارهم ومهاراتهم وحلولهم المبتكرة.";
+
+    const chalBtn = document.getElementById("open-challenge-modal-btn");
+    if (chalBtn) chalBtn.innerHTML = `<span class="material-symbols-outlined text-base">add_circle</span> ${isEn ? '+ Post Your Need' : '+ اطرح احتياجك'}`;
+
+    const chalBannerH3 = document.querySelector("#view-company-challenges .bg-amber-500\\/10 h3, #view-company-challenges .bg-amber-50\\/10 h3");
+    if (chalBannerH3) chalBannerH3.textContent = isEn ? "You don't need to know exactly what you need from a student." : "مو لازم تعرف بالضبط وش تحتاج من طالب.";
+
+    const chalBannerP = document.querySelector("#view-company-challenges .bg-amber-500\\/10 p, #view-company-challenges .bg-amber-50\\/10 p");
+    if (chalBannerP) chalBannerP.textContent = isEn ? "Just share your operational challenge, and let students show you how their skills can help turn that need into a successful co-op project." : "شاركنا احتياجك أو التحدي التجاري الذي تواجهه، وخَل الطلاب يورونك كيف ممكن مهاراتهم تساعد منشأتك وتحول هذا الاحتياج إلى مشروع فرصة تدريبية ناجح.";
+
+    const chalListTitle = document.querySelector("#view-company-challenges h3.font-headline");
+    if (chalListTitle) chalListTitle.textContent = isEn ? "Needs & Challenges Posted by Your Organization" : "الاحتياجات والتحديات المطروحة للمنشأة";
+
+    const chalReceivedTitle = document.querySelector("#view-company-challenges .border-t h3.font-headline");
+    if (chalReceivedTitle) chalReceivedTitle.textContent = isEn ? "Interested Students & Direct Responses" : "الطلاب المهتمون والردود المباشرة (ورّهم وش عندك)";
+
+    const chalReceivedDesc = document.querySelector("#view-company-challenges .border-t p");
+    if (chalReceivedDesc) chalReceivedDesc.textContent = isEn ? "Review custom proposals submitted by students for your organization's challenges and convert them directly into official co-op opportunities." : "استعرض مقترحات الطلاب المخصصة لتحديات منشأتك وحوّلها مباشرة لفرص تدريب جامعي رسمية.";
   }
 
   function handleRouting() {
@@ -875,6 +1008,7 @@ window.MAYDAN_APP = (function() {
   function renderStudentDashboard() {
     const student = window.MAYDAN_STORE.getStudentById("student-1");
     const opportunities = window.MAYDAN_STORE.getOpportunities();
+    const isEn = window.MAYDAN_LANG === "en";
 
     const container = document.getElementById("student-recommended-opps");
     if (!container) return;
@@ -886,28 +1020,28 @@ window.MAYDAN_APP = (function() {
         <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover-lift flex flex-col justify-between">
           <div class="space-y-3">
             <div class="flex justify-between items-start gap-2">
-              <span class="px-3 py-1 bg-teal-50 text-teal-800 text-xs font-semibold rounded-full border border-teal-200/60">${opp.categoryAr || opp.category}</span>
+              <span class="px-3 py-1 bg-teal-50 text-teal-800 text-xs font-semibold rounded-full border border-teal-200/60">${isEn ? opp.category : (opp.categoryAr || opp.category)}</span>
               <span class="px-2.5 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-full text-xs font-bold flex items-center gap-1 shrink-0">
                 <span class="material-symbols-outlined text-sm">auto_awesome</span>
-                ${match.score}% match
+                ${match.score}% ${isEn ? 'match' : 'تطابق'}
               </span>
             </div>
 
-            <h3 class="text-lg font-bold text-slate-900 font-headline">${opp.titleAr || opp.title}</h3>
+            <h3 class="text-lg font-bold text-slate-900 font-headline">${isEn ? opp.title : (opp.titleAr || opp.title)}</h3>
             <p class="text-xs text-slate-500 flex items-center gap-1 font-medium"><span class="material-symbols-outlined text-sm">corporate_fare</span> ${opp.company}</p>
             <p class="text-slate-600 text-xs line-clamp-2">${opp.description}</p>
 
             <div class="flex flex-wrap gap-1 pt-1">
               <span class="px-2 py-0.5 bg-emerald-50 text-emerald-800 text-xs rounded font-medium">${opp.location}</span>
-              <span class="px-2 py-0.5 bg-blue-50 text-blue-800 text-xs rounded font-medium">${opp.workType || 'حضوري'}</span>
+              <span class="px-2 py-0.5 bg-blue-50 text-blue-800 text-xs rounded font-medium">${isEn ? (opp.workType === 'حضوري' ? 'On-site' : opp.workType) : (opp.workType || 'حضوري')}</span>
               ${(opp.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded">${sk}</span>`).join('')}
             </div>
           </div>
 
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-            <span class="text-xs text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> ${opp.durationAr || opp.duration}</span>
+            <span class="text-xs text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> ${isEn ? opp.duration : (opp.durationAr || opp.duration)}</span>
             <button onclick="MAYDAN_APP.viewOpportunityDetails('${opp.id}')" class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm">
-              عرض الفرصة
+              ${isEn ? 'View Opportunity' : 'عرض الفرصة'}
             </button>
           </div>
         </div>
@@ -952,20 +1086,21 @@ window.MAYDAN_APP = (function() {
 
       container.innerHTML = filtered.map(opp => {
         const match = window.MAYDAN_AI.calculateStudentMatch(student, opp);
+        const isEn = window.MAYDAN_LANG === "en";
 
         return `
           <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover-lift flex flex-col justify-between">
             <div class="space-y-3">
               <div class="flex justify-between items-start gap-2">
-                <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-full">${opp.categoryAr || opp.category}</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-full">${isEn ? opp.category : (opp.categoryAr || opp.category)}</span>
                 <span class="px-2.5 py-1 bg-teal-50 text-teal-800 border border-teal-200 rounded-full text-xs font-bold flex items-center gap-1 shrink-0">
                   <span class="material-symbols-outlined text-sm">auto_awesome</span>
-                  ${match.score}% Match
+                  ${match.score}% ${isEn ? 'Match' : 'تطابق'}
                 </span>
               </div>
 
               <div>
-                <h3 class="text-lg font-bold text-slate-900 font-headline">${opp.titleAr || opp.title}</h3>
+                <h3 class="text-lg font-bold text-slate-900 font-headline">${isEn ? opp.title : (opp.titleAr || opp.title)}</h3>
                 <p class="text-xs text-slate-500 flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-sm">corporate_fare</span> ${opp.company}</p>
               </div>
 
@@ -974,21 +1109,21 @@ window.MAYDAN_APP = (function() {
               <div class="flex flex-wrap gap-1 items-center">
                 <span class="px-2.5 py-0.5 bg-amber-50 dark:bg-amber-900/40 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700 text-[11px] font-bold rounded-full flex items-center gap-1">
                   <span class="material-symbols-outlined text-xs text-amber-600">school</span> 
-                  معتمدة للتدريب الجامعي
+                  ${isEn ? 'University Approved' : 'معتمدة للتدريب الجامعي'}
                 </span>
                 <span class="px-2 py-0.5 bg-emerald-50 text-emerald-800 text-xs rounded font-medium">${opp.location}</span>
-                <span class="px-2 py-0.5 bg-blue-50 text-blue-800 text-xs rounded font-medium">${opp.workType || 'حضوري'}</span>
+                <span class="px-2 py-0.5 bg-blue-50 text-blue-800 text-xs rounded font-medium">${isEn ? (opp.workType === 'حضوري' ? 'On-site' : opp.workType) : (opp.workType || 'حضوري')}</span>
                 ${(opp.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded">${sk}</span>`).join('')}
               </div>
             </div>
 
             <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
               <div class="text-xs text-slate-500 flex items-center gap-3">
-                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> ${opp.durationAr || opp.duration}</span>
-                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">payments</span> ${opp.stipend || 'تُحدد بعد توقيع العقد'}</span>
+                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> ${isEn ? opp.duration : (opp.durationAr || opp.duration)}</span>
+                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">payments</span> ${opp.stipend || (isEn ? 'To be decided' : 'تُحدد بعد توقيع العقد')}</span>
               </div>
               <button onclick="MAYDAN_APP.viewOpportunityDetails('${opp.id}')" class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm">
-                عرض الفرصة
+                ${isEn ? 'View Opportunity' : 'عرض الفرصة'}
               </button>
             </div>
           </div>
@@ -1003,7 +1138,6 @@ window.MAYDAN_APP = (function() {
     applyFilters();
   }
 
-  // --- 7. STUDENT OPPORTUNITY DETAILS ---
   function renderStudentOpportunityDetails() {
     const opp = window.MAYDAN_STORE.getOpportunityById(activeOpportunityId) || window.MAYDAN_STORE.getOpportunities()[0];
     const student = window.MAYDAN_STORE.getStudentById("student-1");
@@ -1011,20 +1145,21 @@ window.MAYDAN_APP = (function() {
 
     const match = window.MAYDAN_AI.calculateStudentMatch(student, opp);
     const existingApp = window.MAYDAN_STORE.getStudentApplications(student.id).find(a => a.opportunityId === opp.id);
+    const isEn = window.MAYDAN_LANG === "en";
 
-    document.getElementById("opp-detail-title").textContent = opp.titleAr || opp.title;
+    document.getElementById("opp-detail-title").textContent = isEn ? opp.title : (opp.titleAr || opp.title);
     document.getElementById("opp-detail-company").textContent = opp.company;
-    document.getElementById("opp-detail-category").textContent = opp.categoryAr || opp.category;
-    document.getElementById("opp-detail-duration").textContent = opp.durationAr || opp.duration;
-    document.getElementById("opp-detail-stipend").textContent = opp.stipend || "تُحدد بعد توقيع العقد";
+    document.getElementById("opp-detail-category").textContent = isEn ? opp.category : (opp.categoryAr || opp.category);
+    document.getElementById("opp-detail-duration").textContent = isEn ? opp.duration : (opp.durationAr || opp.duration);
+    document.getElementById("opp-detail-stipend").textContent = opp.stipend || (isEn ? 'To be decided' : 'تُحدد بعد توقيع العقد');
     document.getElementById("opp-detail-description").textContent = opp.description;
-    document.getElementById("opp-detail-match-score").textContent = `${match.score}% Match`;
+    document.getElementById("opp-detail-match-score").textContent = `${match.score}% ${isEn ? 'Match' : 'تطابق'}`;
 
     const matchReasonsContainer = document.getElementById("opp-detail-match-reasons");
     if (matchReasonsContainer) {
       matchReasonsContainer.innerHTML = `
         <div class="space-y-1.5 text-xs text-slate-700 font-medium">
-          <div class="font-bold text-slate-900 pb-1">ليش هذه الفرصة تناسبك؟</div>
+          <div class="font-bold text-slate-900 pb-1">${isEn ? 'Why does this match you?' : 'ليش هذه الفرصة تناسبك؟'}</div>
           ${match.pros.map(p => `<div class="flex items-center gap-2 text-emerald-800"><span class="text-emerald-600 font-bold">✓</span> ${p}</div>`).join('')}
           ${match.improvements.map(imp => `<div class="flex items-center gap-2 text-amber-800"><span class="text-amber-600 font-bold">△</span> ${imp}</div>`).join('')}
         </div>
@@ -1057,11 +1192,11 @@ window.MAYDAN_APP = (function() {
       if (existingApp) {
         applyBtn.disabled = true;
         applyBtn.className = "w-full py-3.5 bg-slate-200 text-slate-600 font-bold rounded-xl text-center text-sm cursor-not-allowed flex items-center justify-center gap-2";
-        applyBtn.innerHTML = `<span class="material-symbols-outlined text-base">check_circle</span> تم التقديم سابقًا (${existingApp.status})`;
+        applyBtn.innerHTML = `<span class="material-symbols-outlined text-base">check_circle</span> ${isEn ? 'Already Applied' : 'تم التقديم سابقًا'} (${existingApp.status})`;
       } else {
         applyBtn.disabled = false;
         applyBtn.className = "w-full py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl text-center text-sm shadow-md transition-all flex items-center justify-center gap-2";
-        applyBtn.innerHTML = `<span class="material-symbols-outlined text-base">send</span> التقديم على هذه الفرصة`;
+        applyBtn.innerHTML = `<span class="material-symbols-outlined text-base">send</span> ${isEn ? 'Apply for this opportunity' : 'التقديم على هذه الفرصة'}`;
         applyBtn.onclick = function() {
           openApplyModal(opp);
         };
