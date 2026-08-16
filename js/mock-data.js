@@ -55,6 +55,7 @@ window.MAYDAN_MOCK = {
       activity: "تطوير المنصات الوطنية، نماذج الذكاء الاصطناعي التنبؤية، وإدارة قواعد البيانات الضخمة.",
       fields: ["علم البيانات", "الذكاء الاصطناعي", "هندسة البرمجيات", "الأمن السيبراني"],
       website: "https://elm.sa",
+      linkedin: "https://www.linkedin.com/company/elm",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     },
     {
@@ -68,6 +69,7 @@ window.MAYDAN_MOCK = {
       activity: "بناء البنى التحتية السحابية، أتمتة العمليات الرقمية، وتحليل أداء الشبكات.",
       fields: ["الحوسبة السحابية", "نظم المعلومات", "تحليل البيانات", "هندسة الشبكات"],
       website: "https://solutions.com.sa",
+      linkedin: "https://www.linkedin.com/company/solutionsbystc",
       logo: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png"
     },
     {
