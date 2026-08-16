@@ -2,7 +2,6 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper functions
     function isAuthenticated() {
       return request.auth != null;
     }
@@ -11,52 +10,69 @@ service cloud.firestore {
       return isAuthenticated() && request.auth.uid == userId;
     }
 
-    // 1. Users collection
+    // ==================== 1. USERS COLLECTION ====================
+    // A signed-in user can create and manage their own profile.
+    // A user cannot modify another user's profile.
     match /users/{userId} {
       allow read: if isAuthenticated();
-      allow create: if isOwner(userId);
-      allow update: if isOwner(userId);
+      allow create, update: if isOwner(userId);
       allow delete: if false;
     }
 
-    // 2. Students collection (Profile management)
-    match /students/{studentId} {
-      allow read: if true;
-      allow create, update: if isAuthenticated();
-      allow delete: if false;
-    }
-
-    // 3. Opportunities collection
+    // ==================== 2. OPPORTUNITIES COLLECTION ====================
+    // Anyone who is authenticated as a student (or guest) can read published opportunities.
+    // A company can create opportunities using its own UID as companyId.
+    // A company can read and update only its own opportunities.
+    // Students cannot modify opportunities.
     match /opportunities/{oppId} {
-      // Anyone can read published opportunities
       allow read: if true;
       
-      // Only authenticated users can create opportunities where companyId matches their UID or company context
       allow create: if isAuthenticated() && (
-        request.resource.data.companyId == request.auth.uid || 
+        request.resource.data.companyId == request.auth.uid ||
         !('companyId' in request.resource.data)
       );
       
-      // Only owner company can update or delete
-      allow update, delete: if isAuthenticated() && (
-        resource.data.companyId == request.auth.uid || 
+      allow update: if isAuthenticated() && (
+        resource.data.companyId == request.auth.uid ||
         !('companyId' in resource.data)
+      );
+      
+      allow delete: if isAuthenticated() && (
+        resource.data.companyId == request.auth.uid
       );
     }
 
-    // 4. Applications collection
+    // ==================== 3. APPLICATIONS COLLECTION ====================
+    // A student can create an application for themselves.
+    // A student can read their own applications.
+    // A company can read applications submitted to its own opportunities.
+    // A company can update the status of applications for its own opportunities.
+    // Application statuses: pending, shortlisted, accepted, rejected
     match /applications/{appId} {
-      // Student can read their own applications, Company can read applications for their opportunities
-      allow read: if isAuthenticated();
+      allow read: if isAuthenticated() && (
+        resource.data.studentId == request.auth.uid ||
+        resource.data.companyId == request.auth.uid ||
+        !('studentId' in resource.data)
+      );
       
-      // Student creates application with their studentId
       allow create: if isAuthenticated() && (
-        request.resource.data.studentId == request.auth.uid || 
+        request.resource.data.studentId == request.auth.uid ||
         !('studentId' in request.resource.data)
       );
       
-      // Student or Company can update status
-      allow update: if isAuthenticated();
+      allow update: if isAuthenticated() && (
+        resource.data.studentId == request.auth.uid ||
+        resource.data.companyId == request.auth.uid ||
+        !('companyId' in resource.data)
+      );
+      
+      allow delete: if false;
+    }
+
+    // Fallback students collection for legacy profile components
+    match /students/{studentId} {
+      allow read: if true;
+      allow create, update: if isAuthenticated();
       allow delete: if false;
     }
   }

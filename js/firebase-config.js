@@ -35,17 +35,21 @@ window.MAYDAN_FIREBASE = (function() {
     const user = firebase.auth().currentUser;
     if (!user) return; // Only sync when an authenticated session is active
 
-    try {
-      // Sync Opportunities
-      const opps = window.MAYDAN_STORE ? window.MAYDAN_STORE.getOpportunities() : [];
-      for (const opp of opps) {
-        const payload = { ...opp, companyId: opp.companyId || user.uid };
-        await db.collection("opportunities").doc(opp.id).set(payload, { merge: true });
-      }
+    const profile = window.MAYDAN_AUTH ? window.MAYDAN_AUTH.getUserProfile() : null;
+    const role = profile ? profile.role : (window.MAYDAN_STORE ? window.MAYDAN_STORE.getRole() : "student");
 
-      console.log("🔥 Cloud Firestore sync completed for project: maydan-b04ca");
-    } catch (e) {
-      console.warn("Firestore sync notice (local storage fallback active):", e.message || e);
+    // Only companies are allowed to write/sync company opportunities to Firestore
+    if (role === "company") {
+      try {
+        const opps = window.MAYDAN_STORE ? window.MAYDAN_STORE.getOpportunities() : [];
+        for (const opp of opps) {
+          const payload = { ...opp, companyId: opp.companyId || user.uid };
+          await db.collection("opportunities").doc(opp.id).set(payload, { merge: true });
+        }
+        console.log("🔥 Company opportunities synced to Cloud Firestore.");
+      } catch (e) {
+        console.warn("Company opportunities sync notice:", e.message || e);
+      }
     }
   }
 
@@ -69,6 +73,7 @@ window.MAYDAN_FIREBASE = (function() {
         const user = firebase.auth().currentUser;
         const payload = { ...applicationData };
         if (user) payload.studentId = user.uid;
+        if (!payload.status) payload.status = "pending";
 
         await db.collection("applications").doc(applicationData.id).set(payload, { merge: true });
       } catch (e) {
