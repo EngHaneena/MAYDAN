@@ -208,24 +208,48 @@ html:not(.dark) .text-slate-600 {
 /* Light Mode Control Icons & Buttons High Contrast */
 html:not(.dark) #theme-toggle-btn,
 html:not(.dark) #lang-toggle-btn,
-html:not(.dark) #demo-reset-btn,
-html:not(.dark) #demo-role-select {
-  background-color: #f1f5f9 !important;
+html:not(.dark) #demo-reset-btn {
+  background-color: #ffffff !important;
   color: #0f172a !important;
-  border-color: #cbd5e1 !important;
+  border: 1px solid #cbd5e1 !important;
   font-weight: 700 !important;
+}
+
+html:not(.dark) #demo-role-select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  font-weight: 700 !important;
+}
+
+html:not(.dark) #demo-role-select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
 }
 
 html:not(.dark) #theme-toggle-btn:hover,
 html:not(.dark) #lang-toggle-btn:hover,
 html:not(.dark) #demo-reset-btn:hover {
-  background-color: #e2e8f0 !important;
+  background-color: #f1f5f9 !important;
   color: #0d9488 !important;
 }
 
 html:not(.dark) #theme-toggle-btn .material-symbols-outlined,
 html:not(.dark) #lang-toggle-btn .material-symbols-outlined,
-html:not(.dark) #demo-reset-btn .material-symbols-outlined {
+html:not(.dark) #demo-reset-btn .material-symbols-outlined,
+html:not(.dark) #theme-icon {
   color: #0f172a !important;
+}
+
+/* Dark Mode Control Dropdown & Options High Contrast */
+html.dark #demo-role-select {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155 !important;
+}
+
+html.dark #demo-role-select option {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
 }
 
