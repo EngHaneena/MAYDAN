@@ -4,17 +4,18 @@
 window.MAYDAN_AUTH = (function() {
   let currentUser = null;
   let userProfile = null;
+  let isSigningUp = false;
 
   function parseAuthErrorMessage(error) {
     if (!error) return "حدث خطأ غير متوقع. يرجى المحاولة ثانية.";
     const code = error.code || "";
     switch (code) {
+      case "auth/email-already-in-use":
+        return "هذا البريد الإلكتروني مسجل مسبقًا، جرّب تسجيل الدخول.";
       case "auth/invalid-credential":
       case "auth/user-not-found":
       case "auth/wrong-password":
         return "البريد الإلكتروني أو كلمة المرور غير صحيحة. إذا لم يكن لديك حساب، يرجى اختيار 'إنشاء حساب جديد'.";
-      case "auth/email-already-in-use":
-        return "هذا البريد الإلكتروني مسجل بالفعل. يرجى اختيار 'تسجيل الدخول' بدلاً من إنشاء حساب جديد.";
       case "auth/weak-password":
         return "كلمة المرور ضعيفة. يرجى استخدام 6 أحرف على الأقل.";
       case "auth/invalid-email":
@@ -31,6 +32,10 @@ window.MAYDAN_AUTH = (function() {
   function init() {
     if (typeof firebase !== "undefined" && firebase.auth) {
       firebase.auth().onAuthStateChanged(async function(user) {
+        if (isSigningUp) {
+          // Prevent race condition while signup function is actively creating profile document
+          return;
+        }
         if (user) {
           currentUser = user;
           try {
@@ -114,9 +119,11 @@ window.MAYDAN_AUTH = (function() {
       return userProfile;
     }
 
+    isSigningUp = true;
     try {
       const userCred = await firebase.auth().createUserWithEmailAndPassword(email, password);
       const user = userCred.user;
+      currentUser = user;
       
       userProfile = {
         uid: user.uid,
@@ -133,19 +140,24 @@ window.MAYDAN_AUTH = (function() {
         certificates: profileData.certificates || ["AWS Certified Cloud Practitioner"]
       };
 
-      // Save to Firestore users collection if permissions allow, otherwise preserve in local session
-      try {
-        await firebase.firestore().collection("users").doc(user.uid).set(userProfile, { merge: true });
-      } catch (fsError) {
-        console.warn("Firestore profile save notice (fallback to local state):", fsError);
-      }
-      
       if (window.MAYDAN_STORE) window.MAYDAN_STORE.setRole(role);
 
+      // Save to Firestore users collection
+      if (firebase.firestore) {
+        try {
+          await firebase.firestore().collection("users").doc(user.uid).set(userProfile, { merge: true });
+        } catch (fsError) {
+          console.warn("Firestore profile save notice:", fsError);
+        }
+      }
+
+      updateNavbarForAuthUser();
       return userProfile;
     } catch (error) {
       console.error("Signup error:", error);
       throw error;
+    } finally {
+      isSigningUp = false;
     }
   }
 

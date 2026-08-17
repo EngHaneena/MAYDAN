@@ -509,7 +509,7 @@ window.MAYDAN_APP = (function() {
         try {
           if (authMode === "signup") {
             await window.MAYDAN_AUTH.signup(email, password, selectedRole, { name });
-            alert("تم إنشاء حسابك بنجاح! مرحبًا بك في ميدان 🎉");
+            alert("تم إنشاء حسابك بنجاح 🎉");
           } else {
             await window.MAYDAN_AUTH.login(email, password);
           }
