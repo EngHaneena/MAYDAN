@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MAYDAN | ميدان — من الجامعة إلى الميدان</title>
   
+  <!-- Favicon (Brand Logo) -->
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg"/>
+  
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +23,7 @@
   </script>
   
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/custom.css?v=30">
+  <link rel="stylesheet" href="css/custom.css?v=31">
 </head>
 <body class="bg-[#f7f9fb] text-[#191c1e] antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
 
@@ -29,8 +32,8 @@
     
     <!-- Logo & Slogan -->
     <div class="flex items-center gap-1.5 sm:gap-2.5 cursor-pointer group shrink-0" onclick="window.location.hash='landing-page'">
-      <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-teal-600 via-teal-800 to-slate-950 text-white flex items-center justify-center shadow-md border border-teal-400/30 shrink-0 group-hover:scale-105 transition-all">
-        <span class="material-symbols-outlined text-lg sm:text-2xl text-teal-300 animate-ai-pulse">workspace_premium</span>
+      <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-white dark:bg-slate-800 text-white flex items-center justify-center shadow-sm border border-slate-200/80 dark:border-slate-700 shrink-0 group-hover:scale-105 transition-all p-1 sm:p-1.5">
+        <img src="images/logo.svg" alt="MAYDAN Logo" class="w-full h-full object-contain"/>
       </div>
       <div>
         <h1 class="text-sm sm:text-lg font-extrabold text-slate-900 dark:text-slate-100 tracking-tight font-headline flex items-center gap-1 sm:gap-1.5">
@@ -170,7 +173,9 @@
         
         <!-- Auth View Header & Tabs -->
         <div class="text-center space-y-3">
-          <div class="w-12 h-12 rounded-2xl bg-slate-900 text-teal-400 font-bold flex items-center justify-center text-2xl mx-auto shadow-sm">م</div>
+          <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-800 p-2 shadow-sm border border-slate-200/80 dark:border-slate-700 mx-auto flex items-center justify-center">
+            <img src="images/logo.svg" alt="MAYDAN Logo" class="w-full h-full object-contain"/>
+          </div>
           <h2 id="auth-title" class="text-2xl font-bold text-slate-900 font-headline">أهلاً بك في ميدان</h2>
           <p id="auth-subtitle" class="text-slate-600 text-xs">سجل دخولك أو أنشئ حسابًا جديدًا للبدء في المنصة</p>
 
@@ -1500,7 +1505,10 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800">
     <div class="max-w-[1440px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2.5">
+        <div class="w-6 h-6 rounded-lg bg-white/10 p-0.5 flex items-center justify-center">
+          <img src="images/logo.svg" alt="MAYDAN Logo" class="w-full h-full object-contain"/>
+        </div>
         <span class="font-bold text-white">MAYDAN | ميدان</span>
         <span>•</span>
         <span>من الجامعة إلى الميدان</span>
@@ -1536,9 +1544,9 @@
   <script src="js/firebase-auth.js"></script>
 
   <!-- App JavaScript Modules -->
-  <script src="js/mock-data.js?v=30"></script>
-  <script src="js/ai-engine.js?v=30"></script>
-  <script src="js/store.js?v=30"></script>
-  <script src="js/app.js?v=30"></script>
+  <script src="js/mock-data.js?v=31"></script>
+  <script src="js/ai-engine.js?v=31"></script>
+  <script src="js/store.js?v=31"></script>
+  <script src="js/app.js?v=31"></script>
 </body>
 </html>

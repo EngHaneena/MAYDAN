@@ -1,0 +1,44 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 110" fill="none" class="maydan-brand-logo">
+  <style>
+    .logo-teal { fill: #147d72; }
+    .logo-teal-stroke { stroke: #147d72; }
+    .logo-navy { fill: #1d2d44; }
+    .logo-navy-stroke { stroke: #1d2d44; }
+    .logo-gold { stroke: #ba975d; }
+
+    @media (prefers-color-scheme: dark) {
+      .logo-navy { fill: #e2e8f0; }
+      .logo-navy-stroke { stroke: #e2e8f0; }
+    }
+  </style>
+
+  <!-- Left Dot (Student - Teal) -->
+  <circle cx="34" cy="24" r="7.5" fill="#147d72" class="logo-teal"/>
+
+  <!-- Right Dot (Company - Navy) -->
+  <circle cx="86" cy="24" r="7.5" fill="#1d2d44" class="logo-navy"/>
+
+  <!-- Left Figure Arch (Teal) -->
+  <path d="M 22 84 L 22 55 C 22 36, 46 36, 46 55 L 48 60" 
+        stroke="#147d72" 
+        stroke-width="11" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        class="logo-teal-stroke"/>
+
+  <!-- Right Figure Arch (Navy) -->
+  <path d="M 98 84 L 98 55 C 98 36, 74 36, 74 55 L 72 60" 
+        stroke="#1d2d44" 
+        stroke-width="11" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        class="logo-navy-stroke"/>
+
+  <!-- Center Meeting Point (Gold V-Join) -->
+  <path d="M 44 55 L 60 80 L 76 55" 
+        stroke="#ba975d" 
+        stroke-width="11" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        class="logo-gold"/>
+</svg>
