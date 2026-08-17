@@ -602,8 +602,8 @@ window.MAYDAN_APP = (function() {
       openCompanyBtn.onclick = function() {
         const info = window.MAYDAN_STORE.getCompanyInfo();
         document.getElementById("edit-company-name").value = info.name || "شركة الأساليب الذكية";
-        document.getElementById("edit-company-location").value = info.location || "القصيم، السعودية";
-        document.getElementById("edit-company-worktype").value = info.workType || "حضوري";
+        document.getElementById("edit-company-location").value = info.location || "مكة المكرمة، السعودية";
+        document.getElementById("edit-company-worktype").value = info.workType || "هجين";
         document.getElementById("edit-company-industry").value = info.industry || "الحلول التقنية المتقدمة";
         document.getElementById("edit-company-desc").value = info.description || "";
         companyModal.classList.remove("hidden");
@@ -692,10 +692,10 @@ window.MAYDAN_APP = (function() {
 
     if (nameElem) nameElem.textContent = info.name || "شركة الأساليب الذكية (Smart Methods Co.)";
     if (industryElem) industryElem.textContent = info.industry || "الحلول التقنية المتقدمة وتصميم الأنظمة";
-    if (locationElem) locationElem.textContent = info.location || "القصيم، السعودية";
-    if (workTypeElem) workTypeElem.textContent = info.workType || "حضوري";
+    if (locationElem) locationElem.textContent = info.location || "مكة المكرمة، السعودية";
+    if (workTypeElem) workTypeElem.textContent = info.workType || "هجين (Hybrid)";
     if (oppsCountElem) oppsCountElem.textContent = `${opportunities.length} فرص منشورة`;
-    if (descElem) descElem.textContent = info.description || "شركة الأساليب الذكية هي شركة تقنية سريعة النمو متخصصة في الحلول الذكية وتصميم الرقائق الرقمية في القصيم.";
+    if (descElem) descElem.textContent = info.description || "شركة الأساليب الذكية هي شركة تقنية سريعة النمو متخصصة في الحلول الذكية وتصميم الرقائق الرقمية بمكة المكرمة.";
   }
 
   // --- 1. COMPANY DASHBOARD ---

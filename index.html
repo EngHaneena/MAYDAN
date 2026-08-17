@@ -20,7 +20,7 @@
   </script>
   
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/custom.css?v=29">
+  <link rel="stylesheet" href="css/custom.css?v=30">
 </head>
 <body class="bg-[#f7f9fb] text-[#191c1e] antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
 
@@ -690,11 +690,11 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 bg-slate-50 rounded-2xl text-xs text-center">
           <div>
             <span class="text-slate-500 block">مقر العمل الأساسي:</span>
-            <span id="company-profile-location" class="font-bold text-slate-800 text-xs">القصيم، السعودية</span>
+            <span id="company-profile-location" class="font-bold text-slate-800 text-xs">مكة المكرمة، السعودية</span>
           </div>
           <div>
             <span class="text-slate-500 block">نمط التدريب المعتمد:</span>
-            <span id="company-profile-worktype" class="font-bold text-teal-700 text-xs">حضوري</span>
+            <span id="company-profile-worktype" class="font-bold text-teal-700 text-xs">هجين (Hybrid)</span>
           </div>
           <div class="col-span-2 sm:col-span-1">
             <span class="text-slate-500 block">الفرص النشطة:</span>
@@ -706,7 +706,7 @@
         <div class="space-y-2">
           <h3 class="font-bold text-slate-900 text-base">عن الشركة والبيئة الميدانية:</h3>
           <p id="company-profile-desc" class="text-slate-600 text-sm leading-relaxed">
-            شركة الأساليب الذكية هي شركة تقنية سريعة النمو متخصصة في الحلول الذكية، تصميم الرقائق الرقمية وتطبيقات المعالجة في منطقة القصيم بالمملكة العربية السعودية.
+            شركة الأساليب الذكية هي شركة تقنية سريعة النمو متخصصة في الحلول الذكية، تصميم الرقائق الرقمية وتطبيقات المعالجة في مكة المكرمة بالمملكة العربية السعودية.
           </p>
         </div>
 
@@ -864,7 +864,7 @@
               <p id="comp-detail-industry" class="text-sm text-teal-700 dark:text-teal-400 font-semibold">الحلول التقنية والأنظمة الذكية</p>
               <p id="comp-detail-location" class="text-xs text-slate-500 dark:text-slate-400 font-medium flex items-center gap-1">
                 <span class="material-symbols-outlined text-sm">location_on</span>
-                <span id="comp-detail-area">القصيم (بريدة) - حضوري</span>
+                <span id="comp-detail-area">مكة المكرمة - هجين</span>
               </p>
               <div class="flex items-center gap-2 pt-1 flex-wrap">
                 <a id="comp-detail-linkedin" href="https://www.linkedin.com/company/%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D9%84%D9%8A%D8%A8-%D8%A7%D9%84%D8%B0%D9%83%D9%8A%D8%A9-smart-methods/" target="_blank" rel="noopener" class="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200 dark:border-blue-800">
@@ -1148,14 +1148,14 @@
         <div class="grid grid-cols-2 gap-4">
           <div class="space-y-1">
             <label class="block font-bold text-slate-700">مقر العمل (المدينة)</label>
-            <input type="text" id="edit-company-location" placeholder="القصيم، السعودية" class="w-full p-3 rounded-xl border-slate-200 border outline-none" required>
+            <input type="text" id="edit-company-location" placeholder="مكة المكرمة، السعودية" class="w-full p-3 rounded-xl border-slate-200 border outline-none" required>
           </div>
           <div class="space-y-1">
             <label class="block font-bold text-slate-700">نمط التدريب المعتمد</label>
             <select id="edit-company-worktype" class="w-full p-3 rounded-xl border-slate-200 border outline-none font-bold">
+              <option value="هجين" selected>هجين (Hybrid)</option>
               <option value="حضوري">حضوري</option>
               <option value="عن بعد">عن بعد</option>
-              <option value="هجين">هجين</option>
             </select>
           </div>
         </div>
@@ -1536,9 +1536,9 @@
   <script src="js/firebase-auth.js"></script>
 
   <!-- App JavaScript Modules -->
-  <script src="js/mock-data.js?v=29"></script>
-  <script src="js/ai-engine.js?v=29"></script>
-  <script src="js/store.js?v=29"></script>
-  <script src="js/app.js?v=29"></script>
+  <script src="js/mock-data.js?v=30"></script>
+  <script src="js/ai-engine.js?v=30"></script>
+  <script src="js/store.js?v=30"></script>
+  <script src="js/app.js?v=30"></script>
 </body>
 </html>
