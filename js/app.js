@@ -48,14 +48,18 @@ window.MAYDAN_APP = (function() {
       localStorage.setItem("MAYDAN_LANG", lang);
       document.documentElement.setAttribute("dir", lang === "en" ? "ltr" : "rtl");
       document.documentElement.setAttribute("lang", lang);
-      if (langLabel) langLabel.textContent = lang === "en" ? "AR" : "EN";
+      if (langLabel) langLabel.textContent = lang === "en" ? "عربي" : "EN";
       translatePageElements(lang);
       updateNavbarRoleUI();
+      if (window.MAYDAN_AUTH) {
+        window.MAYDAN_AUTH.updateNavbarForAuthUser();
+      }
       if (rerender) renderView(currentView);
     }
 
     if (langToggleBtn) {
-      langToggleBtn.onclick = function() {
+      langToggleBtn.onclick = function(e) {
+        if (e) e.preventDefault();
         const nextLang = window.MAYDAN_LANG === "en" ? "ar" : "en";
         applyLanguage(nextLang, true);
       };
