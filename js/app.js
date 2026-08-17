@@ -541,12 +541,13 @@ window.MAYDAN_APP = (function() {
 
     if (openStudentBtn && studentModal) {
       openStudentBtn.onclick = function() {
-        const student = window.MAYDAN_STORE.getStudentById("student-1");
-        document.getElementById("edit-student-name").value = student.name || "حنين هيثم القصير";
-        document.getElementById("edit-student-university").value = student.university || "جامعة القصيم";
-        document.getElementById("edit-student-major").value = student.major || "هندسة الحاسب";
+        const authProfile = window.MAYDAN_AUTH ? window.MAYDAN_AUTH.getUserProfile() : null;
+        const student = authProfile || window.MAYDAN_STORE.getStudentById("student-1");
+        document.getElementById("edit-student-name").value = student.name || "";
+        document.getElementById("edit-student-university").value = student.university || "";
+        document.getElementById("edit-student-major").value = student.major || "";
         document.getElementById("edit-student-level").value = student.level || "سنة تخرج (Senior)";
-        document.getElementById("edit-student-gpa").value = student.gpa || "3.92 / 4.00";
+        document.getElementById("edit-student-gpa").value = student.gpa || "";
         document.getElementById("edit-student-bio").value = student.bio || "";
         document.getElementById("edit-student-skills-input").value = (student.skills || []).join(", ");
         studentModal.classList.remove("hidden");
@@ -559,13 +560,14 @@ window.MAYDAN_APP = (function() {
       if (studentForm) {
         studentForm.onsubmit = function(e) {
           e.preventDefault();
-          const student = window.MAYDAN_STORE.getStudentById("student-1");
-          student.name = document.getElementById("edit-student-name").value;
-          student.university = document.getElementById("edit-student-university").value;
-          student.major = document.getElementById("edit-student-major").value;
-          student.level = document.getElementById("edit-student-level").value;
-          student.gpa = document.getElementById("edit-student-gpa").value;
-          student.bio = document.getElementById("edit-student-bio").value;
+          const authProfile = window.MAYDAN_AUTH ? window.MAYDAN_AUTH.getUserProfile() : null;
+          const student = authProfile || window.MAYDAN_STORE.getStudentById("student-1");
+          student.name = document.getElementById("edit-student-name").value.trim();
+          student.university = document.getElementById("edit-student-university").value.trim();
+          student.major = document.getElementById("edit-student-major").value.trim();
+          student.level = document.getElementById("edit-student-level").value.trim();
+          student.gpa = document.getElementById("edit-student-gpa").value.trim();
+          student.bio = document.getElementById("edit-student-bio").value.trim();
 
           const skillsText = document.getElementById("edit-student-skills-input").value;
           student.skills = skillsText.split(",").map(s => s.trim()).filter(Boolean);
@@ -573,9 +575,13 @@ window.MAYDAN_APP = (function() {
           if (window.MAYDAN_FIREBASE) {
             window.MAYDAN_FIREBASE.saveStudentProfile(student);
           }
+          if (window.MAYDAN_AUTH) {
+            window.MAYDAN_AUTH.updateNavbarForAuthUser();
+          }
 
           studentModal.classList.add("hidden");
           renderStudentProfile();
+          renderStudentDashboard();
           alert("تم حفظ ملف الطالب التفاعلي بنجاح! ✨");
         };
       }
@@ -1075,9 +1081,32 @@ window.MAYDAN_APP = (function() {
 
   // --- 5. STUDENT DASHBOARD ---
   function renderStudentDashboard() {
-    const student = window.MAYDAN_STORE.getStudentById("student-1");
-    const opportunities = window.MAYDAN_STORE.getOpportunities();
     const isEn = window.MAYDAN_LANG === "en";
+    const authProfile = window.MAYDAN_AUTH ? window.MAYDAN_AUTH.getUserProfile() : null;
+    const defaultStudent = window.MAYDAN_STORE.getStudentById("student-1");
+    const student = authProfile ? {
+      ...defaultStudent,
+      name: authProfile.name || (authProfile.email ? authProfile.email.split('@')[0] : (isEn ? "Student" : "طالب")),
+      major: authProfile.major || (isEn ? "Computer Engineering" : "هندسة الحاسب"),
+      university: authProfile.university || (isEn ? "Qassim University" : "جامعة القصيم"),
+      skills: (authProfile.skills && authProfile.skills.length > 0) ? authProfile.skills : defaultStudent.skills
+    } : defaultStudent;
+
+    const rawName = student.name || (isEn ? "Student" : "طالب");
+    const firstName = rawName.split(" ")[0] || rawName;
+
+    const greetingTitle = document.querySelector("#view-student-dashboard h2");
+    const greetingSub = document.querySelector("#view-student-dashboard p");
+    if (greetingTitle) {
+      greetingTitle.textContent = isEn ? `Welcome ${firstName} 👋` : `أهلًا ${firstName} 👋`;
+    }
+    if (greetingSub) {
+      greetingSub.textContent = isEn 
+        ? `These are the training opportunities most tailored to your skills and specialization in ${student.major || 'Computer Engineering'}.`
+        : `هذي الفرص التدريبية الأكثر ملاءمة لمهاراتك وتخصصك في ${student.major || 'هندسة الحاسب'}.`;
+    }
+
+    const opportunities = window.MAYDAN_STORE.getOpportunities();
 
     const container = document.getElementById("student-recommended-opps");
     if (!container) return;
@@ -1435,30 +1464,67 @@ window.MAYDAN_APP = (function() {
 
   // --- 9. STUDENT PROFILE & INTERACTIVE CV UPLOAD ---
   function renderStudentProfile() {
-    const student = window.MAYDAN_STORE.getStudentById("student-1");
+    const isEn = window.MAYDAN_LANG === "en";
+    const authUser = window.MAYDAN_AUTH ? window.MAYDAN_AUTH.getCurrentUser() : null;
+    const authProfile = window.MAYDAN_AUTH ? window.MAYDAN_AUTH.getUserProfile() : null;
+    const defaultStudent = window.MAYDAN_STORE.getStudentById("student-1");
 
-    document.getElementById("profile-name").textContent = student.name;
-    document.getElementById("profile-title").textContent = student.title;
-    document.getElementById("profile-university").textContent = student.university;
-    document.getElementById("profile-major").textContent = student.major;
-    document.getElementById("profile-gpa").textContent = student.gpa;
-    document.getElementById("profile-bio").textContent = student.bio;
+    let student;
+    if (authUser && authProfile) {
+      student = {
+        name: authProfile.name || (authUser.email ? authUser.email.split('@')[0] : (isEn ? "Student User" : "مستخدم ميدان")),
+        title: authProfile.title || (authProfile.major ? (isEn ? `${authProfile.major} Student` : `طالب ${authProfile.major}`) : (isEn ? "Registered Student" : "طالب مسجل في منصة ميدان")),
+        university: authProfile.university || (isEn ? "Qassim University" : "جامعة القصيم"),
+        major: authProfile.major || (isEn ? "Computer Engineering" : "هندسة الحاسب"),
+        gpa: authProfile.gpa || (isEn ? "Not specified" : "غير مدخل"),
+        bio: authProfile.bio || (isEn ? "Welcome to MAYDAN! You can edit your profile, add skills, and upload your CV at any time." : "مرحباً بك في منصة ميدان! يمكنك تعديل ملفك الشخصي وإضافة نبذتك ومهاراتك وسيرتك الذاتية في أي وقت."),
+        skills: authProfile.skills || [],
+        projects: authProfile.projects || [],
+        cvUploaded: authProfile.cvUploaded || false,
+        cvName: authProfile.cvName || "",
+        cvUploadDate: authProfile.cvUploadDate || ""
+      };
+    } else {
+      student = defaultStudent;
+    }
+
+    const nameElem = document.getElementById("profile-name");
+    const titleElem = document.getElementById("profile-title");
+    const univElem = document.getElementById("profile-university");
+    const majorElem = document.getElementById("profile-major");
+    const gpaElem = document.getElementById("profile-gpa");
+    const bioElem = document.getElementById("profile-bio");
+
+    if (nameElem) nameElem.textContent = student.name;
+    if (titleElem) titleElem.textContent = student.title;
+    if (univElem) univElem.textContent = student.university;
+    if (majorElem) majorElem.textContent = student.major;
+    if (gpaElem) gpaElem.textContent = student.gpa;
+    if (bioElem) bioElem.textContent = student.bio;
 
     const skillsContainer = document.getElementById("profile-skills");
     if (skillsContainer) {
-      skillsContainer.innerHTML = (student.skills || []).map(s => 
-        `<span class="px-3 py-1 bg-teal-50 text-teal-800 rounded-lg text-xs font-semibold border border-teal-200">${s}</span>`
-      ).join('');
+      if (student.skills && student.skills.length > 0) {
+        skillsContainer.innerHTML = student.skills.map(s => 
+          `<span class="px-3 py-1 bg-teal-50 text-teal-800 rounded-lg text-xs font-semibold border border-teal-200">${s}</span>`
+        ).join('');
+      } else {
+        skillsContainer.innerHTML = `<span class="text-xs text-slate-400 font-medium">${isEn ? 'No skills added yet — Click Edit Profile to add skills ✨' : 'لم يتم إضافة مهارات بعد — اضغط تعديل الملف لإضافة مهاراتك ✨'}</span>`;
+      }
     }
 
     const projectsContainer = document.getElementById("profile-projects");
     if (projectsContainer) {
-      projectsContainer.innerHTML = (student.projects || []).map(p => `
-        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-          <h4 class="font-bold text-sm text-slate-900">${p.name}</h4>
-          <p class="text-xs text-slate-600">${p.desc}</p>
-        </div>
-      `).join('');
+      if (student.projects && student.projects.length > 0) {
+        projectsContainer.innerHTML = student.projects.map(p => `
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <h4 class="font-bold text-sm text-slate-900">${p.name}</h4>
+            <p class="text-xs text-slate-600">${p.desc}</p>
+          </div>
+        `).join('');
+      } else {
+        projectsContainer.innerHTML = `<div class="p-4 text-center text-xs text-slate-400 bg-slate-50 rounded-xl border border-slate-200">${isEn ? 'No projects added yet. You can add projects via Edit Profile.' : 'لا توجد مشاريع مضافة بعد. يمكنك إضافتها عبر تعديل الملف.'}</div>`;
+      }
     }
 
     const cvAnalysisBox = document.getElementById("cv-analysis-status");
