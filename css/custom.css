@@ -474,5 +474,47 @@ html:not(.dark) #candidates-list-container .bg-slate-100 {
   border: 1px solid #cbd5e1 !important;
 }
 
+/* ==================== RESPONSIVE MOBILE POLISH ==================== */
+@media (max-width: 640px) {
+  /* Prevent horizontal overflowing on all view containers */
+  .view-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
 
+  /* Compact header margins and padding on small screens */
+  .glass-nav {
+    padding: 6px 10px !important;
+    width: 95% !important;
+  }
 
+  /* Optimize modal sizing on mobile */
+  .view-panel .max-w-3xl,
+  .view-panel .max-w-4xl,
+  .view-panel .max-w-2xl {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Card padding reduction on small screens for better readability */
+  .view-panel .p-8 {
+    padding: 1.25rem !important;
+  }
+
+  /* Mobile bottom navigation height and tap target optimization */
+  .mobile-bottom-nav {
+    height: 60px !important;
+    padding: 4px 8px !important;
+    z-index: 9999 !important;
+  }
+
+  .mobile-nav-item {
+    padding: 4px 2px !important;
+    font-size: 11px !important;
+  }
+
+  .mobile-nav-item .material-symbols-outlined {
+    font-size: 22px !important;
+  }
+}

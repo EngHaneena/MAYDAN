@@ -20,24 +20,24 @@
   </script>
   
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/custom.css?v=23">
+  <link rel="stylesheet" href="css/custom.css?v=24">
 </head>
 <body class="bg-[#f7f9fb] text-[#191c1e] antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
 
   <!-- ==================== TOP FLOATING GLASS NAVBAR ==================== -->
-  <header class="fixed top-0 left-0 right-0 z-50 mt-2 sm:mt-3 mx-auto w-[96%] sm:w-[94%] max-w-[1440px] px-3 sm:px-6 py-2 sm:py-2.5 glass-nav rounded-2xl md:rounded-full flex items-center justify-between transition-all overflow-hidden">
+  <header class="fixed top-0 left-0 right-0 z-50 mt-2 sm:mt-3 mx-auto w-[96%] sm:w-[94%] max-w-[1440px] px-2.5 sm:px-6 py-1.5 sm:py-2.5 glass-nav rounded-2xl md:rounded-full flex items-center justify-between transition-all">
     
     <!-- Logo & Slogan -->
-    <div class="flex items-center gap-2.5 cursor-pointer group shrink-0" onclick="window.location.hash='landing-page'">
-      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-br from-teal-600 via-teal-800 to-slate-950 text-white flex items-center justify-center shadow-md border border-teal-400/30 shrink-0 group-hover:scale-105 transition-all">
-        <span class="material-symbols-outlined text-xl sm:text-2xl text-teal-300 animate-ai-pulse">workspace_premium</span>
+    <div class="flex items-center gap-1.5 sm:gap-2.5 cursor-pointer group shrink-0" onclick="window.location.hash='landing-page'">
+      <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-teal-600 via-teal-800 to-slate-950 text-white flex items-center justify-center shadow-md border border-teal-400/30 shrink-0 group-hover:scale-105 transition-all">
+        <span class="material-symbols-outlined text-lg sm:text-2xl text-teal-300 animate-ai-pulse">workspace_premium</span>
       </div>
       <div>
-        <h1 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-slate-100 tracking-tight font-headline flex items-center gap-1 sm:gap-1.5 flex-wrap">
+        <h1 class="text-sm sm:text-lg font-extrabold text-slate-900 dark:text-slate-100 tracking-tight font-headline flex items-center gap-1 sm:gap-1.5">
           <span class="text-slate-900 dark:text-white font-extrabold">MAYDAN</span> 
           <span class="text-slate-400 dark:text-slate-600 font-bold">|</span> 
-          <span class="text-teal-950 dark:text-teal-300 font-black text-base sm:text-lg">ميدان</span>
-          <span class="text-[10px] font-semibold px-2 py-0.5 bg-teal-100 dark:bg-teal-900/60 text-teal-900 dark:text-teal-300 rounded-full border border-teal-300 dark:border-teal-800">AI Co-op</span>
+          <span class="text-teal-950 dark:text-teal-300 font-black text-sm sm:text-lg">ميدان</span>
+          <span class="text-[9px] sm:text-[10px] font-semibold px-1.5 sm:px-2 py-0.5 bg-teal-100 dark:bg-teal-900/60 text-teal-900 dark:text-teal-300 rounded-full border border-teal-300 dark:border-teal-800 hidden sm:inline-block">AI Co-op</span>
         </h1>
         <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium hidden sm:block">من الجامعة إلى الميدان</p>
       </div>
@@ -49,30 +49,30 @@
     </nav>
 
     <!-- Right Controls: Demo Role Toggle, Dark Mode, Lang Toggle & User Badge -->
-    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+    <div class="flex items-center gap-1 sm:gap-2 shrink-0">
       
       <!-- Role Selector Dropdown -->
       <div class="relative flex items-center bg-slate-100/90 dark:bg-slate-800 rounded-full p-0.5 sm:p-1 border border-slate-200 dark:border-slate-700 text-xs font-semibold shrink-0">
-        <select id="demo-role-select" class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-[11px] sm:text-xs font-bold rounded-full py-1 sm:py-1.5 px-2 sm:px-3 focus:ring-2 focus:ring-teal-500 cursor-pointer shadow-sm outline-none">
-          <option value="company">🏢 شركة (Smart Methods)</option>
-          <option value="student">🎓 طالبة (حنين هيثم)</option>
+        <select id="demo-role-select" class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-[10px] sm:text-xs font-bold rounded-full py-1 sm:py-1.5 px-1.5 sm:px-3 focus:ring-2 focus:ring-teal-500 cursor-pointer shadow-sm outline-none max-w-[100px] sm:max-w-none truncate">
+          <option value="company">🏢 شركة (Smart)</option>
+          <option value="student">🎓 طالبة (حنين)</option>
         </select>
       </div>
 
       <!-- Dark Mode Toggle Button -->
-      <button id="theme-toggle-btn" type="button" title="تبديل الوضع الليلي / الفاتح" class="w-8 h-8 sm:w-8.5 sm:h-8.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-slate-700 transition-colors flex items-center justify-center shrink-0">
-        <span id="theme-icon" class="material-symbols-outlined text-base">dark_mode</span>
+      <button id="theme-toggle-btn" type="button" title="تبديل الوضع الليلي / الفاتح" class="w-7 h-7 sm:w-8.5 sm:h-8.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-slate-700 transition-colors flex items-center justify-center shrink-0">
+        <span id="theme-icon" class="material-symbols-outlined text-sm sm:text-base">dark_mode</span>
       </button>
 
       <!-- Language Toggle Button -->
-      <button id="lang-toggle-btn" type="button" title="Switch Language / تغيير اللغة" class="h-8 sm:h-8.5 px-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-full border border-slate-200 dark:border-slate-700 text-xs transition-colors flex items-center gap-1 shrink-0">
-        <span class="material-symbols-outlined text-sm">language</span>
+      <button id="lang-toggle-btn" type="button" title="Switch Language / تغيير اللغة" class="h-7 sm:h-8.5 px-1.5 sm:px-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-full border border-slate-200 dark:border-slate-700 text-[10px] sm:text-xs transition-colors flex items-center gap-0.5 sm:gap-1 shrink-0">
+        <span class="material-symbols-outlined text-xs sm:text-sm">language</span>
         <span id="lang-label">EN</span>
       </button>
 
       <!-- Quick Reset Button -->
-      <button id="demo-reset-btn" type="button" title="إعادة ضبط البيانات" class="w-8 h-8 sm:w-8.5 sm:h-8.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-slate-700 transition-colors flex items-center justify-center shrink-0">
-        <span class="material-symbols-outlined text-base">restart_alt</span>
+      <button id="demo-reset-btn" type="button" title="إعادة ضبط البيانات" class="w-7 h-7 sm:w-8.5 sm:h-8.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-slate-700 transition-colors flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-sm sm:text-base">restart_alt</span>
       </button>
 
       <!-- Active User Badge -->
@@ -84,7 +84,7 @@
   </header>
 
   <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
-  <main class="pt-36 sm:pt-44 pb-28 lg:pb-16 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto w-full flex-grow">
+  <main class="pt-20 sm:pt-24 md:pt-28 pb-28 md:pb-16 px-3 sm:px-6 lg:px-8 max-w-[1440px] mx-auto w-full flex-grow">
 
     <!-- ==================== VIEW 0: MAYDAN LANDING PAGE ==================== -->
     <section id="view-landing-page" class="view-panel space-y-16 py-4">
@@ -1532,9 +1532,9 @@
   <script src="js/firebase-auth.js"></script>
 
   <!-- App JavaScript Modules -->
-  <script src="js/mock-data.js?v=23"></script>
-  <script src="js/ai-engine.js?v=23"></script>
-  <script src="js/store.js?v=23"></script>
-  <script src="js/app.js?v=23"></script>
+  <script src="js/mock-data.js?v=24"></script>
+  <script src="js/ai-engine.js?v=24"></script>
+  <script src="js/store.js?v=24"></script>
+  <script src="js/app.js?v=24"></script>
 </body>
 </html>
