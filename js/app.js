@@ -753,6 +753,23 @@ window.MAYDAN_APP = (function() {
     renderCompanyProposals();
   }
 
+  function renderSocialBadge(url, type, studentName = "") {
+    const isLinkedin = type === "linkedin";
+    const icon = isLinkedin ? "link" : "code";
+    const label = isLinkedin ? "LinkedIn" : "GitHub";
+    const colorClass = isLinkedin 
+      ? "bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/60 border-blue-200 dark:border-blue-800" 
+      : "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 border-slate-300 dark:border-slate-700";
+
+    const isValidUrl = url && typeof url === "string" && (url.startsWith("http://") || url.startsWith("https://")) && !url.includes("username") && url.trim().length > 15;
+
+    if (isValidUrl) {
+      return `<a href="${url.trim()}" target="_blank" rel="noopener noreferrer" title="${label} ${studentName}" class="px-2 py-0.5 ${colorClass} rounded-lg text-xs font-bold transition-all flex items-center gap-1 border"><span class="material-symbols-outlined text-xs">${icon}</span> ${label}</a>`;
+    } else {
+      return `<span title="${label} (غير متوفر)" class="px-2 py-0.5 ${colorClass} opacity-60 cursor-default rounded-lg text-xs font-bold flex items-center gap-1 border"><span class="material-symbols-outlined text-xs">${icon}</span> ${label}</span>`;
+    }
+  }
+
   function renderCompanyProposals() {
     const containers = [
       document.getElementById("company-proposals-container"),
@@ -779,6 +796,9 @@ window.MAYDAN_APP = (function() {
 
       container.innerHTML = proposals.map(prop => {
         const statusClass = statusBadges[prop.status] || "bg-amber-100 text-amber-800 border-amber-300";
+        const studentObj = window.MAYDAN_STORE.getStudentById(prop.studentId);
+        const stLinkedin = prop.studentLinkedin || (studentObj ? studentObj.linkedin : null);
+        const stGithub = prop.studentGithub || (studentObj ? studentObj.github : null);
 
         return `
           <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-300/80 dark:border-slate-800 shadow-sm hover-lift relative overflow-hidden space-y-4">
@@ -789,8 +809,8 @@ window.MAYDAN_APP = (function() {
                 <div class="space-y-1">
                   <div class="flex items-center gap-2 flex-wrap">
                     <h4 class="text-base font-extrabold text-slate-900 dark:text-slate-100 font-headline">${prop.studentName}</h4>
-                    <a href="https://linkedin.com/in/haneen-alqasir" target="_blank" rel="noopener" title="LinkedIn الطالبة" class="px-2 py-0.5 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200 dark:border-blue-800"><span class="material-symbols-outlined text-xs">link</span> LinkedIn</a>
-                    <a href="https://github.com/EngHaneena" target="_blank" rel="noopener" title="GitHub الطالبة" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-slate-300 dark:border-slate-700"><span class="material-symbols-outlined text-xs">code</span> GitHub</a>
+                    ${renderSocialBadge(stLinkedin, 'linkedin', prop.studentName)}
+                    ${renderSocialBadge(stGithub, 'github', prop.studentName)}
                     <span class="px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-slate-200 dark:border-slate-700">${prop.studentMajor} • ${prop.studentUniversity}</span>
                     <span class="px-2.5 py-0.5 ${statusClass} border text-xs font-bold rounded-full">${prop.status}</span>
                   </div>
@@ -1001,8 +1021,8 @@ window.MAYDAN_APP = (function() {
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="px-2.5 py-0.5 bg-amber-50 text-amber-800 border border-amber-200/70 text-xs font-bold rounded-full">${rankBadges[index] || 'مرشح'}</span>
                   <h3 class="text-lg font-bold text-slate-900 font-headline">${st.name}</h3>
-                  ${st.linkedin ? `<a href="${st.linkedin}" target="_blank" rel="noopener" title="LinkedIn المرشحة" class="px-2 py-0.5 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200"><span class="material-symbols-outlined text-xs">link</span> LinkedIn</a>` : ''}
-                  ${st.github ? `<a href="${st.github}" target="_blank" rel="noopener" title="GitHub المرشحة" class="px-2 py-0.5 bg-slate-100 text-slate-800 hover:bg-slate-200 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-slate-300"><span class="material-symbols-outlined text-xs">code</span> GitHub</a>` : ''}
+                  ${renderSocialBadge(st.linkedin, 'linkedin', st.name)}
+                  ${renderSocialBadge(st.github, 'github', st.name)}
                 </div>
                 <p class="text-xs text-slate-600 font-medium">${st.title}</p>
                 <div class="flex flex-wrap gap-1.5 pt-1">
@@ -2107,8 +2127,8 @@ window.MAYDAN_APP = (function() {
       const badgesElem = document.getElementById("sp-modal-social-badges");
       if (badgesElem) {
         badgesElem.innerHTML = `
-          ${student.linkedin ? `<a href="${student.linkedin}" target="_blank" rel="noopener" class="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 hover:bg-blue-100 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-blue-200 dark:border-blue-800"><span class="material-symbols-outlined text-xs">link</span> LinkedIn</a>` : ''}
-          ${student.github ? `<a href="${student.github}" target="_blank" rel="noopener" class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 rounded-lg text-xs font-bold transition-all flex items-center gap-1 border border-slate-300 dark:border-slate-700"><span class="material-symbols-outlined text-xs">code</span> GitHub</a>` : ''}
+          ${renderSocialBadge(student.linkedin, 'linkedin', student.name)}
+          ${renderSocialBadge(student.github, 'github', student.name)}
         `;
       }
 
