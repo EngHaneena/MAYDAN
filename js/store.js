@@ -1,7 +1,7 @@
 // LocalStorage Persistent Store with Firebase Integration for MAYDAN (ميدان)
 
 window.MAYDAN_STORE = (function() {
-  const STORAGE_KEY = "MAYDAN_APP_STATE_V27";
+  const STORAGE_KEY = "MAYDAN_APP_STATE_V28";
 
   let state = {
     role: "company", // "company" or "student"

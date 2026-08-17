@@ -242,7 +242,7 @@ window.MAYDAN_APP = (function() {
     if (chalBannerP) chalBannerP.textContent = isEn ? "Just share your operational challenge, and let students show you how their skills can help turn that need into a successful co-op project." : "شاركنا احتياجك أو التحدي التجاري الذي تواجهه، وخَل الطلاب يورونك كيف ممكن مهاراتهم تساعد منشأتك وتحول هذا الاحتياج إلى مشروع فرصة تدريبية ناجح.";
 
     const chalListTitle = document.querySelector("#view-company-challenges h3.font-headline");
-    if (chalListTitle) chalListTitle.textContent = isEn ? "Needs & Challenges Posted by Your Organization" : "الاحتياجات والتحديات المطروحة للمنشأة";
+    if (chalListTitle) chalListTitle.innerHTML = `<span class="material-symbols-outlined text-amber-500">list_alt</span> ${isEn ? 'Give Them A Chance!' : 'عطيهم فرصه!'}`;
 
     const chalReceivedTitle = document.querySelector("#view-company-challenges .border-t h3.font-headline");
     if (chalReceivedTitle) chalReceivedTitle.textContent = isEn ? "Interested Students & Direct Responses" : "الطلاب المهتمون والردود المباشرة (ورّهم وش عندك)";
