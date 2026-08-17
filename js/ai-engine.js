@@ -234,6 +234,21 @@ window.MAYDAN_AI = {
       };
     }
 
+    // Explicit high match for Abdullah Mohammed
+    if (student.name.includes("عبدالله")) {
+      return {
+        score: 93,
+        pros: [
+          "تطابق عالي لمهارات هندسة البرمجيات وتطبيقات React و Python و Firebase و SQL (93%)",
+          "تخصص هندسة البرمجيات بجامعة المستقبل متوافق ومثالي للفرصة",
+          "اهتمامات ومشاريع عملية في تحليل البيانات والذكاء الاصطناعي"
+        ],
+        improvements: [
+          "تعزيز الخبرة في بنيات الأنظمة السحابية الموسعة"
+        ]
+      };
+    }
+
     // Explicit high match for Omar Al-Harbi
     if (student.name.includes("عمر") || student.name.includes("فهد")) {
       return {

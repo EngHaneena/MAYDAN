@@ -407,6 +407,36 @@ window.MAYDAN_MOCK = {
       certifications: ["NVIDIA Deep Learning Certificate", "Embedded Systems & IoT Architecture"],
       cvUploaded: true,
       cvName: "Omar_AlHarbi_CV.pdf"
+    },
+    {
+      id: "student-8",
+      name: "عبدالله محمد",
+      nameEn: "Abdullah Mohammed",
+      title: "طالب هندسة برمجيات - جامعة المستقبل",
+      titleEn: "Software Engineering Student - Al-Mustaqbal University",
+      university: "جامعة المستقبل (Al-Mustaqbal University)",
+      major: "هندسة البرمجيات",
+      majorEn: "Software Engineering",
+      level: "السنة الثالثة (Junior)",
+      levelEn: "Junior Year (3rd Year)",
+      gpa: "3.88 / 4.00",
+      city: "القصيم (بريدة)",
+      cityEn: "Qassim (Buraidah)",
+      bio: "طالب هندسة برمجيات بجامعة المستقبل، شغوف بتطوير البرمجيات وتطبيقات الذكاء الاصطناعي وتحليل البيانات وبناء الحلول الرقمية الشاملة باستخدام Python و React و Firebase و SQL.",
+      bioEn: "Software Engineering student at Al-Mustaqbal University passionate about software engineering, AI, data analysis, and building full-stack digital solutions using Python, React, Firebase, and SQL.",
+      linkedin: "https://www.linkedin.com/in/abdullah-mohammed",
+      github: "https://github.com/abdullah-mohammed",
+      avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png",
+      skills: ["Python", "C++", "JavaScript", "React", "AI", "تحليل البيانات", "SQL", "Firebase"],
+      interests: ["الذكاء الاصطناعي", "تحليل البيانات", "تطوير البرمجيات"],
+      suitableOpportunities: ["AI", "Software Engineering", "Data Analysis"],
+      projects: [
+        { name: "Full-Stack AI Data Platform", desc: "منصة ويب متكاملة لتحليل البيانات ونماذج الذكاء الاصطناعي باستخدام React و Python و Firebase", descEn: "A full-stack web platform for data analysis and AI models using React, Python, and Firebase" },
+        { name: "Smart Inventory Tracker", desc: "نظام إدارة وتتبع البيانات وتحليلها لقواعد البيانات السحابية", descEn: "Cloud database inventory tracking and data analysis system" }
+      ],
+      certifications: ["Meta Front-End Developer Certificate", "AI & Python Data Analytics"],
+      cvUploaded: true,
+      cvName: "Abdullah_Mohammed_CV.pdf"
     }
   ],
 
