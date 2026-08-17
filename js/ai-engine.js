@@ -234,8 +234,8 @@ window.MAYDAN_AI = {
       };
     }
 
-    // Explicit high match for Fahad Al-Tuwaijri
-    if (student.name.includes("فهد")) {
+    // Explicit high match for Omar Al-Harbi
+    if (student.name.includes("عمر") || student.name.includes("فهد")) {
       return {
         score: 92,
         pros: [

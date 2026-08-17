@@ -380,8 +380,8 @@ window.MAYDAN_MOCK = {
     },
     {
       id: "student-7",
-      name: "فهد إبراهيم التويجري",
-      nameEn: "Fahad Ibrahim Al-Tuwaijri",
+      name: "عمر الحربي",
+      nameEn: "Omar Al-Harbi",
       title: "طالب هندسة حاسب - جامعة القصيم",
       titleEn: "Computer Engineering Student - Qassim University",
       university: "جامعة القصيم (Qassim University)",
@@ -394,8 +394,8 @@ window.MAYDAN_MOCK = {
       cityEn: "Qassim (Buraidah)",
       bio: "طالب هندسة حاسب بجامعة القصيم متقدم في الأنظمة المدمجة والذكاء الاصطناعي وتصميم الرقائق الرقمية وتطبيقات البرمجة بلغة C++ و Verilog بالقصيم.",
       bioEn: "Computer Engineering student at Qassim University advanced in embedded systems, AI, digital chip design, and programming in C++ & Verilog.",
-      linkedin: "https://linkedin.com/in/fahad-altuwaijri",
-      github: "https://github.com/fahad-altuwaijri",
+      linkedin: "https://www.linkedin.com/in/omar-alharbi-701b63385/",
+      github: "https://github.com/omar-alharbi",
       avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_company_representative_clean_geometric/screen.png",
       skills: ["C++", "Python", "Verilog/VHDL", "Embedded Systems", "Linux", "SQL", "AI"],
       projects: [
@@ -404,7 +404,7 @@ window.MAYDAN_MOCK = {
       ],
       certifications: ["NVIDIA Deep Learning Certificate", "Embedded Systems & IoT Architecture"],
       cvUploaded: true,
-      cvName: "Fahad_AlTuwaijri_CV.pdf"
+      cvName: "Omar_AlHarbi_CV.pdf"
     }
   ],
 
