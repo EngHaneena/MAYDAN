@@ -474,6 +474,25 @@ html:not(.dark) #candidates-list-container .bg-slate-100 {
   border: 1px solid #cbd5e1 !important;
 }
 
+/* Fix Light Mode Hero Banner Subtitle in "ضع بصمتك" (Always white/slate-200 on dark hero banner) */
+#view-company-challenges .bg-gradient-to-r p,
+html:not(.dark) #view-company-challenges .bg-gradient-to-r p {
+  color: #e2e8f0 !important;
+}
+
+/* Fix Dark Mode Candidate 1 Card Gradient and Name Visibility */
+html.dark #view-company-candidates .bg-gradient-to-br,
+html.dark #candidates-list-container .bg-gradient-to-br {
+  background: linear-gradient(135deg, #0f172a 0%, #0f172a 70%, rgba(13, 148, 136, 0.25) 100%) !important;
+}
+
+html.dark #view-company-candidates h3,
+html.dark #candidates-list-container h3,
+html.dark #view-company-candidates .text-slate-900,
+html.dark #candidates-list-container .text-slate-900 {
+  color: #f8fafc !important;
+}
+
 /* ==================== RESPONSIVE MOBILE POLISH ==================== */
 @media (max-width: 640px) {
   /* Prevent horizontal overflowing on all view containers */

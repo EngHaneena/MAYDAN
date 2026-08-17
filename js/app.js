@@ -1022,19 +1022,19 @@ window.MAYDAN_APP = (function() {
       const isSelected = window.MAYDAN_STORE.getStudentApplications(st.id).some(a => a.opportunityId === (opp ? opp.id : "opp-1") && a.status === "مقبول");
 
       return `
-        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover-lift relative overflow-hidden transition-all ${index === 0 ? 'ring-2 ring-teal-500/40 bg-gradient-to-br from-white via-white to-teal-50/20' : ''}">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover-lift relative overflow-hidden transition-all ${index === 0 ? 'ring-2 ring-teal-500/40 bg-gradient-to-br from-white via-white to-teal-50/20 dark:from-slate-900 dark:via-slate-900 dark:to-teal-950/40' : ''}">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
             
             <div class="flex items-start gap-4">
-              <img src="${st.avatar}" class="w-16 h-16 rounded-2xl object-cover border-2 border-slate-100 shadow-sm shrink-0" alt="${st.name}"/>
+              <img src="${st.avatar}" class="w-16 h-16 rounded-2xl object-cover border-2 border-slate-100 dark:border-slate-700 shadow-sm shrink-0" alt="${st.name}"/>
               <div class="space-y-1">
                 <div class="flex items-center gap-2 flex-wrap">
-                  <span class="px-2.5 py-0.5 bg-amber-50 text-amber-800 border border-amber-200/70 text-xs font-bold rounded-full">${rankBadges[index] || 'مرشح'}</span>
-                  <h3 class="text-lg font-bold text-slate-900 font-headline">${st.name}</h3>
+                  <span class="px-2.5 py-0.5 bg-amber-50 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 border border-amber-200/70 dark:border-amber-700 text-xs font-bold rounded-full">${rankBadges[index] || 'مرشح'}</span>
+                  <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 font-headline">${st.name}</h3>
                   ${renderSocialBadge(st.linkedin, 'linkedin', st.name)}
                   ${renderSocialBadge(st.github, 'github', st.name)}
                 </div>
-                <p class="text-xs text-slate-600 font-medium">${st.title}</p>
+                <p class="text-xs text-slate-600 dark:text-slate-400 font-medium">${st.title}</p>
                 <div class="flex flex-wrap gap-1.5 pt-1">
                   ${(st.skills || []).map(sk => `<span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-xs rounded font-medium">${sk}</span>`).join('')}
                 </div>
