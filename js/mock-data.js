@@ -314,7 +314,7 @@ window.MAYDAN_MOCK = {
       bio: "طالبة هندسة برمجيات بجامعة القصيم مهتمة بتصميم واجهات المستخدم المتجاوبة UI/UX وتطوير المنصات الرقمية وتكامل واجهات APIs.",
       bioEn: "Software Engineering student at Qassim University interested in responsive UI/UX design, digital platform development, and API integration.",
       linkedin: "https://www.linkedin.com/in/kayan-algeffari-7b2b63263/",
-      github: "https://github.com/kayan-algeffari",
+      github: "https://github.com/Kaya1n",
       avatar: "stitch_maydan_ai_powered_co_op_platform/ultra_minimalist_faceless_avatar_of_a_university_student_woman_wearing_a_hijab/screen.png",
       skills: ["React", "UI/UX", "JavaScript", "REST APIs", "Python"],
       projects: [
